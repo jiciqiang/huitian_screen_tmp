@@ -2308,9 +2308,9 @@
     }
 
     $(function(){
-        //setTimeout(function(){
-        //    addWords();
-        //}, 500);
+        setTimeout(function(){
+            addWords();
+        }, 500);
     });
 
     function renderWorldHtml(){
@@ -2318,7 +2318,7 @@
         $('#bottomRightChartBox').html(template('tplCouldHtml', {dataList: _dataList2}));
     }
 
-    $(function(){
+    /*$(function(){
         renderWorldHtml();
 
         tagcloud({
@@ -2340,5 +2340,5 @@
             direction: 35,     //初始滚动方向, 取值角度(顺时针360): 0对应top, 90对应left, 135对应right-bottom(默认)...
             keep: false          //鼠标移出组件后是否继续随鼠标滚动, 取值: false, true(默认) 对应 减速至初速度滚动, 随鼠标滚动
         });
-    });
+    });*/
 })(jQuery);
