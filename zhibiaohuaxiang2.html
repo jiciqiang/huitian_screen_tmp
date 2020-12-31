@@ -1,0 +1,233 @@
+<!--头部文件-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>回天大脑 - 指标画像</title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+	<link rel="stylesheet" type="text/css" href="css/animate.min.css" />
+	<link rel="stylesheet" type="text/css" href="css/app.min.css" />
+	<script type="text/javascript" src="js/plugin/echarts.js"></script>
+	<script type="text/javascript" src="js/plugin/jquery-1.11.0.min.js"></script>
+	<script type="text/javascript" src="js/plugin/template.js"></script>
+	<script type="text/javascript" src="js/plugin/jquery.countup.min.js"></script>
+	<script type="text/javascript" src="js/plugin/jquery.waypoint.min.js"></script>
+	<script type="text/javascript" src="js/plugin/jquery.validate.min.js"></script>
+	<script type="text/javascript" src="js/app.min.js"></script>
+	<script type="text/javascript" src="js/zhibiaohuaxiang2.js"></script>
+	<script type="text/javascript" src="js/changping_zb.js"></script>
+</head>
+
+<body>
+	<!--fixed-header-wrap-->
+	<div class="fixed-header-wrap">
+		<div class="left-content"></div>
+		<div class="mid-title">指标画像</div>
+		<div class="right-content">
+			<ul class="nav-list">
+				<li><a href="index2.html">数说回天</a></li>
+				<li><a href="shujuwenzheng2.html">数据问诊</a></li>
+				<li><a href="jiezhenhuaxiang.html">街镇画像</a></li>
+				<li class="active"><a href="zhibiaohuaxiang2.html">指标画像</a></li>
+				<li><a href="yunyingjiance.html">运营监测</a></li>
+			</ul>
+		</div>
+	</div>
+	<!--/fixed-header-wrap-->
+	<!--main-wrapper-->
+	<div class="main-wrapper">
+		<div class="container">
+			<!--box-common-wrap-->
+			<div class="box-common-wrap zb-box01-wrap zb-box02-edit-wrap">
+				<div class="box-title">
+					<div class="h3">
+						<div class="select-box">
+							<select id="jzSelectBoxWrap"></select>
+						</div>
+					</div>
+				</div>
+				<div class="box-content">
+					<!--left-content-box-->
+					<div class="left-content-box">
+						<!--mrb-box-->
+						<div class="mrb-box">
+							<div class="mrb-tit">
+								<h3>指标完成情况</h3>
+							</div>
+							<div class="mrb-cont">
+								<ul class="icon-list" id="topLeftNavList"></ul>
+							</div>
+						</div>
+						<!--/mrb-box-->
+					</div>
+					<!--/left-content-box-->
+					<!--middle-content-box-->
+					<div class="middle-content-box">
+						<div class="bg-clr-box"></div>
+						<!--top-nav-list-box-->
+						<div class="top-nav-list-box" id="topNavListBox"></div>
+						<!--/top-nav-list-box-->
+						<!--middle-map-box-->
+						<div class="middle-map-box">
+							<!--<img src="images/map.png" alt="">-->
+							<div class="chart-box" id="mapChart"></div>
+						</div>
+						<!--/middle-map-box-->
+						<!--bottom-rect-box-->
+						<div class="bottom-rect-box">
+							<ul class="list-rect">
+								<li class="clr1"></li>
+								<li class="clr2"></li>
+								<li class="clr3"></li>
+							</ul>
+							<p class="name">街镇排行高——低</p>
+						</div>
+						<!--/bottom-rect-box-->
+					</div>
+					<!--/middle-content-box-->
+					<!--right-content-box-->
+					<div class="right-content-box">
+						<!--mrb-box-->
+						<div class="mrb-box" id="rightSortContBox"></div>
+						<!--/mrb-box-->
+					</div>
+					<!--/right-content-box-->
+				</div>
+			</div>
+			<!--/box-common-wrap-->
+			<!--zb-bottom-wrap-->
+			<div class="zb-bottom-wrap">
+				<!--box-common-wrap-->
+				<div class="box-common-wrap zb-box02-wrap">
+					<div class="box-title">
+						<div class="h3">幼有所育详细指标</div>
+					</div>
+					<div class="box-content">
+						<!--detail-zb-box-->
+						<div class="detail-zb-box" id="detailZBBox"></div>
+						<!--/detail-zb-box-->
+					</div>
+				</div>
+				<!--/box-common-wrap-->
+				<!--box-common-wrap-->
+				<div class="box-common-wrap zb-box03-wrap">
+					<div class="box-title">
+						<div class="h3">东小口镇项目信息</div>
+					</div>
+					<div class="box-content">
+						<div class="xmxx-list" id="xmxxListBox"></div>
+					</div>
+				</div>
+				<!--/box-common-wrap-->
+			</div>
+			<!--/zb-bottom-wrap-->
+		</div>
+	</div>
+	<!--/main-wrapper-->
+	<!--整体区域 导航-->
+	<script type="text/html" id="tplSelectHtml">
+	{{each dataList as item i}}
+	<option value="{{item.name}}" {{if i==index}}selected{{/if}}>{{item.name}}</option>
+	{{/each}}
+	</script>
+	<!--指标完成情况 模板-->
+	<script type="text/html" id="tplRightContent">
+	{{each dataList as item i}}
+	<li {{if i==index}}class="active" {{/if}}>
+		<p class="num num2">{{item.id}}</p>
+		<p class="name">{{item.name}}</p>
+		<p class="value">
+			<span class="color" style="background-color: {{item.color}}"></span>
+		</p>
+	</li>
+	{{/each}}
+	</script>
+	<!--中间地图导航模板-->
+	<script type="text/html" id="tplTopNavListBox">
+		<ul class="nav-list">
+			{{each dataList as item i}}
+			<li {{if i==index}}class="act" {{/if}}>{{item.name}}</li>
+			{{/each}}
+		</ul>
+		<div class="total">
+			<p>
+				<span class="name">全部项目（个）</span>
+				<span class="value">{{number}}</span>
+			</p>
+		</div>
+	</script>
+	<!--右侧小镇信息 模板-->
+	<script type="text/html" id="tplSortListHtml">
+		<div class="mrb-tit">
+			<h3>{{name}}</h3>
+		</div>
+		<div class="mrb-cont">
+			<ul class="icon-list">
+				{{each list as item}}
+				<li>
+					<h3>
+						<span class="tit">{{item.value}}</span>
+						<span class="unit">人</span>
+					</h3>
+					<p class="intro">{{item.name}}</p>
+				</li>
+				{{/each}}
+			</ul>
+		</div>
+	</script>
+	<!--幼有所育详细指标-->
+	<script type="text/html" id="tplDetailHtml">
+		<!--table-list-->
+	<div class="table-list" style="width: 100%;">
+		<div class="table-row table-head">
+			<div class="list-item">详细指标</div>
+			{{each dataList as item}}
+			<div class="list-item">{{item.name}}</div>
+			{{/each}}
+		</div>
+		<div class="table-row">
+			<div class="list-item">
+				<h3>普惠性幼儿园覆盖率</h3>
+			</div>
+			{{each dataList as item}}
+			<div class="list-item">
+				<span class="dot" style="background-color: {{item.color1}};"></span>
+				<span class="value">{{item.value1}}</span>
+			</div>
+			{{/each}}
+		</div>
+		<div class="table-row">
+			<div class="list-item">
+				<h3>幼儿园入学率</h3>
+			</div>
+			{{each dataList as item}}
+			<div class="list-item">
+				<span class="dot" style="background-color: {{item.color2}};"></span>
+				<span class="value">{{item.value2}}</span>
+			</div>
+			{{/each}}
+		</div>
+	</div>
+	<!--/table-list-->
+	</script>
+	<!--项目信息 模板-->
+	<script type="text/html" id="tplProgramHtml">
+	{{each dataList as item}}
+	<div class="list-item">
+		<div class="item dot">
+			<span class="color" style="background-color: {{item.color}};"></span>
+		</div>
+		<div class="item name">
+			<h3>{{item.name}}</h3>
+		</div>
+		<div class="item status" style="color: {{item.color}};">{{item.status}}</div>
+		<div class="item link">
+			<a href="{{item.url}}"><img src="images/video.png" alt=""></a>
+		</div>
+	</div>
+	{{/each}}
+	</script>
+</body>
+
+</html>

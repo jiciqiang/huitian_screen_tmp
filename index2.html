@@ -1,0 +1,552 @@
+<!--头部文件-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>回天大脑 - 数说回天</title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+	<link rel="stylesheet" type="text/css" href="css/animate.min.css" />
+	<link rel="stylesheet" type="text/css" href="css/app.min.css" />
+	<script type="text/javascript" src="js/plugin/echarts.js"></script>
+	<script type="text/javascript" src="js/plugin/jquery-1.11.0.min.js"></script>
+	<script type="text/javascript" src="js/plugin/template.js"></script>
+	<script type="text/javascript" src="js/plugin/jquery.countup.min.js"></script>
+	<script type="text/javascript" src="js/plugin/jquery.waypoint.min.js"></script>
+	<script type="text/javascript" src="js/plugin/jquery.validate.min.js"></script>
+	<script type="text/javascript" src="js/app.min.js"></script>
+	<script type="text/javascript" src="js/plugin/echarts-wordcloud.min.js"></script>
+	<script type="text/javascript" src="js/changping_ht.js"></script>
+	<script type="text/javascript" src="js/index2.js"></script>
+</head>
+
+<body>
+	<!--fixed-header-wrap-->
+	<div class="fixed-header-wrap">
+		<div class="left-content"></div>
+		<div class="mid-title">数说回天</div>
+		<div class="right-content">
+			<ul class="nav-list">
+				<li class="active"><a href="index2.html">数说回天</a></li>
+				<li><a href="shujuwenzheng2.html">数据问诊</a></li>
+				<li><a href="jiezhenhuaxiang.html">街镇画像</a></li>
+				<li><a href="zhibiaohuaxiang2.html">指标画像</a></li>
+				<li><a href="yunyingjiance.html">运营监测</a></li>
+			</ul>
+		</div>
+	</div>
+	<!--/fixed-header-wrap-->
+	<!--main-wrapper-->
+	<div class="main-wrapper">
+		<div class="container">
+			<!--ht-home-container-->
+			<div class="ht-home-container">
+				<!--ht-top-wrap-->
+				<div class="ht-top-wrap">
+					<!--ht-left-content-->
+					<div class="ht-left-content">
+						<!--yy-box-ss-wrap-->
+						<div class="yy-box-ss-wrap ht-inner-01-box">
+							<div class="box-title">
+								<div class="h3">回天印象</div>
+							</div>
+							<div class="box-content">
+								<!--htyx-top-box-->
+								<div class="htyx-top-box">
+									<div class="nav-list-box">
+										<ul class="list" id="leftTabChartNav"></ul>
+									</div>
+								</div>
+								<!--/htyx-top-box-->
+								<!--htyx-bottom-box-->
+								<div class="htyx-bottom-box" id="HTYXBottomBox"></div>
+								<!--/htyx-bottom-box-->
+							</div>
+						</div>
+						<!--/yy-box-ss-wrap-->
+					</div>
+					<!--/ht-left-content-->
+					<!--ht-middle-content-->
+					<div class="ht-middle-content">
+						<!--mid-top-info-->
+						<ul class="mid-top-info" id="mapTopInfo"> </ul>
+						<!--/mid-top-info-->
+						<!--mid-map-box-->
+						<div class="mid-map-box">
+							<div class="map-chart-box" id="mapChartBox"></div>
+						</div>
+						<!--/mid-map-box-->
+					</div>
+					<!--/ht-middle-content-->
+					<!--ht-right-content-->
+					<div class="ht-right-content">
+						<!--camera-list-box-->
+						<div class="camera-list-box">
+							<!--list-box-->
+							<div class="list-box clr01">
+								<div class="list-title">[突发事件]</div>
+								<div class="list-content" id="TFSJBox"></div>
+							</div>
+							<!--/list-box-->
+							<!--list-box-->
+							<div class="list-box clr02">
+								<div class="list-title">[诉求热点]</div>
+								<div class="list-content" id="SQRDBox"></div>
+							</div>
+							<!--/list-box-->
+						</div>
+						<!--/camera-list-box-->
+						<!--ht-left-section-01-->
+						<div class="ht-left-section-01">
+							<!--yy-box-ss-wrap-->
+							<div class="yy-box-ss-wrap ht-inner-06-box">
+								<div class="box-title">
+									<div class="h3">媒体聚焦</div>
+								</div>
+								<div class="box-content">
+									<!--zybd-top-nav-->
+									<div class="zybd-top-nav">
+										<div class="left">2016-2017</div>
+										<div class="right">2017-2020</div>
+									</div>
+									<!--/zybd-top-nav-->
+									<!--zybd-chart-list-wrap-->
+									<div class="zybd-chart-list-wrap">
+										<div class="left-chart" id="bottomLeftChartBox"></div>
+										<div class="right-chart" id="bottomRightChartBox"></div>
+									</div>
+									<!--/zybd-chart-list-wrap-->
+								</div>
+							</div>
+							<!--/yy-box-ss-wrap-->
+						</div>
+						<!--/ht-left-section-01-->
+					</div>
+					<!--/ht-right-content-->
+				</div>
+				<!--/ht-top-wrap-->
+				<!--ht-bottom-wrap-->
+				<div class="ht-bottom-wrap">
+					<!--ht-left-section-01-->
+					<div class="ht-left-section-01">
+						<!--yy-box-ss-wrap-->
+						<div class="yy-box-ss-wrap ht-inner-02-box">
+							<div class="box-title">
+								<div class="h3">三年行动计划</div>
+							</div>
+							<div class="box-content">
+								<div class="snxdjh-list-box">
+									<ul class="list" id="SNXDJHList"></ul>
+								</div>
+							</div>
+						</div>
+						<!--/yy-box-ss-wrap-->
+					</div>
+					<!--/ht-left-section-01-->
+					<!--ht-left-section-02-->
+					<div class="ht-left-section-02">
+						<!--yy-box-ss-wrap-->
+						<div class="yy-box-ss-wrap ht-inner-03-box">
+							<div class="box-title">
+								<div class="h3"><a href="javascript:;" class="link">详细&gt;&gt;</a>
+									<h4>交通情况</h4>
+								</div>
+							</div>
+							<div class="box-content">
+								<!--top-nav-list-->
+								<div class="top-nav-list" id="JTQKTopNavBox">
+									<ul class="list" id="JTQKNavList"></ul>
+								</div>
+								<!--/top-nav-list-->
+								<div class="chart-box" id="JTQKChartBox"></div>
+							</div>
+						</div>
+						<!--/yy-box-ss-wrap-->
+					</div>
+					<!--/ht-left-section-02-->
+					<!--ht-left-section-03-->
+					<div class="ht-left-section-03">
+						<!--yy-box-ss-wrap-->
+						<div class="yy-box-ss-wrap ht-inner-04-box">
+							<div class="box-title">
+								<div class="h3"><a href="javascript:;" class="link">详细&gt;&gt;</a>
+									<h4>基层治理</h4>
+								</div>
+							</div>
+							<div class="box-content">
+								<!--jczl-left-->
+								<div class="jczl-left">
+									<ul class="list" id="JCZLNavInfo"></ul>
+								</div>
+								<!--/jczl-left-->
+								<!--jczl-right-->
+								<div class="jczl-right">
+									<div class="chart-box" id="JCZLChartBox"></div>
+								</div>
+								<!--/jczl-right-->
+							</div>
+						</div>
+						<!--/yy-box-ss-wrap-->
+					</div>
+					<!--/ht-left-section-03-->
+					<!--ht-left-section-04-->
+					<div class="ht-left-section-04">
+						<!--yy-box-ss-wrap-->
+						<div class="yy-box-ss-wrap ht-inner-05-box">
+							<div class="box-title">
+								<div class="h3"><a href="javascript:;" class="link">详细&gt;&gt;</a>
+									<h4>社区管理</h4>
+								</div>
+							</div>
+							<div class="box-content">
+								<!--ht-inner-05-left-->
+								<div class="ht-inner-05-left">
+									<ul class="list" id="HT05RightList"></ul>
+								</div>
+								<!--/ht-inner-05-left-->
+								<!--ht-inner-05-right-->
+								<div class="ht-inner-05-right">
+									<div class="chart-box" id="HT05RightChart"></div>
+								</div>
+								<!--/ht-inner-05-right-->
+							</div>
+						</div>
+						<!--/yy-box-ss-wrap-->
+					</div>
+					<!--/ht-left-section-04-->
+				</div>
+				<!--/ht-bottom-wrap-->
+			</div>
+			<!--/ht-home-container-->
+		</div>
+	</div>
+	<!--/main-wrapper-->
+	<!--突发事件和诉求热点-->
+	<script type="text/html" id="tplTFListHtml">
+	{{each dataList as item i}}
+	<div class="list-item {{if i==0}}active{{/if}}">
+		<h3>{{item.title}}</h3>
+		<p>{{item.intro}}</p>
+		<a href="javascript:;" class="link"></a>
+	</div>
+	{{/each}}
+	</script>
+	<!--社区管理 左则内容-->
+	<script type="text/html" id="tplSQListHtml">
+	{{each dataList as item}}
+	<li>
+		<p>{{item.name1}}</p>
+		<p>{{item.name2}}</p>
+		<h3>{{item.value}}</h3>
+	</li>
+	{{/each}}
+	</script>
+	<!--基层治理 左侧内容-->
+	<script type="text/html" id="tplJCZLListHtml">
+		<li>
+			<img src="images/ht_icon_04.png" alt="" class="img">
+			<div class="inline-block">
+				<p>响应率</p>
+				<h3>{{dataInfo.xylValue}}</h3>
+			</div>
+		</li>
+		<li>
+			<img src="images/ht_icon_05.png" alt="" class="img">
+			<div class="inline-block">
+				<p>解决率</p>
+				<h3>{{dataInfo.jjlValue}}</h3>
+			</div>
+		</li>
+		<li>
+			<img src="images/ht_icon_06.png" alt="" class="img">
+			<div class="inline-block">
+				<p>满意率</p>
+				<h3>{{dataInfo.mylValue}}</h3>
+			</div>
+		</li>
+	</script>
+	<!--交通情况导航模板-->
+	<script type="text/html" id="tplJTQKNavHtml">
+	{{each dataList as item i}}
+	<li {{if index==i}}class="act" {{/if}}>{{item.name}}</li>
+	{{/each}}
+	</script>
+	<!--三年行动计划-->
+	<script type="text/html" id="tplSNXDJHHtml">
+	{{each dataList as item i}}
+	<li class="{{if i==0}}first{{/if}} {{if i==index}}active{{/if}}">
+		<p>{{item.name}}</p>
+		<h3>{{item.value}}</h3>
+	</li>
+	{{/each}}
+	</script>
+	<!--中间顶部数据-->
+	<script type="text/html" id="tplMidTopList">
+		<li class="act">
+			<img src="images/ht_icon_01.png" alt="" class="icon">
+			<div class="inline-block">
+				<p class="name">交通延迟指数</p>
+				<p>
+					<span class="value clr01">{{dataInfo.ycValue}}</span>
+				</p>
+			</div>
+		</li>
+		<li>
+			<img src="images/ht_icon_02.png" alt="" class="icon">
+			<div class="inline-block">
+				<p class="name">实时人流（人）</p>
+				<p>
+					<span class="value clr02">{{dataInfo.rlValue}}</span>
+				</p>
+			</div>
+		</li>
+		<li>
+			<img src="images/ht_icon_03.png" alt="" class="icon">
+			<div class="inline-block">
+				<p class="name">当日市民反映量</p>
+				<p>
+					<span class="value clr03">{{dataInfo.ylValue}}</span>
+					<span class="unit">个</span>
+				</p>
+			</div>
+		</li>
+	</script>
+	<!--回天印象左侧内容 人口 模板-->
+	<script type="text/html" id="tplTabRKContentHtml">
+		<div class="chart-content-box">
+			<!--RK-wrap-->
+			<div class="RK-wrap">
+				<!--top-info-box-->
+				<div class="top-info-box">
+					<ul class="list">
+						<li>
+							<h3>{{dataInfo.HJValue}}</h3>
+							<p>户籍人口</p>
+						</li>
+						<li>
+							<span class="unit">*万/人</span>
+							<h3>{{dataInfo.SYValue}}</h3>
+							<p>实有人口</p>
+						</li>
+					</ul>
+				</div>
+				<!--/top-info-box-->
+				<!--bottom-info-list-->
+				<div class="bottom-info-list">
+					{{each dataList as item i}}
+					<div class="list-item clr{{i+1}}">
+						<div class="cell left-name">
+							<p class="tit">{{item.name}}</p>
+						</div>
+						<div class="cell">
+							<p class="progress-box">
+								<span style="width: {{(item.value/item.max)*100}}%" class="bar"></span>
+							</p>
+						</div>
+						<div class="cell right-value">
+							<p class="val">{{item.value}}</p>
+						</div>
+					</div>
+					{{/each}}
+				</div>
+				<!--/bottom-info-list-->
+			</div>
+			<!--/RK-wrap-->
+			<div class="nav-list-box">
+				<ul class="list" id="leftQSChartNav"></ul>
+			</div>
+			<div class="chart-box" id="leftQSChartBox"></div>
+		</div>
+	</script>
+	<!--回天印象左侧内容 地域 模板-->
+	<script type="text/html" id="tplTabDYContentHtml">
+		<div class="chart-content-box chart-content1-box">
+			<!--RK-wrap-->
+			<div class="RK-wrap">
+				<!--top-info-box-->
+				<div class="top-info-box">
+					<ul class="list">
+						<li>
+							<h3>{{dataInfo.ZMJValue}}</h3>
+							<p>总面积</p>
+						</li>
+						<li>
+							<span class="unit">*万/人</span>
+							<h3>{{dataInfo.SQSLValue}}</h3>
+							<p>社区数量</p>
+						</li>
+					</ul>
+				</div>
+				<!--/top-info-box-->
+				<!--tab-chart-wrap-->
+				<div class="tab-chart-wrap">
+					<div class="tab-title">
+						<h3>五年商业用地与住宅趋势对比</h3>
+					</div>
+					<div class="tab-content">
+						<div class="chart-box" id="WNSYYDYZZQSDBChartBox"></div>
+					</div>
+				</div>
+				<!--/tab-chart-wrap-->
+				<!--tab-chart-wrap-->
+				<div class="tab-chart-wrap tab-line">
+					<div class="tab-title">
+						<h3>文体用地面积趋势</h3>
+					</div>
+					<div class="tab-content">
+						<div class="chart-box" id="WTYDMJQSChartBox"></div>
+					</div>
+				</div>
+				<!--/tab-chart-wrap-->
+			</div>
+			<!--/RK-wrap-->
+		</div>
+	</script>
+	<!--回天印象左侧内容 产业 模板-->
+	<script type="text/html" id="tplTabCYContentHtml">
+		<div class="chart-content-box chart-content2-box">
+			<!--RK-wrap-->
+			<div class="RK-wrap">
+				<!--top-info-box-->
+				<div class="top-info-box">
+					<ul class="list">
+						<li>
+							<h3>{{dataInfo.ZCValue}}</h3>
+							<p>注册企业及个体</p>
+						</li>
+						<li>
+							<span class="unit">*个</span>
+							<h3>{{dataInfo.JYValue}}</h3>
+							<p>经营企业及个体</p>
+						</li>
+					</ul>
+				</div>
+				<!--/top-info-box-->
+				<!--tab-chart-wrap-->
+				<div class="tab-chart-wrap">
+					<div class="tab-title">
+						<h3>产业分类占比</h3>
+					</div>
+					<div class="tab-content">
+						<div class="chart-box" id="CYFLZBChartBox"></div>
+					</div>
+				</div>
+				<!--/tab-chart-wrap-->
+				<!--tab-chart-wrap-->
+				<div class="tab-chart-wrap tab-line">
+					<div class="tab-title">
+						<h3>5年注册与经营企业及个体增长趋势</h3>
+					</div>
+					<div class="tab-content">
+						<div class="chart-box" id="5NZCYJYQYJGTZZQSChartBox"></div>
+					</div>
+				</div>
+				<!--/tab-chart-wrap-->
+			</div>
+			<!--/RK-wrap-->
+		</div>
+	</script>
+	<!--回天印象左侧内容 事务 模板-->
+	<script type="text/html" id="tplTabSWContentHtml">
+		<div class="chart-content-box chart-content3-box">
+			<!--RK-wrap-->
+			<div class="RK-wrap">
+				<!--top-info-box-->
+				<div class="top-info-box">
+					<ul class="list">
+						<li>
+							<h3>{{dataInfo.ZWValue}}</h3>
+							<p>政务服务数</p>
+						</li>
+						<li>
+							<span class="unit">*个</span>
+							<h3>{{dataInfo.WSValue}}</h3>
+							<p>未诉先办</p>
+						</li>
+					</ul>
+				</div>
+				<!--/top-info-box-->
+				<!--tab-chart-wrap-->
+				<div class="tab-chart-wrap">
+					<div class="tab-title">
+						<h3>投诉分类占比</h3>
+					</div>
+					<div class="tab-content">
+						<div class="chart-box" id="TSFLZBChartBox"></div>
+					</div>
+				</div>
+				<!--/tab-chart-wrap-->
+				<!--tab-chart-wrap-->
+				<div class="tab-chart-wrap tab-line">
+					<div class="tab-title">
+						<h3>三率趋势变化</h3>
+					</div>
+					<div class="tab-content">
+						<div class="chart-box" id="SLQSBHChartBox"></div>
+					</div>
+				</div>
+				<!--/tab-chart-wrap-->
+			</div>
+			<!--/RK-wrap-->
+		</div>
+	</script>
+	<!--回天印象左侧内容 组织 模板-->
+	<script type="text/html" id="tplTabZZContentHtml">
+		<div class="chart-content-box chart-content4-box">
+			<!--RK-wrap-->
+			<div class="RK-wrap">
+				<!--top-info-box-->
+				<div class="top-info-box">
+					<ul class="list list2">
+						<li>
+							<p>社会组织</p>
+							<h3>{{dataInfo.SHValue}}</h3>
+						</li>
+						<li>
+							<span class="unit">*个</span>
+							<p>教育机构</p>
+							<h3>{{dataInfo.JYValue}}</h3>
+						</li>
+						<li>
+							<p>养老机构</p>
+							<h3>{{dataInfo.YLValue}}</h3>
+						</li>
+						<li>
+							<p>医疗机构</p>
+							<h3>{{dataInfo.YL2Value}}</h3>
+						</li>
+					</ul>
+				</div>
+				<!--/top-info-box-->
+				<!--tab-chart-wrap-->
+				<div class="tab-chart-wrap">
+					<div class="tab-title">
+						<h3>社会组织分类</h3>
+					</div>
+					<div class="tab-content">
+						<div class="chart-box" id="SHZZFLChartBox"></div>
+					</div>
+				</div>
+				<!--/tab-chart-wrap-->
+				<!--tab-chart-wrap-->
+				<div class="tab-chart-wrap tab-line">
+					<div class="tab-title">
+						<h3>各机构变化趋势</h3>
+					</div>
+					<div class="tab-content">
+						<div class="chart-box" id="GJGBHQSChartBox"></div>
+					</div>
+				</div>
+				<!--/tab-chart-wrap-->
+			</div>
+			<!--/RK-wrap-->
+		</div>
+	</script>
+	<script type="text/html" id="tplCouldHtml">
+	{{each dataList as item}}
+	<li style="color: {{item.color}};">{{item.name}}</li>
+	{{/each}}
+	</script>
+</body>
+
+</html>

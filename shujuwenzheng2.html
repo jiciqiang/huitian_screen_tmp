@@ -1,0 +1,168 @@
+<!--头部文件-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>回天大脑 - 数据问诊</title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+	<link rel="stylesheet" type="text/css" href="css/animate.min.css" />
+	<link rel="stylesheet" type="text/css" href="css/app.min.css" />
+	<script type="text/javascript" src="js/plugin/echarts.js"></script>
+	<script type="text/javascript" src="js/plugin/jquery-1.11.0.min.js"></script>
+	<script type="text/javascript" src="js/plugin/template.js"></script>
+	<script type="text/javascript" src="js/plugin/jquery.countup.min.js"></script>
+	<script type="text/javascript" src="js/plugin/jquery.waypoint.min.js"></script>
+	<script type="text/javascript" src="js/plugin/jquery.validate.min.js"></script>
+	<script type="text/javascript" src="js/app.min.js"></script>
+	<script type="text/javascript" src="js/changping.js"></script>
+	<script type="text/javascript" src="js/shujuwenzheng2.js"></script>
+</head>
+
+<body>
+	<!--fixed-header-wrap-->
+	<div class="fixed-header-wrap">
+		<div class="left-content"></div>
+		<div class="mid-title">数据问诊</div>
+		<div class="right-content">
+			<ul class="nav-list">
+				<li><a href="index2.html">数说回天</a></li>
+				<li class="active"><a href="shujuwenzheng2.html">数据问诊</a></li>
+				<li><a href="jiezhenhuaxiang.html">街镇画像</a></li>
+				<li><a href="zhibiaohuaxiang2.html">指标画像</a></li>
+				<li><a href="yunyingjiance.html">运营监测</a></li>
+			</ul>
+		</div>
+	</div>
+	<!--/fixed-header-wrap-->
+	<!--main-wrapper-->
+	<div class="main-wrapper">
+		<!--回天计划详细项目情况-->
+		<!--box-common-wrap-->
+		<div class="box-common-wrap sjwz-box01-wrap">
+			<div class="box-title">
+				<div class="h3">回天计划详细项目情况</div>
+			</div>
+			<div class="box-content">
+				<!--top-left-content-->
+				<div class="top-left-content">
+					<!--mrb-box-->
+					<div class="mrb-box">
+						<div class="mrb-tit">
+							<h3>街镇状态</h3>
+						</div>
+						<div class="mrb-cont">
+							<ul class="icon-list" id="topLeftNavList"></ul>
+						</div>
+					</div>
+					<!--/mrb-box-->
+				</div>
+				<!--/top-left-content-->
+				<!--top-middle-content-->
+				<div class="top-middle-content">
+					<div class="bg-clr-box"></div>
+					<!--top-nav-list-box-->
+					<div class="top-nav-list-box" id="topNavListBox"></div>
+					<!--/top-nav-list-box-->
+					<!--middle-map-box-->
+					<div class="middle-map-box">
+						<!--<img src="images/map.png" alt="">-->
+						<div class="chart-box" id="mapChart"></div>
+					</div>
+					<!--/middle-map-box-->
+					<!--bottom-rect-box-->
+					<div class="bottom-rect-box">
+						<ul class="list-rect">
+							<li class="clr1"></li>
+							<li class="clr2"></li>
+							<li class="clr3"></li>
+						</ul>
+						<p class="name">街镇排行高——低</p>
+					</div>
+					<!--/bottom-rect-box-->
+				</div>
+				<!--/top-middle-content-->
+				<!--top-right-content-->
+				<div class="top-right-content">
+					<!--mrb-box-->
+					<div class="mrb-box">
+						<div class="mrb-tit">
+							<p class="right-info">回天地区指标与全市均值对比，呈现低于平均指标top10</p>
+							<h3>指标诊断</h3>
+						</div>
+						<div class="mrb-cont">
+							<ul class="icon-list icon-list2 icon-list3" id="topRightNavList"></ul>
+						</div>
+					</div>
+					<!--/mrb-box-->
+				</div>
+				<!--/top-right-content-->
+			</div>
+		</div>
+		<!--/box-common-wrap-->
+		<!--2018-2020回天计划项目达标情况-->
+		<!--box-common-wrap-->
+		<div class="box-common-wrap sjwz-box02-wrap sjwz-box-edit-wrap">
+			<div class="box-title">
+				<div class="h3">
+					<h3>资源匹配情况</h3>
+					<p class="list">
+						<span class="bad">差</span>
+						<span class="good">好</span>
+					</p>
+				</div>
+			</div>
+			<div class="box-content">
+				<!--sjwz-bottom-list-content-->
+				<div class="sjwz-bottom-list-content" id="SJWZBottomListContent"></div>
+				<!--/sjwz-bottom-list-content-->
+			</div>
+		</div>
+		<!--/box-common-wrap-->
+	</div>
+	<!--/main-wrapper-->
+	<!--街镇状态 模板-->
+	<script type="text/html" id="tplRightContent">
+	{{each dataList as item i}}
+	<li {{if i==index}}class="active" {{/if}}>
+		<p class="num num2">{{item.id}}</p>
+		<p class="name">{{item.name}}</p>
+		<p class="value">
+			<span class="color" style="background-color: {{item.color}}"></span>
+		</p>
+	</li>
+	{{/each}}
+	</script>
+	<!--指标诊断 模板-->
+	<script type="text/html" id="tplRightContent2">
+	{{each dataList as item i}}
+	<li class="{{if i==index}}active{{/if}}">
+		<p class="num" style="background-color: {{item.color}};">{{item.id}}</p>
+		<p class="name">{{item.name}}</p>
+		<p class="value">
+			<span>{{item.value}}</span>
+		</p>
+	</li>
+	{{/each}}
+	</script>
+	<!--底部列表 导航模板-->
+	<script type="text/html" id="tplBottomListBox">
+	{{each dataList as item}}
+	<div class="list-item">
+		<div class="title">
+			<h3>{{item.name}}</h3>
+		</div>
+		<ul class="list">
+			{{each item.list as sub}}
+			<li>
+				<p class="name">{{sub.name}}</p>
+				<p class="value" style="color: {{sub.color}};">{{sub.value}}</p>
+			</li>
+			{{/each}}
+		</ul>
+	</div>
+	{{/each}}
+	</script>
+</body>
+
+</html>
