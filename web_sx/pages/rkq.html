@@ -1,0 +1,159 @@
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>人房关联</title>
+		<link href="../lib/mapbox-gl.css" rel="stylesheet">
+   	 	<link rel="stylesheet" href="../css/rkq.css" />
+	</head>
+	<body>
+		<div class="wrapper">	
+			<div id="map"></div>
+			<div class="tabs" id="tabs">
+				<p level="jd">街镇</p>
+				<p level="sq">社区</p>
+				<p class="on">楼宇</p>
+			</div>
+			<div id="job_count">
+			    <ul>
+			        <li class="active" type="jzrk"><img src="../images/live_hei.png" align="middle" alt="">居住</li>
+			        <li class="" type="gzrk"><img src="../images/work_lan.png" align="middle" alt="">工作</li>
+			    </ul>
+			</div>
+			<div class="legend" id="legend">
+				
+			</div>
+			<div class='left'>
+				<div class="title_text_reset">
+					<div class="title_text_area">
+						<div class="title_text_pubilc">户籍人口数</div>
+						<div class="title_text_value"><span class="text_color" id="yqqy">168717</span>人</div>
+					</div>
+					<div class="title_text_area">
+						<div class="title_text_pubilc">实有人口数</div>
+						<div class="title_text_value"><span class="text_color" id="yssy">919428</span>人</div>
+					</div>
+					<div class="title_text_area title_text_area_right">
+						<div class="title_text_pubilc">救助人口数</span></div>
+						<div class="title_text_value"><span class="text_color" id="qyls">202</span>人</div>
+					</div>
+				</div>
+				<div class="title_text_reset">
+					<div class="title_text_area">
+						<div class="title_text_pubilc">矫正人员数</div>
+						<div class="title_text_value"><span class="text_color" id="avg_time">3464</span>人</div>
+					</div>
+					<div class="title_text_area">
+						<div class="title_text_pubilc">参保人员</div>
+						<div class="title_text_value"><span class="text_color" id="economic">25443443</span>人</div>
+					</div>
+					<div class="title_text_area title_text_area_right">
+						<div class="title_text_pubilc">城管执法人员</span></div>
+						<div class="title_text_value"><span class="text_color" id="development">26401</span>人</div>
+					</div>
+				</div>
+				<div class="blank"></div>
+				<div class="qyjy_qylrlc bg">	
+					<div class='publicHeader'>
+						<img src="../images/leftIcon.png" alt="" />
+						实时人流量
+					</div>
+					<div class="publicPox" id='ssrll'>
+						
+					</div>
+				</div>
+				<div class="blank"></div>
+				<div class="qyjt_leftBot bg">							
+					<div class='publicHeader'>
+						<img src="../images/leftIcon.png" alt="" />
+						流入流出分布
+					</div>
+					<div class="publicPox" id='inout'>
+						
+					</div>												
+				</div>
+				<div class="blank"></div>
+					<div class="qyjy_hyfz bg">	
+					<div class='publicHeader'>
+						<img src="../images/leftIcon.png" alt="" />
+						人口变化趋势
+					</div>
+					<div class="publicPox" id='rkbhqs'>
+						
+					</div>
+				</div>
+			</div>
+			<div class="center">
+				<div class="centerEach bg" style="width:32%;margin-right: 10px;">
+					<p class='publicHeader'>
+						<img src="../images/leftIcon.png" alt="" />
+						行业分布
+					</p>
+					<div class="publicPox" id='hyfb'>
+	
+					</div>
+				</div>
+				<div class="centerEach bg" style="width:32%;margin-right: 10px;">
+					<p class='publicHeader'>
+						<img src="../images/leftIcon.png" alt="" />
+						通勤时间分布
+					</p>
+					<div class="publicPox" id='tqsj'>
+	
+					</div>
+				</div>
+				<div class="centerEach bg" style="width:calc(36% - 20px);">	
+					<div class='publicHeader'>
+						<img src="../images/leftIcon.png" alt="" />
+						通勤半径分布
+					</div>
+					<div class="publicPox" id='tqbj'>
+						
+					</div>
+				</div>
+			</div>
+			<div class="right">
+				<div class="qyjy_hyrczs bg">
+					<div class='publicHeader'>
+						<img src="../images/leftIcon.png" alt="" />
+						工作/居住人口变化情况	
+					</div>
+					<div class="publicPox" id='jzgz'>
+						
+					</div>
+				</div>
+				<div class="blank"></div>
+				<div class="qyjy_gzrk bg">
+					<div class='publicHeader'>
+						<img src="../images/leftIcon.png" alt="" />
+						人口属性
+					</div>
+					<div class="publicPox" >
+						<div id='sex' style='height:40%;'>
+	
+						</div>
+						<div id='age' style='height:60%;'>
+	
+						</div>
+					</div>
+				</div>
+				<div class="blank"></div>
+				<div class="jmsh_tqsj bg">								
+					<div class='publicHeader'>
+						<img src="../images/leftIcon.png" alt="" />
+						籍贯地分布Top10
+					</div>
+					<div class="publicPox" id='jgd'>
+						
+					</div>
+				</div>
+				</div>
+			</div>
+		<script src="../js/jQuery.min.js"></script>
+		<script src="../lib/d3.min.js"></script>
+		<script src="../lib/mapbox-gl.js"></script>
+		<script src='../js/layer.js'></script>
+		<script src="../js/echarts.min.js"></script>
+		<script src='../pageJs/rfgl.js'></script>
+		<script src='../pageJs/rkq_map.js'></script>
+	</body>
+</html>
