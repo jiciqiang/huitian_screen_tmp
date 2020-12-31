@@ -1,6 +1,6 @@
 /* - - - - - - - - - - - - - - - - - - - - - - 回天印象 START - - - - - - - - - - - - - - - - - - - - - - */
 /**
- * 回天印象 - 人品、地域、产业、事务、组织 导航
+ * 回天印象 - 人口、地域、产业、事务、组织 导航
  */
 (function($){
     var _dataList = [
@@ -2308,23 +2308,26 @@
     }
 
     $(function(){
-        setTimeout(function(){
-            addWords();
-        }, 500);
+        //setTimeout(function(){
+        //    addWords();
+        //}, 500);
     });
 
     function renderWorldHtml(){
-        $('#bottomLeftChartBox').html(template('tplCouldHtml', {dataList: _dataList}));
-        $('#bottomRightChartBox').html(template('tplCouldHtml', {dataList: _dataList2}));
+        var _chart1 = $('<div class="child-box">'+template('tplCouldHtml', {dataList: _dataList})+'</div>');
+        var _chart2 = $('<div class="child-box">'+template('tplCouldHtml', {dataList: _dataList2})+'</div>');
+        console.log(_chart1);
+        $('#bottomLeftChartBox').append(_chart1);
+        $('#bottomRightChartBox').append(_chart2);
     }
 
-    /*$(function(){
+    $(function(){
         renderWorldHtml();
-
+        var _radius = $('#bottomLeftChartBox').width()*2;
         tagcloud({
-            selector: "#bottomLeftChartBox",  //元素选择器
-            fontsize: 16,       //基本字体大小, 单位px
-            radius: 30,         //滚动半径, 单位px
+            selector: "#bottomLeftChartBox .child-box",  //元素选择器
+            fontsize: 18,       //基本字体大小, 单位px
+            radius: _radius,         //滚动半径, 单位px
             mspeed: "slow",   //滚动最大速度, 取值: slow, normal(默认), fast
             ispeed: "slow",   //滚动初速度, 取值: slow, normal(默认), fast
             direction: 135,     //初始滚动方向, 取值角度(顺时针360): 0对应top, 90对应left, 135对应right-bottom(默认)...
@@ -2332,13 +2335,13 @@
         });
 
         tagcloud({
-            selector: "#bottomRightChartBox",  //元素选择器
-            fontsize: 16,       //基本字体大小, 单位px
-            radius: 30,         //滚动半径, 单位px
+            selector: "#bottomRightChartBox .child-box",  //元素选择器
+            fontsize: 18,       //基本字体大小, 单位px
+            radius: _radius,         //滚动半径, 单位px
             mspeed: "slow",   //滚动最大速度, 取值: slow, normal(默认), fast
             ispeed: "slow",   //滚动初速度, 取值: slow, normal(默认), fast
             direction: 35,     //初始滚动方向, 取值角度(顺时针360): 0对应top, 90对应left, 135对应right-bottom(默认)...
             keep: false          //鼠标移出组件后是否继续随鼠标滚动, 取值: false, true(默认) 对应 减速至初速度滚动, 随鼠标滚动
         });
-    });*/
+    });
 })(jQuery);
