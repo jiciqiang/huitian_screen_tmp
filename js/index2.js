@@ -325,7 +325,6 @@
     $(function(){
         $.ListenTabChnage.listen(function(data){
             if(data['id']==1){
-                console.log(data);
                 clearInterval(_handle);
 
                 data.render('tplTabRKContentHtml', {
@@ -2314,7 +2313,6 @@
     function renderWorldHtml(){
         var _chart1 = $('<div class="child-box">'+template('tplCouldHtml', {dataList: _dataList})+'</div>');
         var _chart2 = $('<div class="child-box">'+template('tplCouldHtml', {dataList: _dataList2})+'</div>');
-        console.log(_chart1);
         $('#bottomLeftChartBox').append(_chart1);
         $('#bottomRightChartBox').append(_chart2);
     }

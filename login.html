@@ -1,0 +1,63 @@
+<!--头部文件-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>回天大脑 - 登录</title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+	<link rel="stylesheet" type="text/css" href="css/animate.min.css" />
+	<link rel="stylesheet" type="text/css" href="css/app.min.css" />
+	<script type="text/javascript" src="js/plugin/echarts.js"></script>
+	<script type="text/javascript" src="js/plugin/jquery-1.11.0.min.js"></script>
+	<script type="text/javascript" src="js/plugin/template.js"></script>
+	<script type="text/javascript" src="js/plugin/jquery.countup.min.js"></script>
+	<script type="text/javascript" src="js/plugin/jquery.waypoint.min.js"></script>
+	<script type="text/javascript" src="js/plugin/jquery.validate.min.js"></script>
+	<script type="text/javascript" src="js/app.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/login.css" />
+	<script type="text/javascript" src="js/login.js"></script>
+</head>
+
+<body>
+	<!--fixed-header-wrap-->
+	<div class="fixed-header-wrap">
+		<div class="left-content"></div>
+		<div class="mid-title"> 回天大脑 - 登录 </div>
+		<div class="right-content">
+		</div>
+	</div>
+	<!--/fixed-header-wrap-->
+	<!--login-wrapper-->
+	<div class="login-wrapper">
+		<div class="earth-box">
+			<img src="images/login_earth.png" alt="" />
+		</div>
+		<!--form-box-->
+		<div class="form-box">
+			<form action="#" method="post" id="validateFrom"></form>
+		</div>
+		<!--/form-box-->
+	</div>
+	<!--/login-wrapper-->
+	<script type="text/html" id="tpl-login">
+		<div class="ipt-txt icon-user">
+			<input type="text" name="username" value="{{username}}" autocomplete="off" placeholder="请输入您的账号" />
+		</div>
+		<div class="ipt-txt icon-pwd">
+			<input type="password" name="password" value="{{password}}" autocomplete="off" placeholder="请输入您的密码" />
+		</div>
+		<div class="ipt-check">
+			<label>
+				<input type="checkbox" name="checked" {{if checked==1}}checked{{/if}} value="1">
+				<span>记住密码</span>
+			</label>
+		</div>
+		<div class="btn-box">
+			<button type="button" class="btn-login"></button>
+		</div>
+		<div class="error-box"></div>
+	</script>
+</body>
+
+</html>
