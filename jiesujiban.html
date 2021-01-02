@@ -4,7 +4,7 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>回天大脑 - 运营监测 实时交通</title>
+	<title>回天大脑 - 接诉即办</title>
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
 	<link rel="stylesheet" type="text/css" href="css/animate.min.css" />
 	<link rel="stylesheet" type="text/css" href="css/app.min.css" />
@@ -15,10 +15,9 @@
 	<script type="text/javascript" src="js/plugin/jquery.waypoint.min.js"></script>
 	<script type="text/javascript" src="js/plugin/jquery.validate.min.js"></script>
 	<script type="text/javascript" src="js/app.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="css/mapbox-gl.css" />
 	<script type="text/javascript" src="js/plugin/mapbox-gl.js"></script>
-	<script type="text/javascript" src="js/yunyingjiance.js"></script>
-	<script type="text/javascript" src="js/changping_yy.js"></script>
+	<script type="text/javascript" src="js/changping_js.js"></script>
+	<script type="text/javascript" src="js/jiesujiban.js"></script>
 </head>
 
 <body>
@@ -43,33 +42,23 @@
 			<!--mid-top-nav-box-->
 			<div class="yy-mid-top-nav-box">
 				<ul class="list">
-					<li class="act"><a href="yunyingjiance.html">实时交通</a></li>
+					<li><a href="yunyingjiance.html">实时交通</a></li>
 					<li><a href="web_sx/ssrl.html">实时人流</a></li>
-					<li><a href="jiesujiban.html">接诉即办</a></li>
+					<li class="act"><a href="jiesujiban.html">接诉即办</a></li>
 				</ul>
 			</div>
 			<!--/mid-top-nav-box-->
 			<!--yy-container-->
-			<div class="yy-container">
+			<div class="yy-container yy-jsjb-container">
 				<!--yy-left-content-->
 				<div class="yy-left-content">
 					<!--yy-box-ss-wrap-->
 					<div class="yy-box-ss-wrap yy-left-box1-wrap">
 						<div class="box-title">
-							<div class="h3">监控路段</div>
+							<div class="h3">市民反映问题</div>
 						</div>
 						<div class="box-content">
-							<ul class="left-top-nav" id="leftTopNav"></ul>
-							<!--mrb-box-->
-							<div class="mrb-box">
-								<div class="mrb-tit">
-									<h3>路段列表</h3>
-								</div>
-								<div class="mrb-cont">
-									<div class="ld-list-box" id="LDListBox"></div>
-								</div>
-							</div>
-							<!--/mrb-box-->
+							<div class="jsjb-smfy-list" id="SMFYList"></div>
 						</div>
 					</div>
 					<!--/yy-box-ss-wrap-->
@@ -79,10 +68,26 @@
 							<!--mrb-box-->
 							<div class="mrb-box">
 								<div class="mrb-tit">
-									<h3>常发拥堵排行Top5</h3>
+									<h3>热点街镇</h3>
 								</div>
 								<div class="mrb-cont">
 									<ul class="top-sort-list" id="topSortList"></ul>
+								</div>
+							</div>
+							<!--/mrb-box-->
+						</div>
+					</div>
+					<!--/yy-box-ss-wrap-->
+					<!--yy-box-ss-wrap-->
+					<div class="yy-box-ss-wrap yy-left-box3-wrap">
+						<div class="box-content">
+							<!--mrb-box-->
+							<div class="mrb-box">
+								<div class="mrb-tit">
+									<h3>诉求分类</h3>
+								</div>
+								<div class="mrb-cont">
+									<div class="chart-box" id="pieChartBox"></div>
 								</div>
 							</div>
 							<!--/mrb-box-->
@@ -115,7 +120,7 @@
 					<!--yy-box-ss-wrap-->
 					<div class="yy-box-ss-wrap yy-left-box3-wrap">
 						<div class="box-title">
-							<div class="h3">交通预测分析</div>
+							<div class="h3">诉求预测分析</div>
 						</div>
 						<div class="box-content">
 							<div class="yc-list-box" id="ycListBox"></div>
@@ -129,54 +134,37 @@
 		</div>
 	</div>
 	<!--/main-wrapper-->
-	<!--监控路段信息-->
-	<script type="text/html" id="tplLeftTopNavHtml">
-	{{each dataList as item i}}
-	<li>
-		<h3>{{item.value}}</h3>
-		<p>{{item.name}}</p>
-	</li>
-	{{/each}}
-	</script>
 	<!--路段列表模板-->
 	<script type="text/html" id="tplLDListBoxHtml">
-	{{each dataList as item}}
-	<div class="list-item">
-		<div class="percent-thumb">
-			<p class="value">
-				<span class="num">{{item.value}}</span>
-				<span class="unit">km/h</span>
-			</p>
-		</div>
-		<div class="right-cont">
-			<h3>{{item.name}}</h3>
-			<p>通行效率：<span class="per">{{item.percent}}</span></p>
-			<p>
-				<span class="tit">拥堵</span>
-				{{if item.type==1}}
-				<span class="car warning icon-{{item.score}}"></span>
-				{{else if item.type==2}}
-					<span class="car little icon-{{item.score}}"></span>
-					{{else if item.type==3}}
-						<span class="car normal icon-{{item.score}}"></span>
-						{{/if}}
-			</p>
-		</div>
+	{{each dataList as item i}}
+	<div class="list-item item{{i+1}}">
+		<p class="value" style="color: {{item.color}};">{{item.value}}</p>
+		<p class="name">{{item.name}}</p>
 	</div>
 	{{/each}}
 	</script>
-	<!--常发拥堵排行Top5-->
+	<!--热点街镇-->
 	<script type="text/html" id="tplRightContent">
 	{{each dataList as item i}}
 	<li {{if i==index}}class="active" {{/if}}>
 		<p class="num" style="background-color: {{item.color}};">{{item.id}}</p>
 		<p class="name">{{item.name}}</p>
-		<p class="value" style="color: {{item.color}};">{{item.value}}</p>
-		<p class="value2" style="color: {{item.color}};">{{item.value2}}</p>
+		<p class="value" style="color: {{item.color}};">
+			<span>{{item.value}}</span>
+			<span class="unit">件</span>
+		</p>
+		<p class="value2" style="color: {{item.color}};">
+			<span>{{item.value2}}</span>
+			{{if item.isUp}}
+			<img src="images/icon_up.png" alt="" class="icon" />
+			{{else}}
+				<img src="images/icon_down.png" alt="" class="icon" />
+				{{/if}}
+		</p>
 	</li>
 	{{/each}}
 	</script>
-	<!--交通预测分析-->
+	<!--诉求预测分析-->
 	<script type="text/html" id="tplYCListHtml">
 		<li class="top">
 			<div class="flex-box">
@@ -192,12 +180,13 @@
 		{{each dataList as item}}
 		<li>
 			<p class="row-list">
+				<span class="tag">[{{item.tag}}]</span>
 				<span class="date">{{item.date}}</span>
 				<span class="name">{{item.name}}</span>
-				<span class="intro">{{item.intro}}</span>
 			</p>
+			<p class="row-list">{{item.intro}}</p>
+			<p class="row-list"><span>预测：</span><span class="status">{{item.status}}</span></p>
 			<p class="row-list"><span>建议：</span><span class="adv">{{item.adv}}</span></p>
-			<p class="row-list"><span>状态：</span><span class="status">{{item.status}}</span></p>
 			<a href="javascript:;" class="link"><img src="images/yy_icon_camera.png" alt=""></a>
 		</li>
 		{{/each}}
@@ -205,61 +194,62 @@
 	<!--中间顶部数据-->
 	<script type="text/html" id="tplMidTopList">
 		<li>
-			<img src="images/yy_icon_01.png" alt="" class="icon">
+			<img src="images/jsjb_icon_01.png" alt="" class="icon">
 			<div class="inline-block">
-				<p>平均速度</p>
+				<p>当日市民反应量</p>
 				<p>
-					<span class="value clr01">{{dataInfo.avgValue}}</span>
-					<span class="unit">km/h</span>
+					<span class="value clr01">{{dataInfo.FYLValue}}</span>
+					<span class="unit">个</span>
 				</p>
 			</div>
 		</li>
-		<li>
-			<img src="images/yy_icon_02.png" alt="" class="icon">
-			<div class="inline-block">
-				<p>拥堵里程</p>
-				<p>
-					<span class="value clr02">{{dataInfo.ydValue}}</span>
-					<span class="unit">km</span>
-				</p>
-			</div>
-		</li>
-		<li>
-			<img src="images/yy_icon_03.png" alt="" class="icon">
-			<div class="inline-block">
-				<p>延迟指数</p>
-				<p>
-					<span class="value clr03">{{dataInfo.ycValue}}</span>
-				</p>
+		<li class="right-info">
+			<div class="tu-fa-list">
+				{{each dataList as item i}}
+				<div class="list-item {{i==1?'act':''}}">
+					<span class="time">{{item.time}}</span>
+					<span class="title">{{item.title}}</span>
+					<span class="pos">立即定位</span>
+				</div>
+				{{/each}}
 			</div>
 		</li>
 	</script>
 	<!--中间底部数据-->
 	<script type="text/html" id="tplMidBottomList">
 		<li>
-			<img src="images/yy_icon_04.png" alt="" class="icon">
+			<img src="images/jsjb_icon_02.png" alt="" class="icon">
 			<div class="inline-block">
-				<p>共享单车匹配度</p>
+				<p>综合得分</p>
 				<p>
-					<span class="value clr04">{{dataInfo.ppValue}}</span>
+					<span class="value clr04">{{dataInfo.ZHDFValue}}</span>
 				</p>
 			</div>
 		</li>
 		<li>
-			<img src="images/yy_icon_05.png" alt="" class="icon">
+			<img src="images/jsjb_icon_03.png" alt="" class="icon">
 			<div class="inline-block">
-				<p>共享停车</p>
+				<p>响应率</p>
 				<p>
-					<span class="value clr05">{{dataInfo.tcValue}}</span>
+					<span class="value clr05">{{dataInfo.XYLValue}}</span>
 				</p>
 			</div>
 		</li>
 		<li>
-			<img src="images/yy_icon_06.png" alt="" class="icon">
+			<img src="images/jsjb_icon_05.png" alt="" class="icon">
 			<div class="inline-block">
-				<p>事故数</p>
+				<p>解决率</p>
 				<p>
-					<span class="value clr06">{{dataInfo.sgValue}}</span>
+					<span class="value clr06">{{dataInfo.JJLValue}}</span>
+				</p>
+			</div>
+		</li>
+		<li>
+			<img src="images/jsjb_icon_06.png" alt="" class="icon">
+			<div class="inline-block">
+				<p>满意率</p>
+				<p>
+					<span class="value clr06">{{dataInfo.MYLValue}}</span>
 				</p>
 			</div>
 		</li>
