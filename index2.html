@@ -282,7 +282,7 @@
 	</script>
 	<!--中间顶部数据-->
 	<script type="text/html" id="tplMidTopList">
-		<li class="act">
+		<li class="act" data-url="yunyingjiance.html">
 			<img src="images/ht_icon_01.png" alt="" class="icon">
 			<div class="inline-block">
 				<p class="name">交通延迟指数</p>
@@ -291,7 +291,7 @@
 				</p>
 			</div>
 		</li>
-		<li>
+		<li data-url="web_sx/ssrl.html">
 			<img src="images/ht_icon_02.png" alt="" class="icon">
 			<div class="inline-block">
 				<p class="name">实时人流（人）</p>
@@ -300,7 +300,7 @@
 				</p>
 			</div>
 		</li>
-		<li>
+		<li data-url="jiesujiban.html">
 			<img src="images/ht_icon_03.png" alt="" class="icon">
 			<div class="inline-block">
 				<p class="name">当日市民反映量</p>
@@ -509,11 +509,11 @@
 						</li>
 						<li>
 							<p>养老机构</p>
-							<h3>{{dataInfo.YLValue}}</h3>
+							<h3 class="counter">{{dataInfo.YLValue}}</h3>
 						</li>
 						<li>
 							<p>医疗机构</p>
-							<h3>{{dataInfo.YL2Value}}</h3>
+							<h3 class="counter">{{dataInfo.YL2Value}}</h3>
 						</li>
 					</ul>
 				</div>

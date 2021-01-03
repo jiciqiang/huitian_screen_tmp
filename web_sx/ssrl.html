@@ -22,10 +22,10 @@
 			<div class="mapbox">
 				<div id="map"></div>
 			</div>
-			<ul class="subnav">
-				<li>实时交通</li>
-				<li class="on">实时人流</li>
-				<li>接诉即办</li>
+			<ul class="subnav" id="subNavBox">
+				<li data=url="./../yunyingjiance.html">实时交通</li>
+				<li data=url="" class="on">实时人流</li>
+				<li data=url="./../jiesujiban.html">接诉即办</li>
 			</ul>
 			<div class="tabs" id="tabs">
 				<p level="jd">街镇</p>
@@ -274,5 +274,15 @@
 		<script src="js/echarts.min.js"></script>
 		<script src='pageJs/ssrl_map.js'></script>
 		<script src='pageJs/ssrl.js'></script>
+		<script type="text/javascript">
+		$(function(){
+			$('#subNavBox').on('click', 'li', function(){
+				var _url = $(this).data('url');
+	            if(_url){
+	                window.location.href = _url;
+	            }
+			});
+		});
+		</script>
 	</body>
 </html>
