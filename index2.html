@@ -287,7 +287,7 @@
 			<div class="inline-block">
 				<p class="name">交通延迟指数</p>
 				<p>
-					<span class="value clr01">{{dataInfo.ycValue}}</span>
+					<span class="value clr01 counter">{{dataInfo.ycValue}}</span>
 				</p>
 			</div>
 		</li>
@@ -296,7 +296,7 @@
 			<div class="inline-block">
 				<p class="name">实时人流（人）</p>
 				<p>
-					<span class="value clr02">{{dataInfo.rlValue}}</span>
+					<span class="value clr02 counter">{{dataInfo.rlValue}}</span>
 				</p>
 			</div>
 		</li>
@@ -305,7 +305,7 @@
 			<div class="inline-block">
 				<p class="name">当日市民反映量</p>
 				<p>
-					<span class="value clr03">{{dataInfo.ylValue}}</span>
+					<span class="value clr03 counter">{{dataInfo.ylValue}}</span>
 					<span class="unit">个</span>
 				</p>
 			</div>
@@ -320,12 +320,12 @@
 				<div class="top-info-box">
 					<ul class="list">
 						<li>
-							<h3>{{dataInfo.HJValue}}</h3>
+							<h3 class="counter">{{dataInfo.HJValue}}</h3>
 							<p>户籍人口</p>
 						</li>
 						<li>
 							<span class="unit">*万人</span>
-							<h3>{{dataInfo.SYValue}}</h3>
+							<h3 class="counter">{{dataInfo.SYValue}}</h3>
 							<p>实有人口</p>
 						</li>
 					</ul>
@@ -367,12 +367,12 @@
 				<div class="top-info-box">
 					<ul class="list">
 						<li>
-							<h3>{{dataInfo.ZMJValue}}</h3>
+							<h3 class="counter">{{dataInfo.ZMJValue}}</h3>
 							<p>总面积</p>
 						</li>
 						<li>
 							<span class="unit">*万人</span>
-							<h3>{{dataInfo.SQSLValue}}</h3>
+							<h3 class="counter">{{dataInfo.SQSLValue}}</h3>
 							<p>社区数量</p>
 						</li>
 					</ul>
@@ -411,12 +411,12 @@
 				<div class="top-info-box">
 					<ul class="list">
 						<li>
-							<h3>{{dataInfo.ZCValue}}</h3>
+							<h3 class="counter">{{dataInfo.ZCValue}}</h3>
 							<p>注册企业及个体</p>
 						</li>
 						<li>
 							<span class="unit">*个</span>
-							<h3>{{dataInfo.JYValue}}</h3>
+							<h3 class="counter">{{dataInfo.JYValue}}</h3>
 							<p>经营企业及个体</p>
 						</li>
 					</ul>
@@ -455,12 +455,12 @@
 				<div class="top-info-box">
 					<ul class="list">
 						<li>
-							<h3>{{dataInfo.ZWValue}}</h3>
+							<h3 class="counter">{{dataInfo.ZWValue}}</h3>
 							<p>政务服务数</p>
 						</li>
 						<li>
 							<span class="unit">*个</span>
-							<h3>{{dataInfo.WSValue}}</h3>
+							<h3 class="counter">{{dataInfo.WSValue}}</h3>
 							<p>未诉先办</p>
 						</li>
 					</ul>
@@ -500,12 +500,12 @@
 					<ul class="list list2">
 						<li>
 							<p>社会组织</p>
-							<h3>{{dataInfo.SHValue}}</h3>
+							<h3 class="counter">{{dataInfo.SHValue}}</h3>
 						</li>
 						<li>
 							<span class="unit">*个</span>
 							<p>教育机构</p>
-							<h3>{{dataInfo.JYValue}}</h3>
+							<h3 class="counter">{{dataInfo.JYValue}}</h3>
 						</li>
 						<li>
 							<p>养老机构</p>
@@ -542,6 +542,7 @@
 			<!--/RK-wrap-->
 		</div>
 	</script>
+	<!--字符云-->
 	<script type="text/html" id="tplCouldHtml">
 	{{each dataList as item}}
 	<li style="color: {{item.color}};">{{item.name}}</li>

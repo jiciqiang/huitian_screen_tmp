@@ -134,11 +134,11 @@
 		</div>
 	</div>
 	<!--/main-wrapper-->
-	<!--路段列表模板-->
+	<!--市民反应问题-->
 	<script type="text/html" id="tplLDListBoxHtml">
 	{{each dataList as item i}}
 	<div class="list-item item{{i+1}}">
-		<p class="value" style="color: {{item.color}};">{{item.value}}</p>
+		<p class="value counter" style="color: {{item.color}};">{{item.value}}</p>
 		<p class="name">{{item.name}}</p>
 	</div>
 	{{/each}}
@@ -198,7 +198,7 @@
 			<div class="inline-block">
 				<p>当日市民反应量</p>
 				<p>
-					<span class="value clr01">{{dataInfo.FYLValue}}</span>
+					<span class="value clr01 counter">{{dataInfo.FYLValue}}</span>
 					<span class="unit">个</span>
 				</p>
 			</div>
@@ -222,7 +222,7 @@
 			<div class="inline-block">
 				<p>综合得分</p>
 				<p>
-					<span class="value clr04">{{dataInfo.ZHDFValue}}</span>
+					<span class="value clr04"><span class="counter">{{dataInfo.ZHDFValue}}</span></span>
 				</p>
 			</div>
 		</li>
@@ -231,7 +231,7 @@
 			<div class="inline-block">
 				<p>响应率</p>
 				<p>
-					<span class="value clr05">{{dataInfo.XYLValue}}</span>
+					<span class="value clr05"><span class="counter">{{dataInfo.XYLValue}}</span>%</span>
 				</p>
 			</div>
 		</li>
@@ -240,7 +240,7 @@
 			<div class="inline-block">
 				<p>解决率</p>
 				<p>
-					<span class="value clr06">{{dataInfo.JJLValue}}</span>
+					<span class="value clr06"><span class="counter">{{dataInfo.JJLValue}}</span>%</span>
 				</p>
 			</div>
 		</li>
@@ -249,7 +249,7 @@
 			<div class="inline-block">
 				<p>满意率</p>
 				<p>
-					<span class="value clr06">{{dataInfo.MYLValue}}</span>
+					<span class="value clr06"><span class="counter">{{dataInfo.MYLValue}}</span>%</span>
 				</p>
 			</div>
 		</li>

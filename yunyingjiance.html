@@ -133,7 +133,7 @@
 	<script type="text/html" id="tplLeftTopNavHtml">
 	{{each dataList as item i}}
 	<li>
-		<h3>{{item.value}}</h3>
+		<h3 class="counter">{{item.value}}</h3>
 		<p>{{item.name}}</p>
 	</li>
 	{{/each}}
@@ -209,7 +209,7 @@
 			<div class="inline-block">
 				<p>平均速度</p>
 				<p>
-					<span class="value clr01">{{dataInfo.avgValue}}</span>
+					<span class="value clr01 counter">{{dataInfo.avgValue}}</span>
 					<span class="unit">km/h</span>
 				</p>
 			</div>
@@ -219,7 +219,7 @@
 			<div class="inline-block">
 				<p>拥堵里程</p>
 				<p>
-					<span class="value clr02">{{dataInfo.ydValue}}</span>
+					<span class="value clr02 counter">{{dataInfo.ydValue}}</span>
 					<span class="unit">km</span>
 				</p>
 			</div>
@@ -229,7 +229,7 @@
 			<div class="inline-block">
 				<p>延迟指数</p>
 				<p>
-					<span class="value clr03">{{dataInfo.ycValue}}</span>
+					<span class="value clr03 counter">{{dataInfo.ycValue}}</span>
 				</p>
 			</div>
 		</li>
