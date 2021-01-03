@@ -23,9 +23,9 @@
 				<div id="map"></div>
 			</div>
 			<ul class="subnav" id="subNavBox">
-				<li data=url="./../yunyingjiance.html">实时交通</li>
-				<li data=url="" class="on">实时人流</li>
-				<li data=url="./../jiesujiban.html">接诉即办</li>
+				<li data-url="../yunyingjiance.html">实时交通</li>
+				<li data-url="" class="on">实时人流</li>
+				<li data-url="../jiesujiban.html">接诉即办</li>
 			</ul>
 			<div class="tabs" id="tabs">
 				<p level="jd">街镇</p>
@@ -278,6 +278,7 @@
 		$(function(){
 			$('#subNavBox').on('click', 'li', function(){
 				var _url = $(this).data('url');
+				console.log(_url);
 	            if(_url){
 	                window.location.href = _url;
 	            }
