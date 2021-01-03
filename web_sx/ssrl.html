@@ -11,12 +11,12 @@
 				<div class='headertext'>
 					运营监测-实时人流
 				</div>
-				<ul class="nav">
-					<li>数说回天</li>
-					<li>数据问诊</li>
-					<li>街道画像</li>
-					<li>指标画像</li>
-					<li class="on">运营监测</li>
+				<ul class="nav" id="SSNav">
+					<li data-url="../index2.html">数说回天</li>
+					<li data-url="../shujuwenzheng2.html">数据问诊</li>
+					<li data-url="../jiezhenhuaxiang.html">街道画像</li>
+					<li data-url="../zhibiaohuaxiang2.html">指标画像</li>
+					<li data-url="../yunyingjiance.html" class="on">运营监测</li>
 				</ul>
 			</div>	
 			<div class="mapbox">
@@ -276,13 +276,13 @@
 		<script src='pageJs/ssrl.js'></script>
 		<script type="text/javascript">
 		$(function(){
-			$('#subNavBox').on('click', 'li', function(){
+			$('#subNavBox, #SSNav').on('click', 'li', function(){
 				var _url = $(this).data('url');
-				console.log(_url);
 	            if(_url){
 	                window.location.href = _url;
 	            }
 			});
+			
 		});
 		</script>
 	</body>
