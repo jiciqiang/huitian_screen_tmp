@@ -4,7 +4,7 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>回天大脑 - 接诉即办</title>
+	<title>回天大脑 - 运营监测 实时人流</title>
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
 	<link rel="stylesheet" type="text/css" href="css/animate.min.css" />
 	<link rel="stylesheet" type="text/css" href="css/app.min.css" />
@@ -15,9 +15,10 @@
 	<script type="text/javascript" src="js/plugin/jquery.waypoint.min.js"></script>
 	<script type="text/javascript" src="js/plugin/jquery.validate.min.js"></script>
 	<script type="text/javascript" src="js/app.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/mapbox-gl.css" />
+	<script type="text/javascript" src="js/plugin/d3.min.js"></script>
 	<script type="text/javascript" src="js/plugin/mapbox-gl.js"></script>
-	<script type="text/javascript" src="js/changping_js.js"></script>
-	<script type="text/javascript" src="js/jiesujiban.js"></script>
+	<script type="text/javascript" src="js/shishirenliu.js"></script>
 </head>
 
 <body>
@@ -43,22 +44,24 @@
 			<div class="yy-mid-top-nav-box">
 				<ul class="list">
 					<li><a href="yunyingjiance.html">实时交通</a></li>
-					<li><a href="shishirenliu.html">实时人流</a></li>
-					<li class="act"><a href="jiesujiban.html">接诉即办</a></li>
+					<li class="act"><a href="shishirenliu.html">实时人流</a></li>
+					<li><a href="jiesujiban.html">接诉即办</a></li>
 				</ul>
 			</div>
 			<!--/mid-top-nav-box-->
 			<!--yy-container-->
-			<div class="yy-container yy-jsjb-container">
+			<div class="yy-container yy-ssrl-container">
 				<!--yy-left-content-->
 				<div class="yy-left-content">
 					<!--yy-box-ss-wrap-->
 					<div class="yy-box-ss-wrap yy-left-box1-wrap">
 						<div class="box-title">
-							<div class="h3">市民反映问题</div>
+							<div class="h3">人口属性</div>
 						</div>
 						<div class="box-content">
-							<div class="jsjb-smfy-list" id="SMFYList"></div>
+							<!--human-box-->
+							<div class="human-box" id="SMFYList"></div>
+							<!--/human-box-->
 						</div>
 					</div>
 					<!--/yy-box-ss-wrap-->
@@ -68,23 +71,7 @@
 							<!--mrb-box-->
 							<div class="mrb-box">
 								<div class="mrb-tit">
-									<h3>热点街镇</h3>
-								</div>
-								<div class="mrb-cont">
-									<ul class="top-sort-list" id="topSortList"></ul>
-								</div>
-							</div>
-							<!--/mrb-box-->
-						</div>
-					</div>
-					<!--/yy-box-ss-wrap-->
-					<!--yy-box-ss-wrap-->
-					<div class="yy-box-ss-wrap yy-left-box3-wrap">
-						<div class="box-content">
-							<!--mrb-box-->
-							<div class="mrb-box">
-								<div class="mrb-tit">
-									<h3>诉求分类</h3>
+									<h3>行业分布</h3>
 								</div>
 								<div class="mrb-cont">
 									<div class="chart-box" id="pieChartBox"></div>
@@ -101,12 +88,15 @@
 					<!--mid-top-list-box-->
 					<div class="mid-top-list-box">
 						<ul class="list" id="midTopListBox"></ul>
+						<!--tab-list-box-->
+						<div class="tab-list-box">
+							<ul class="tab-list" id="midTopTabList"></ul>
+						</div>
+						<!--/tab-list-box-->
 					</div>
 					<!--/mid-top-list-box-->
 					<!--mid-bottom-list-box-->
-					<div class="mid-bottom-list-box">
-						<ul class="list" id="midBottomListBox"></ul>
-					</div>
+					<div class="mid-bottom-list-box" id="midBottomListBox"></div>
 					<!--/mid-bottom-list-box-->
 					<!--mid-map-box-->
 					<div class="mid-map-box">
@@ -120,7 +110,7 @@
 					<!--yy-box-ss-wrap-->
 					<div class="yy-box-ss-wrap yy-left-box3-wrap">
 						<div class="box-title">
-							<div class="h3">诉求预测分析</div>
+							<div class="h3">聚集预测分析</div>
 						</div>
 						<div class="box-content">
 							<div class="yc-list-box" id="ycListBox"></div>
@@ -134,37 +124,67 @@
 		</div>
 	</div>
 	<!--/main-wrapper-->
-	<!--市民反应问题-->
+	<!--人口属性-->
 	<script type="text/html" id="tplLDListBoxHtml">
-	{{each dataList as item i}}
-	<div class="list-item item{{i+1}}">
-		<p class="value counter" style="color: {{item.color}};">{{item.value}}</p>
-		<p class="name">{{item.name}}</p>
+		<!--section-box-->
+	<div class="section-box">
+		<div class="jsjb-smfy-list" data-title="*男女比例及各人口数（人/万）">
+			{{each dataList as item i}}
+			<div class="list-item item{{i+1}}">
+				<p class="value counter" style="color: {{item.color}};">{{item.value}}</p>
+				<p class="name">{{item.name}}</p>
+			</div>
+			{{/each}}
+		</div>
 	</div>
-	{{/each}}
+	<!--/section-box-->
+	<!--section-box-->
+	<div class="section-box">
+		<div class="bottom-info-list info-list2">
+			{{each humanList as item i}}
+			<div class="list-item clr{{i+1}}">
+				<div class="cell left-name">
+					<p class="tit">{{item.name}}</p>
+				</div>
+				<div class="cell">
+					<p class="progress-box">
+						<span style="width: {{(item.value/item.max)*100}}%" class="bar"></span>
+					</p>
+				</div>
+				<div class="cell right-value">
+					<p class="val">
+						<span>{{item.value}}</span>
+						<span class="value2">{{item.value2}}</span>
+					</p>
+				</div>
+			</div>
+			{{/each}}
+		</div>
+	</div>
+	<!--/section-box-->
+	<!--section-box-->
+	<div class="section-box">
+		<div class="bottom-info-list">
+			{{each human2List as item i}}
+			<div class="list-item clr{{i+1}}">
+				<div class="cell left-name">
+					<p class="tit">{{item.name}}</p>
+				</div>
+				<div class="cell">
+					<p class="progress-box">
+						<span style="width: {{(item.value/item.max)*100}}%" class="bar"></span>
+					</p>
+				</div>
+				<div class="cell right-value">
+					<p class="val">{{item.value}}</p>
+				</div>
+			</div>
+			{{/each}}
+		</div>
+	</div>
+	<!--/section-box-->
 	</script>
-	<!--热点街镇-->
-	<script type="text/html" id="tplRightContent">
-	{{each dataList as item i}}
-	<li {{if i==index}}class="active" {{/if}}>
-		<p class="num" style="background-color: {{item.color}};">{{item.id}}</p>
-		<p class="name">{{item.name}}</p>
-		<p class="value" style="color: {{item.color}};">
-			<span>{{item.value}}</span>
-			<span class="unit">件</span>
-		</p>
-		<p class="value2" style="color: {{item.color}};">
-			<span>{{item.value2}}</span>
-			{{if item.isUp}}
-			<img src="images/icon_up.png" alt="" class="icon" />
-			{{else}}
-				<img src="images/icon_down.png" alt="" class="icon" />
-				{{/if}}
-		</p>
-	</li>
-	{{/each}}
-	</script>
-	<!--诉求预测分析-->
+	<!--聚集预测分析-->
 	<script type="text/html" id="tplYCListHtml">
 		<li class="top">
 			<div class="flex-box">
@@ -180,12 +200,9 @@
 		{{each dataList as item}}
 		<li>
 			<p class="row-list">
-				<span class="tag">[{{item.tag}}]</span>
-				<span class="date">{{item.date}}</span>
 				<span class="name">{{item.name}}</span>
+				<span class="tag">{{item.tag}}</span>
 			</p>
-			<p class="row-list">{{item.intro}}</p>
-			<p class="row-list"><span>预测：</span><span class="status">{{item.status}}</span></p>
 			<p class="row-list"><span>建议：</span><span class="adv">{{item.adv}}</span></p>
 			<a href="javascript:;" class="link"><img src="images/yy_icon_camera.png" alt=""></a>
 		</li>
@@ -193,66 +210,58 @@
 	</script>
 	<!--中间顶部数据-->
 	<script type="text/html" id="tplMidTopList">
-		<li>
-			<img src="images/jsjb_icon_01.png" alt="" class="icon">
-			<div class="inline-block">
-				<p>当日市民反应量</p>
-				<p>
-					<span class="value clr01 counter">{{dataInfo.FYLValue}}</span>
-					<span class="unit">个</span>
-				</p>
-			</div>
-		</li>
-		<li class="right-info">
-			<div class="tu-fa-list">
-				{{each dataList as item i}}
-				<div class="list-item {{i==1?'act':''}}">
-					<span class="time">{{item.time}}</span>
-					<span class="title">{{item.title}}</span>
-					<span class="pos">立即定位</span>
-				</div>
-				{{/each}}
-			</div>
-		</li>
+	{{each dataList as item}}
+	<li style="width: 33.33%;">
+		<img src="{{item.icon}}" alt="" class="icon">
+		<div class="inline-block">
+			<p>
+				<span class="value counter" style="color: {{item.color}};">{{item.value}}</span>
+			</p>
+			<p>{{item.name}}</p>
+		</div>
+	</li>
+	{{/each}}
+	</script>
+	<!--中间顶部切换导航模板-->
+	<script type="text/html" id="tplMidTopTabList">
+	{{each dataList as item i}}
+	<li {{if i==index}}class="act" {{/if}}>{{item.name}}</li>
+	{{/each}}
 	</script>
 	<!--中间底部数据-->
 	<script type="text/html" id="tplMidBottomList">
-		<li>
-			<img src="images/jsjb_icon_02.png" alt="" class="icon">
-			<div class="inline-block">
-				<p>综合得分</p>
-				<p>
-					<span class="value clr04"><span class="counter">{{dataInfo.ZHDFValue}}</span></span>
-				</p>
-			</div>
-		</li>
-		<li>
-			<img src="images/jsjb_icon_03.png" alt="" class="icon">
-			<div class="inline-block">
-				<p>响应率</p>
-				<p>
-					<span class="value clr05"><span class="counter">{{dataInfo.XYLValue}}</span>%</span>
-				</p>
-			</div>
-		</li>
-		<li>
-			<img src="images/jsjb_icon_05.png" alt="" class="icon">
-			<div class="inline-block">
-				<p>解决率</p>
-				<p>
-					<span class="value clr06"><span class="counter">{{dataInfo.JJLValue}}</span>%</span>
-				</p>
-			</div>
-		</li>
-		<li>
-			<img src="images/jsjb_icon_06.png" alt="" class="icon">
-			<div class="inline-block">
-				<p>满意率</p>
-				<p>
-					<span class="value clr06"><span class="counter">{{dataInfo.MYLValue}}</span>%</span>
-				</p>
-			</div>
-		</li>
+		<ul class="list list-tit1">
+			{{each dataListTop as item}}
+			<li style="width: 25%;">
+				<img src="{{item.icon}}" alt="" class="icon">
+				<div class="inline-block">
+					<p style="margin-bottom: .1rem;">
+						<span>{{item.name}}</span>
+					</p>
+					<p>
+						<span class="value counter" style="color: {{item.color}};">{{item.value}}</span>
+						<span class="unit">{{item.unit}}</span>
+					</p>
+				</div>
+			</li>
+			{{/each}}
+		</ul>
+		<ul class="list list-tit2">
+			{{each dataListBottom as item}}
+			<li style="width: 25%;">
+				<img src="{{item.icon}}" alt="" class="icon">
+				<div class="inline-block">
+					<p style="margin-bottom: .1rem;">
+						<span>{{item.name}}</span>
+					</p>
+					<p>
+						<span class="value counter" style="color: {{item.color}};">{{item.value}}</span>
+						<span class="unit">{{item.unit}}</span>
+					</p>
+				</div>
+			</li>
+			{{/each}}
+		</ul>
 	</script>
 </body>
 
