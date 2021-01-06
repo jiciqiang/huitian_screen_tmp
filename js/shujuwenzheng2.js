@@ -132,7 +132,7 @@
     var _dataList = [
         {"id": 1, "name": "医疗养老", "list": [
             {"id": 1, "name": "医疗机构数量", "value": 200, "color": "#e05f57"},
-            {"id": 2, "name": "养老机构数量", "value": 2000, "color": "#e05f57"},
+            {"id": 2, "name": "养老机构数量", "value": 43, "color": "#e05f57"},
             {"id": 3, "name": "养老服务机构床位数", "value": 200, "color": "#e05f57"},
         ]},
         {"id": 2, "name": "教育培训", "list": [
