@@ -65,7 +65,7 @@
 })(jQuery);
 
 /**
- * 增量排行
+ * 增量排行1
  */
 (function($){
     var _dataList = [
