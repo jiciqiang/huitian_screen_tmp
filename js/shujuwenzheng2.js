@@ -1,5 +1,5 @@
 /**
- * 综合排名
+ * 1综合排名
  */
 (function($){
     var _dataList = [
