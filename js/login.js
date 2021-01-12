@@ -9,7 +9,7 @@
                     $.__Request__.remember_user(_data);
                 }
                 //
-                window.location.href = '/index2.html';
+                window.location.href = '/';
             }else{
                 $.Screen_Dialog.alert(res['msg']);
             }
