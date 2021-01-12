@@ -16,14 +16,455 @@
 	<script type="text/javascript" src="js/plugin/jquery.validate.min.js"></script>
 	<script type="text/javascript" src="js/app.min.js"></script>
 	<script type="text/javascript" src="js/plugin/echarts-wordcloud.min.js"></script>
-	<script type="text/javascript" src="js/changping_ht.js"></script>
-	<script type="text/javascript">
-	window.location.href = 'index2.html';
-	</script>
+	<script type="text/javascript" src="js/changping_ht_update.js"></script>
+	<script type="text/javascript" src="js/index.js"></script>
 </head>
 
 <body>
-	
+	<!--fixed-header-wrap-->
+	<div class="fixed-header-wrap">
+		<div class="left-content"></div>
+		<div class="mid-title"> 数说回天 </div>
+		<div class="right-content">
+			<ul class="nav-list">
+				<li class="active"><a href="index.html">数说回天</a></li>
+				<li><a href="shujuwenzheng2.html">数据问诊</a></li>
+				<li><a href="jiezhenhuaxiang.html">街镇画像</a></li>
+				<li><a href="zhibiaohuaxiang2.html">指标画像</a></li>
+				<li><a href="yunyingjiance.html">运营监测</a></li>
+			</ul>
+		</div>
+	</div>
+	<!--/fixed-header-wrap-->
+	<!--main-wrapper-->
+	<div class="main-wrapper">
+		<div class="container">
+			<!--ht-home-container-->
+			<div class="ht-home-container">
+				<!--ht-top-wrap-->
+				<div class="ht-top-wrap">
+					<!--ht-left-content-->
+					<div class="ht-left-content">
+						<!--yy-box-ss-wrap-->
+						<div class="yy-box-ss-wrap ht-inner-01-box">
+							<div class="box-title">
+								<div class="h3">回天印象</div>
+							</div>
+							<div class="box-content">
+								<!--htyx-top-box-->
+								<div class="htyx-top-box">
+									<div class="nav-list-box">
+										<ul class="list" id="leftTabChartNav"></ul>
+									</div>
+								</div>
+								<!--/htyx-top-box-->
+								<!--htyx-bottom-box-->
+								<div class="htyx-bottom-box" id="HTYXBottomBox"></div>
+								<!--/htyx-bottom-box-->
+							</div>
+						</div>
+						<!--/yy-box-ss-wrap-->
+					</div>
+					<!--/ht-left-content-->
+					<!--ht-middle-content-->
+					<div class="ht-middle-content">
+						<!--mid-bottom-cont-->
+						<div class="mid-bottom-cont">
+							<div class="mid-map-chart-box left" data-title="回天地区老年、幼儿人口增长趋势">
+								<div class="chart-box" id="MidMapChart1Box"></div>
+							</div>
+							<div class="mid-map-chart-box right" data-title="回天地区IT类人员增长趋势">
+								<div class="chart-box" id="MidMapChart2Box"></div>
+							</div>
+						</div>
+						<!--/mid-bottom-cont-->
+						<!--mid-map-box-->
+						<div class="mid-map-box update-mid-map">
+							<div class="map-chart-box" id="mapChartBox"></div>
+						</div>
+						<!--/mid-map-box-->
+					</div>
+					<!--/ht-middle-content-->
+					<!--ht-right-content-->
+					<div class="ht-right-content">
+						<!--camera-list-box-->
+						<div class="camera-list-box update-camera-list-box">
+							<!--list-box-->
+							<div class="list-box clr01">
+								<div class="list-content" id="TFSJBox"></div>
+							</div>
+							<!--/list-box-->
+							<!--list-box-->
+							<div class="list-box clr02">
+								<div class="list-content">
+									<div class="chart-box" id="TFSJChartBox"></div>
+								</div>
+							</div>
+							<!--/list-box-->
+						</div>
+						<!--/camera-list-box-->
+						<!--ht-left-section-01-->
+						<div class="ht-left-section-01">
+							<!--yy-box-ss-wrap-->
+							<div class="yy-box-ss-wrap ht-inner-06-box">
+								<div class="box-title">
+									<div class="h3">媒体聚焦</div>
+								</div>
+								<div class="box-content">
+									<!--zybd-top-nav-->
+									<div class="zybd-top-nav">
+										<div class="left">2016-2017</div>
+										<div class="right">2017-2020</div>
+									</div>
+									<!--/zybd-top-nav-->
+									<!--zybd-chart-list-wrap-->
+									<div class="zybd-chart-list-wrap">
+										<div class="left-chart" id="bottomLeftChartBox"></div>
+										<div class="right-chart" id="bottomRightChartBox"></div>
+									</div>
+									<!--/zybd-chart-list-wrap-->
+								</div>
+							</div>
+							<!--/yy-box-ss-wrap-->
+						</div>
+						<!--/ht-left-section-01-->
+					</div>
+					<!--/ht-right-content-->
+				</div>
+				<!--/ht-top-wrap-->
+				<!--ht-bottom-wrap-->
+				<div class="ht-bottom-wrap">
+					<!--ht-left-section-01-->
+					<div class="ht-left-section-05">
+						<!--yy-box-ss-wrap-->
+						<div class="yy-box-ss-wrap ht-inner-02-box">
+							<div class="box-title">
+								<div class="h3"><a href="javascript:;" class="link">落图详细&gt;&gt;</a>
+									<h4>三年行动计划</h4>
+								</div>
+							</div>
+							<div class="box-content">
+								<div class="snxdjh-list-box" id="SNXDJHList"></div>
+							</div>
+						</div>
+						<!--/yy-box-ss-wrap-->
+					</div>
+					<!--/ht-left-section-01-->
+					<!--ht-left-section-02-->
+					<div class="ht-left-section-06">
+						<!--yy-box-ss-wrap-->
+						<div class="yy-box-ss-wrap ht-inner-04-box">
+							<div class="box-title">
+								<div class="h3"><a href="javascript:;" class="link">详细&gt;&gt;</a>
+									<h4>基层治理</h4>
+								</div>
+							</div>
+							<div class="box-content">
+								<!--jczl-left-->
+								<div class="jczl-left">
+									<ul class="list" id="JCZLNavInfo"></ul>
+								</div>
+								<!--/jczl-left-->
+								<!--jczl-right-->
+								<div class="jczl-right">
+									<div class="chart-box" id="JCZLChartBox"></div>
+								</div>
+								<!--/jczl-right-->
+							</div>
+						</div>
+						<!--/yy-box-ss-wrap-->
+					</div>
+					<!--/ht-left-section-02-->
+					<!--ht-left-section-03-->
+					<div class="ht-left-section-07">
+						<!--yy-box-ss-wrap-->
+						<div class="yy-box-ss-wrap ht-inner-05-box">
+							<div class="box-title">
+								<div class="h3"><a href="javascript:;" class="link">详细&gt;&gt;</a>
+									<h4>社区管理</h4>
+								</div>
+							</div>
+							<div class="box-content">
+								<!--ht-inner-05-left-->
+								<div class="ht-inner-05-left">
+									<ul class="list" id="HT05RightList"></ul>
+								</div>
+								<!--/ht-inner-05-left-->
+								<!--ht-inner-05-right-->
+								<div class="ht-inner-05-right">
+									<div class="chart-box" id="HT05RightChart"></div>
+								</div>
+								<!--/ht-inner-05-right-->
+							</div>
+						</div>
+						<!--/yy-box-ss-wrap-->
+					</div>
+					<!--/ht-left-section-03-->
+					<!--ht-left-section-04-->
+					<div class="ht-left-section-08">
+						<!--yy-box-ss-wrap-->
+						<div class="yy-box-ss-wrap ht-inner-03-box">
+							<div class="box-title">
+								<div class="h3"><a href="javascript:;" class="link">详细&gt;&gt;</a>
+									<h4>交通情况</h4>
+								</div>
+							</div>
+							<div class="box-content">
+								<!--top-nav-list-->
+								<div class="top-nav-list" id="JTQKTopNavBox">
+									<ul class="list" id="JTQKNavList"></ul>
+								</div>
+								<!--/top-nav-list-->
+								<div class="chart-box" id="JTQKChartBox"></div>
+							</div>
+						</div>
+						<!--/yy-box-ss-wrap-->
+					</div>
+					<!--/ht-left-section-04-->
+				</div>
+				<!--/ht-bottom-wrap-->
+			</div>
+			<!--/ht-home-container-->
+		</div>
+	</div>
+	<!--/main-wrapper-->
+	<!--突发事件和诉求热点-->
+	<script type="text/html" id="tplTFListHtml">
+	{{each dataList as item i}}
+	<div class="list-item {{if i==0}}active{{/if}}">
+		<h3 style="color: {{item.color}};">{{item.title}}</h3>
+		<p>{{item.intro}}</p>
+		<a href="javascript:;" class="link"></a>
+	</div>
+	{{/each}}
+	</script>
+	<!--社区管理 左则内容-->
+	<script type="text/html" id="tplSQListHtml">
+	{{each dataList as item}}
+	<li>
+		<p>{{item.name1}}</p>
+		<p>{{item.name2}}</p>
+		<h3>{{item.value}}</h3>
+	</li>
+	{{/each}}
+	</script>
+	<!--基层治理 左侧内容-->
+	<script type="text/html" id="tplJCZLListHtml">
+		<li>
+			<img src="images/ht_icon_04.png" alt="" class="img">
+			<div class="inline-block">
+				<p>响应率</p>
+				<h3>{{dataInfo.xylValue}}</h3>
+			</div>
+		</li>
+		<li>
+			<img src="images/ht_icon_05.png" alt="" class="img">
+			<div class="inline-block">
+				<p>解决率</p>
+				<h3>{{dataInfo.jjlValue}}</h3>
+			</div>
+		</li>
+		<li>
+			<img src="images/ht_icon_06.png" alt="" class="img">
+			<div class="inline-block">
+				<p>满意率</p>
+				<h3>{{dataInfo.mylValue}}</h3>
+			</div>
+		</li>
+	</script>
+	<!--交通情况导航模板-->
+	<script type="text/html" id="tplJTQKNavHtml">
+	{{each dataList as item i}}
+	<li {{if index==i}}class="act" {{/if}}>{{item.name}}</li>
+	{{/each}}
+	</script>
+	<!--三年行动计划-->
+	<script type="text/html" id="tplSNXDJHHtml">
+		<ul class="list">
+			<li>项目 <span class="clr clr_normal counter">{{dataInfo.programValue}}</span> 项</li>
+			<li>完工 <span class="clr clr_orange counter">62</span> 项</li>
+		</ul>
+		<div class="score-box">
+			<p>回天行动计划今年第三季度综合满意度 <span class="clr clr_normal counter">7.5</span> 分</p>
+			<p>较2018年提高 <span class="clr clr_orange counter">1.2</span> 分</p>
+		</div>
+	</script>
+	<!--中间顶部数据-->
+	<script type="text/html" id="tplMidTopList">
+		<li class="act" data-url="yunyingjiance.html">
+			<img src="images/ht_icon_01.png" alt="" class="icon">
+			<div class="inline-block">
+				<p class="name">交通延迟指数</p>
+				<p>
+					<span class="value clr01 counter">{{dataInfo.ycValue}}</span>
+				</p>
+			</div>
+		</li>
+		<li data-url="shishirenliu.html">
+			<img src="images/ht_icon_02.png" alt="" class="icon">
+			<div class="inline-block">
+				<p class="name">实时人流（人）</p>
+				<p>
+					<span class="value clr02 counter">{{dataInfo.rlValue}}</span>
+				</p>
+			</div>
+		</li>
+		<li data-url="jiesujiban.html">
+			<img src="images/ht_icon_03.png" alt="" class="icon">
+			<div class="inline-block">
+				<p class="name">当日市民反映量</p>
+				<p>
+					<span class="value clr03 counter">{{dataInfo.ylValue}}</span>
+					<span class="unit">个</span>
+				</p>
+			</div>
+		</li>
+	</script>
+	<!--回天印象左侧内容 人口 模板-->
+	<script type="text/html" id="tplTabRKContentHtml">
+		<div class="chart-content-box">
+			<!--RK-wrap-->
+			<div class="RK-wrap">
+				<!--top-info-box-->
+				<div class="top-info-box">
+					<ul class="list">
+						<li>
+							<h3 class="counter">{{dataInfo.HJValue}}</h3>
+							<p>户籍人口</p>
+						</li>
+						<li>
+							<span class="unit">*万人</span>
+							<h3 class="counter">{{dataInfo.SYValue}}</h3>
+							<p>实有人口</p>
+						</li>
+					</ul>
+				</div>
+				<!--/top-info-box-->
+				<!--bottom-info-list-->
+				<div class="bottom-info-list">
+					{{each dataList as item i}}
+					<div class="list-item clr{{i+1}}">
+						<div class="cell left-name">
+							<p class="tit">{{item.name}}</p>
+						</div>
+						<div class="cell">
+							<p class="progress-box">
+								<span style="width: {{(item.value/item.max)*100}}%" class="bar"></span>
+							</p>
+						</div>
+						<div class="cell right-value">
+							<p class="val">{{item.value}}</p>
+						</div>
+					</div>
+					{{/each}}
+				</div>
+				<!--/bottom-info-list-->
+			</div>
+			<!--/RK-wrap-->
+			<div class="nav-list-box">
+				<ul class="list" id="leftQSChartNav"></ul>
+			</div>
+			<div class="chart-box" id="leftQSChartBox"></div>
+		</div>
+	</script>
+	<!--回天印象左侧内容 地域 模板-->
+	<script type="text/html" id="tplTabDYContentHtml">
+		<div class="chart-content-box update-chart-box">
+			{{each dataList as item i}}
+			<!--htyx-list-item  {{index==i?'active':''}}-->
+			<div class="htyx-list-item  {{index==i?'active':''}}">
+				<div class="top-side"></div>
+				<div class="middle-content">
+					<div class="title">
+						<img src="{{item.icon}}" alt="{{item.title}}" />
+						<h3>{{item.title}}</h3>
+					</div>
+					<div class="content">
+						<span class="value counter">{{item.value}}</span>
+						<span class="unit">{{item.unit}}</span>
+					</div>
+				</div>
+				<div class="bottom-side"></div>
+			</div>
+			<!--/htyx-list-item-->
+			{{/each}}
+		</div>
+	</script>
+	<!--回天印象左侧内容 产业 模板-->
+	<script type="text/html" id="tplTabCYContentHtml">
+		<div class="chart-content-box update-chart-box">
+			{{each dataList as item i}}
+			<!--htyx-list-item  {{index==i?'active':''}}-->
+			<div class="htyx-list-item style-02 {{index==i?'active':''}}">
+				<div class="top-side"></div>
+				<div class="middle-content">
+					<div class="title">
+						<img src="{{item.icon}}" alt="{{item.title}}" />
+						<h3>{{item.title}}</h3>
+					</div>
+					<div class="content">
+						<span class="value counter">{{item.value}}</span>
+						<span class="unit">{{item.unit}}</span>
+					</div>
+				</div>
+				<div class="bottom-side"></div>
+			</div>
+			<!--/htyx-list-item-->
+			{{/each}}
+		</div>
+	</script>
+	<!--回天印象左侧内容 事务 模板-->
+	<script type="text/html" id="tplTabSWContentHtml">
+		<div class="chart-content-box update-chart-box">
+			{{each dataList as item i}}
+			<!--htyx-list-item  {{index==i?'active':''}}-->
+			<div class="htyx-list-item style-02 {{index==i?'active':''}}">
+				<div class="top-side"></div>
+				<div class="middle-content">
+					<div class="title">
+						<img src="{{item.icon}}" alt="{{item.title}}" />
+						<h3>{{item.title}}</h3>
+					</div>
+					<div class="content">
+						<span class="value counter">{{item.value}}</span>
+						<span class="unit">{{item.unit}}</span>
+					</div>
+				</div>
+				<div class="bottom-side"></div>
+			</div>
+			<!--/htyx-list-item-->
+			{{/each}}
+		</div>
+	</script>
+	<!--回天印象左侧内容 组织 模板-->
+	<script type="text/html" id="tplTabZZContentHtml">
+		<div class="chart-content-box update-chart-box">
+			{{each dataList as item i}}
+			<!--htyx-list-item  {{index==i?'active':''}}-->
+			<div class="htyx-list-item style-03 {{index==i?'active':''}}">
+				<div class="top-side"></div>
+				<div class="middle-content">
+					<div class="title">
+						<img src="{{item.icon}}" alt="{{item.title}}" />
+						<h3>{{item.title}}</h3>
+					</div>
+					<div class="content">
+						<span class="value counter">{{item.value}}</span>
+						<span class="unit">{{item.unit}}</span>
+					</div>
+				</div>
+				<div class="bottom-side"></div>
+			</div>
+			<!--/htyx-list-item-->
+			{{/each}}
+		</div>
+	</script>
+	<!--字符云-->
+	<script type="text/html" id="tplCouldHtml">
+	{{each dataList as item}}
+	<li style="color: {{item.color}};">{{item.name}}</li>
+	{{/each}}
+	</script>
 </body>
 
 </html>
