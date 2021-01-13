@@ -18,6 +18,7 @@
 	<script type="text/javascript" src="js/plugin/echarts-wordcloud.min.js"></script>
 	<script type="text/javascript" src="js/changping_ht_update.js"></script>
 	<script type="text/javascript" src="js/index.js"></script>
+	<script type="text/javascript" src="js/index_update.js"></script>
 </head>
 
 <body>
@@ -40,7 +41,7 @@
 	<div class="main-wrapper">
 		<div class="container">
 			<!--ht-home-container-->
-			<div class="ht-home-container">
+			<div class="ht-home-container" id="HTHomeContainer">
 				<!--ht-top-wrap-->
 				<div class="ht-top-wrap">
 					<!--ht-left-content-->
@@ -67,23 +68,7 @@
 					</div>
 					<!--/ht-left-content-->
 					<!--ht-middle-content-->
-					<div class="ht-middle-content">
-						<!--mid-bottom-cont-->
-						<div class="mid-bottom-cont">
-							<div class="mid-map-chart-box left" data-title="回天地区老年、幼儿人口增长趋势">
-								<div class="chart-box" id="MidMapChart1Box"></div>
-							</div>
-							<div class="mid-map-chart-box right" data-title="回天地区IT类人员增长趋势">
-								<div class="chart-box" id="MidMapChart2Box"></div>
-							</div>
-						</div>
-						<!--/mid-bottom-cont-->
-						<!--mid-map-box-->
-						<div class="mid-map-box update-mid-map">
-							<div class="map-chart-box" id="mapChartBox"></div>
-						</div>
-						<!--/mid-map-box-->
-					</div>
+					<div class="ht-middle-content" id="HTMiddleContent"></div>
 					<!--/ht-middle-content-->
 					<!--ht-right-content-->
 					<div class="ht-right-content">
@@ -139,7 +124,7 @@
 						<!--yy-box-ss-wrap-->
 						<div class="yy-box-ss-wrap ht-inner-02-box">
 							<div class="box-title">
-								<div class="h3"><a href="javascript:;" class="link">落图详细&gt;&gt;</a>
+								<div class="h3"><a href="javascript:;" class="link" id="SNJHBtnMore">落图详细&gt;&gt;</a>
 									<h4>三年行动计划</h4>
 								</div>
 							</div>
@@ -230,13 +215,18 @@
 	<!--/main-wrapper-->
 	<!--突发事件和诉求热点-->
 	<script type="text/html" id="tplTFListHtml">
-	{{each dataList as item i}}
-	<div class="list-item {{if i==0}}active{{/if}}">
-		<h3 style="color: {{item.color}};">{{item.title}}</h3>
-		<p>{{item.intro}}</p>
-		<a href="javascript:;" class="link"></a>
-	</div>
-	{{/each}}
+		<div class="list-item active">
+			<h3 style="color: {{firstInfo.color}};">{{firstInfo.title}}</h3>
+			<p>{{firstInfo.intro}}</p>
+			<a href="javascript:;" class="link"></a>
+		</div>
+		{{each dataList as item i}}
+		<div class="list-item">
+			<h3 style="color: {{item.color}};">{{item.title}}</h3>
+			<p>{{item.intro}}</p>
+			<a href="javascript:;" class="link"></a>
+		</div>
+		{{/each}}
 	</script>
 	<!--社区管理 左则内容-->
 	<script type="text/html" id="tplSQListHtml">
@@ -289,82 +279,179 @@
 			<p>较2018年提高 <span class="clr clr_orange counter">1.2</span> 分</p>
 		</div>
 	</script>
-	<!--中间顶部数据-->
-	<script type="text/html" id="tplMidTopList">
-		<li class="act" data-url="yunyingjiance.html">
-			<img src="images/ht_icon_01.png" alt="" class="icon">
+	<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * 中间顶部数据 模板 Start * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+	<!--中间顶部数据 默认-->
+	<script type="text/html" id="tplMidTopListDefault">
+		<!--mid-top-info-->
+	<ul class="mid-top-info" id="mapTopInfo">
+		{{each dataList as item i}}
+		<li class="act" data-url="{{item.url}}">
+			<img src="{{item.icon}}" alt="" class="icon">
 			<div class="inline-block">
-				<p class="name">交通延迟指数</p>
+				<p class="name">{{item.name}}</p>
 				<p>
-					<span class="value clr01 counter">{{dataInfo.ycValue}}</span>
+					<span class="value clr01 counter">{{item.value}}</span>
+					{{if item.unit}}
+					<span class="unit">{{item.unit}}</span>
+					{{/if}}
 				</p>
 			</div>
 		</li>
-		<li data-url="shishirenliu.html">
-			<img src="images/ht_icon_02.png" alt="" class="icon">
-			<div class="inline-block">
-				<p class="name">实时人流（人）</p>
-				<p>
-					<span class="value clr02 counter">{{dataInfo.rlValue}}</span>
-				</p>
-			</div>
-		</li>
-		<li data-url="jiesujiban.html">
-			<img src="images/ht_icon_03.png" alt="" class="icon">
-			<div class="inline-block">
-				<p class="name">当日市民反映量</p>
-				<p>
-					<span class="value clr03 counter">{{dataInfo.ylValue}}</span>
-					<span class="unit">个</span>
-				</p>
-			</div>
-		</li>
+		{{/each}}
+	</ul>
+	<!--/mid-top-info-->
+	<!--mid-map-box-->
+	<div class="mid-map-box">
+		<div class="map-chart-box" id="mapChartBox"></div>
+	</div>
+	<!--/mid-map-box-->
 	</script>
+	<!--中间顶部数据 人口-->
+	<script type="text/html" id="tplMidTopListRK">
+		<!--mid-bottom-cont-->
+	<!--<div class="mid-bottom-cont">-->
+	<!--<div class="mid-map-chart-box left" data-title="回天地区老年、幼儿人口增长趋势">-->
+	<!--<div class="chart-box" id="MidMapChart1Box"></div>-->
+	<!--</div>-->
+	<!--<div class="mid-map-chart-box right" data-title="回天地区IT类人员增长趋势">-->
+	<!--<div class="chart-box" id="MidMapChart2Box"></div>-->
+	<!--</div>-->
+	<!--</div>-->
+	<!--/mid-bottom-cont-->
+	<!--mid-map-box-->
+	<!--<div class="mid-map-box update-mid-map">-->
+	<!--<div class="map-chart-box" id="mapChart1Box"></div>-->
+	<!--</div>-->
+	<!--/mid-map-box-->
+	<div class="mid-map-box" style="overflow: hidden; margin-top: 0; height: 100%;">
+		<img src="images/tmp_lart_01.png" alt="" style="width: 100%;">
+	</div>
+	</script>
+	<!--中间顶部数据 地域-->
+	<script type="text/html" id="tplMidTopListDY">
+		<div class="mid-map-box" style="overflow: hidden; margin-top: 0; height: 100%;">
+			<img src="images/tmp_lart_02.png" alt="" style="width: 100%;">
+		</div>
+	</script>
+	<!--中间顶部数据 产业-->
+	<script type="text/html" id="tplMidTopListCY">
+		<div class="mid-map-box" style="overflow: hidden; margin-top: 0; height: 100%;">
+			<img src="images/tmp_lart_03.png" alt="" style="width: 100%;">
+		</div>
+	</script>
+	<!--中间顶部数据 事务-->
+	<script type="text/html" id="tplMidTopListSW">
+		<div class="mid-map-box" style="overflow: hidden; margin-top: 0; height: 100%;">
+			<img src="images/tmp_lart_04.png" alt="" style="width: 100%;">
+		</div>
+	</script>
+	<!--中间顶部数据 组织-->
+	<script type="text/html" id="tplMidTopListZZ">
+		<div class="mid-map-box" style="overflow: hidden; margin-top: 0; height: 100%;">
+			<img src="images/tmp_lart_05.png" alt="" style="width: 100%;">
+		</div>
+	</script>
+	<!--中间顶部数据 三年行动计划 全部-->
+	<script type="text/html" id="tplMidTopListSNJH">
+		<div class="mid-SNJH-nav-box">
+			<ul class="list">
+				{{each navList as item i}}
+				<li data-id="{{item.value}}" {{if navIndex==i}}class="act" {{/if}}>{{item.name}}</li>
+				{{/each}}
+			</ul>
+		</div>
+		<div class="mid-map-box" style="overflow: hidden; margin-top: 0; height: 100%;">
+			<img src="images/tmp_sjjh_01.png" alt="" style="width: 100%;">
+		</div>
+	</script>
+	<!--中间顶部数据 三年行动计划 教育-->
+	<script type="text/html" id="tplMidTopListJY">
+		<div class="mid-SNJH-nav-box">
+			<ul class="list">
+				{{each navList as item i}}
+				<li data-id="{{item.value}}" {{if navIndex==i}}class="act" {{/if}}>{{item.name}}</li>
+				{{/each}}
+			</ul>
+		</div>
+		<div class="mid-map-box" style="overflow: hidden; margin-top: 0; height: 100%;">
+			<img src="images/tmp_sjjh_02.png" alt="" style="width: 100%;">
+		</div>
+	</script>
+	<!--中间顶部数据 三年行动计划 交通-->
+	<script type="text/html" id="tplMidTopListJT">
+		<div class="mid-SNJH-nav-box">
+			<ul class="list">
+				{{each navList as item i}}
+				<li data-id="{{item.value}}" {{if navIndex==i}}class="act" {{/if}}>{{item.name}}</li>
+				{{/each}}
+			</ul>
+		</div>
+		<div class="mid-map-box" style="overflow: hidden; margin-top: 0; height: 100%;">
+			<img src="images/tmp_sjjh_03.png" alt="" style="width: 100%;">
+		</div>
+	</script>
+	<!--中间顶部数据 三年行动计划 医疗-->
+	<script type="text/html" id="tplMidTopListYL">
+		<div class="mid-SNJH-nav-box">
+			<ul class="list">
+				{{each navList as item i}}
+				<li data-id="{{item.value}}" {{if navIndex==i}}class="act" {{/if}}>{{item.name}}</li>
+				{{/each}}
+			</ul>
+		</div>
+		<div class="mid-map-box" style="overflow: hidden; margin-top: 0; height: 100%;">
+			<img src="images/tmp_sjjh_04.png" alt="" style="width: 100%;">
+		</div>
+	</script>
+	<!--中间顶部数据 三年行动计划 养老-->
+	<script type="text/html" id="tplMidTopListYL2">
+		<div class="mid-SNJH-nav-box">
+			<ul class="list">
+				{{each navList as item i}}
+				<li data-id="{{item.value}}" {{if navIndex==i}}class="act" {{/if}}>{{item.name}}</li>
+				{{/each}}
+			</ul>
+		</div>
+		<div class="mid-map-box" style="overflow: hidden; margin-top: 0; height: 100%;">
+			<img src="images/tmp_sjjh_05.png" alt="" style="width: 100%;">
+		</div>
+	</script>
+	<!--中间顶部数据 三年行动计划 公共设施-->
+	<script type="text/html" id="tplMidTopListGGSS">
+		<div class="mid-SNJH-nav-box">
+			<ul class="list">
+				{{each navList as item i}}
+				<li data-id="{{item.value}}" {{if navIndex==i}}class="act" {{/if}}>{{item.name}}</li>
+				{{/each}}
+			</ul>
+		</div>
+		<div class="mid-map-box" style="overflow: hidden; margin-top: 0; height: 100%;">
+			<img src="images/tmp_sjjh_06.png" alt="" style="width: 100%;">
+		</div>
+	</script>
+	<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * 中间顶部数据 模板 End * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+	<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * 回天印象 左侧内容 切换模板 Start * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 	<!--回天印象左侧内容 人口 模板-->
 	<script type="text/html" id="tplTabRKContentHtml">
-		<div class="chart-content-box">
-			<!--RK-wrap-->
-			<div class="RK-wrap">
-				<!--top-info-box-->
-				<div class="top-info-box">
-					<ul class="list">
-						<li>
-							<h3 class="counter">{{dataInfo.HJValue}}</h3>
-							<p>户籍人口</p>
-						</li>
-						<li>
-							<span class="unit">*万人</span>
-							<h3 class="counter">{{dataInfo.SYValue}}</h3>
-							<p>实有人口</p>
-						</li>
-					</ul>
-				</div>
-				<!--/top-info-box-->
-				<!--bottom-info-list-->
-				<div class="bottom-info-list">
-					{{each dataList as item i}}
-					<div class="list-item clr{{i+1}}">
-						<div class="cell left-name">
-							<p class="tit">{{item.name}}</p>
-						</div>
-						<div class="cell">
-							<p class="progress-box">
-								<span style="width: {{(item.value/item.max)*100}}%" class="bar"></span>
-							</p>
-						</div>
-						<div class="cell right-value">
-							<p class="val">{{item.value}}</p>
-						</div>
+		<div class="chart-content-box update-chart-box RK-first-box">
+			{{each dataList as item i}}
+			<!--htyx-list-item  {{index==i?'active':''}}-->
+			<div class="htyx-list-item  {{index==i?'active':''}}">
+				<div class="top-side"></div>
+				<div class="middle-content">
+					<div class="title">
+						<img src="{{item.icon}}" alt="{{item.title}}" />
+						<h3>{{item.title}}</h3>
 					</div>
-					{{/each}}
+					<div class="content">
+						<span class="value counter">{{item.value}}</span>
+						<span class="unit">{{item.unit}}</span>
+					</div>
 				</div>
-				<!--/bottom-info-list-->
+				<div class="bottom-side"></div>
 			</div>
-			<!--/RK-wrap-->
-			<div class="nav-list-box">
-				<ul class="list" id="leftQSChartNav"></ul>
-			</div>
-			<div class="chart-box" id="leftQSChartBox"></div>
+			<!--/htyx-list-item-->
+			{{/each}}
 		</div>
 	</script>
 	<!--回天印象左侧内容 地域 模板-->
@@ -459,6 +546,7 @@
 			{{/each}}
 		</div>
 	</script>
+	<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * 回天印象 左侧内容 切换模板 End * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 	<!--字符云-->
 	<script type="text/html" id="tplCouldHtml">
 	{{each dataList as item}}

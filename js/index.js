@@ -11,6 +11,8 @@
             {"id": 5, "name": "组织"}
         ], _dataIndex = 0,
         _handle,
+        _clickIndex = -1,                //记录点击触发事件
+        _isDefault = true,              //是否为默认项
         _targetName = '#HTYXBottomBox';
 
     //渲染导航
@@ -29,10 +31,13 @@
     }
 
     //
-    function triggerChange(){
+    function triggerChange(_type){
+        _type = _type || '';
         $.ListenTabChnage.trigger({
             id: _dataList[_dataIndex]['id'],
-            name: _dataList[_dataIndex]['name']
+            name: _dataList[_dataIndex]['name'],
+            triggerType: _type,                         //触发类型
+            isDefault: _isDefault,                      //是否为默认项
         }, renderContentHtml);
     }
 
@@ -42,12 +47,14 @@
     }
 
     function setTime(){
+        clearInterval(_handle);
         _handle = setInterval(function(){
             _dataIndex = _dataIndex + 1 >= _dataList.length ? 0 : _dataIndex + 1;
             renderNavHtml();
             startLoading();
-            triggerChange();
-        }, 8000);
+            _isDefault = false;
+            triggerChange('auto');
+        }, 9000);
     }
 
     //添加事件
@@ -55,16 +62,38 @@
         setTime();
 
         $(document).on('click', '#leftTabChartNav li', function(){
+            if(_clickIndex==$(this).index()) return false;
+
             _dataIndex = $(this).index();
+            _clickIndex = $(this).index();      //
             renderNavHtml();
             startLoading();
-            triggerChange();
+
+            _isDefault = false;
+            triggerChange('click');
         });
 
-        $('#HTYXBottomBox').hover(function(){
+        var _isHover = false;           //记录是否在“回天印象”操作区域
+
+        $('#HTYXBottomBox').parent().hover(function(){
             clearInterval(_handle);
         }, function(){
             setTime();
+        });
+
+        $('#HTHomeContainer').hover(function(){
+            _isHover = true;
+        }, function(){
+            _isHover = false;
+        });
+
+        //切换到默认项
+        $(document).on('click', function(){
+            if(!_isHover) {
+                _isDefault = true;
+                triggerChange();
+            }
+            //if end
         });
     }
 
@@ -84,264 +113,23 @@
  */
 (function($){
     var _dataList = [
-            {"id": 1, "name": "人口属性趋势", "list": [
-                {"id": 1, "name": "65岁以上", "list": [
-                    {"id": 1, "name": "2016", "value": 70},
-                    {"id": 2, "name": "2017", "value": 50},
-                    {"id": 3, "name": "2018", "value": 80},
-                    {"id": 4, "name": "2019", "value": 75},
-                    {"id": 5, "name": "2020", "value": 72}
-                ]},
-                {"id": 2, "name": "41-65岁", "list": [
-                    {"id": 1, "name": "2016", "value": 52},
-                    {"id": 2, "name": "2017", "value": 50},
-                    {"id": 3, "name": "2018", "value": 78},
-                    {"id": 4, "name": "2019", "value": 25},
-                    {"id": 5, "name": "2020", "value": 55}
-                ]},
-                {"id": 3, "name": "18-40岁", "list": [
-                    {"id": 1, "name": "2016", "value": 32},
-                    {"id": 2, "name": "2017", "value": 30},
-                    {"id": 3, "name": "2018", "value": 38},
-                    {"id": 4, "name": "2019", "value": 35},
-                    {"id": 5, "name": "2020", "value": 35}
-                ]},
-                {"id": 4, "name": "0-17岁", "list": [
-                    {"id": 1, "name": "2016", "value": 52},
-                    {"id": 2, "name": "2017", "value": 60},
-                    {"id": 3, "name": "2018", "value": 78},
-                    {"id": 4, "name": "2019", "value": 85},
-                    {"id": 5, "name": "2020", "value": 25}
-                ]}
-            ]},
-            {"id": 2, "name": "人口职业变化趋势", "list": [
-                {"id": 1, "name": "65岁以上", "list": [
-                    {"id": 1, "name": "2016", "value": 80},
-                    {"id": 2, "name": "2017", "value": 70},
-                    {"id": 3, "name": "2018", "value": 80},
-                    {"id": 4, "name": "2019", "value": 85},
-                    {"id": 5, "name": "2020", "value": 82}
-                ]},
-                {"id": 2, "name": "41-65岁", "list": [
-                    {"id": 1, "name": "2016", "value": 62},
-                    {"id": 2, "name": "2017", "value": 60},
-                    {"id": 3, "name": "2018", "value": 78},
-                    {"id": 4, "name": "2019", "value": 35},
-                    {"id": 5, "name": "2020", "value": 35}
-                ]},
-                {"id": 2, "name": "18-40岁", "list": [
-                    {"id": 1, "name": "2016", "value": 60},
-                    {"id": 2, "name": "2017", "value": 59},
-                    {"id": 3, "name": "2018", "value": 72},
-                    {"id": 4, "name": "2019", "value": 32},
-                    {"id": 5, "name": "2020", "value": 45}
-                ]},
-                {"id": 2, "name": "0-17岁", "list": [
-                    {"id": 1, "name": "2016", "value": 52},
-                    {"id": 2, "name": "2017", "value": 20},
-                    {"id": 3, "name": "2018", "value": 38},
-                    {"id": 4, "name": "2019", "value": 65},
-                    {"id": 5, "name": "2020", "value": 55}
-                ]}
-            ]},
-        ],
-        _dataIndex = 0,
-        _colors = ['#5176ee', '#ba1ffa', '#ff70cf', '#fff09b'],
-        _dataInfo = {
-            HJValue: 99.99,
-            SYValue: 98.4
-        },
-        _chartList = [
-            {"id": 1, "name": "65岁以上", "value": 7.1, "max": 50},
-            {"id": 2, "name": "41-65岁", "value": 31.1, "max": 50},
-            {"id": 3, "name": "18-40岁", "value": 48.0, "max": 50},
-            {"id": 4, "name": "0-17岁", "value": 2.7, "max": 50}
-        ],
-        _handle;
-
-    function checkValByName(_arr, _list){
-        for(var i in _arr){
-            if(!(function(){
-                    for(var j in _list){
-                        if(_list[j]==_arr[i]['name']) return true;
-                    }
-                    return false;
-                })()){
-                _list[_list.length] = _arr[i]['name'];
-            }
-            //if end
-        }
-        //for end
-        return _list;
-    }
-
-    //获取标题
-    function getTitles(){
-        var _arr = _dataList[_dataIndex]['list'];
-        var _title = [];
-        for(var i in _arr){
-            _title = checkValByName(_arr[i]['list'], _title);
-
-        }
-        return _title;
-    }
-
-    //获取分组数据
-    function getSeries(){
-        var _arr = _dataList[_dataIndex]['list'],
-            _result = [];
-
-        for(var i in _arr){
-            _result[_result.length] = {
-                data: _arr[i]['list'],
-                type: 'bar',
-                name: _arr[i]['name'],
-                barWidth: 15,
-                barGap: i!=0?"-100%":"",
-                areaStyle: {
-                    normal: {
-                        color: _colors[i]
-                    }
-                }
-            }
-        }
-        return _result;
-    }
-
-    //获取切换项
-    function getLegend(){
-        var _result = [], _arr = _dataList[_dataIndex];
-        for(var i in _arr['list']){
-            _result[_result.length] = _arr['list'][i]['name'];
-        }
-        return _result;
-    }
-
-    //获取参数
-    function getParams(){
-        return {
-            tooltip : {
-                show: true,
-                backgroundColor: 'transparent',
-                trigger : 'item',
-                //formatter: '{a}<br />{b}: {c}%',
-                position:'top',
-                padding: [1, 10],
-                textStyle:{
-                    fontSize:12
-                }
-            },
-            color: _colors,
-            grid: {
-                left: '10%',
-                top: '26%',
-                bottom: '30px',
-                right: '2%'
-            },
-            legend: {
-                right: 0,
-                top: 0,
-                itemWidth: 8,
-                textStyle: {
-                    color: '#FFFFFF',
-                    fontSize: 12
-                },
-                icon: 'circle',
-                data: getLegend()
-            },
-            xAxis: {
-                type: 'category',
-                axisLabel: {
-                    color: '#FFFFFF',
-                    fontSize: 14
-                },
-                axisLine: {
-                    lineStyle: {
-                        color: '#3b3d55'
-                    }
-                },
-                data: getTitles()
-            },
-            yAxis: {
-                type: 'value',
-                axisLabel: {
-                    //formatter: '{value}%',
-                    color: '#FFFFFF',
-                    fontSize: 14
-                },
-                axisLine: {
-                    lineStyle: {
-                        color: '#3b3d55'
-                    }
-                },
-                splitLine: {
-                    lineStyle: {
-                        color: '#3b3d55'
-                    }
-                }
-            },
-            series: getSeries()
-        }
-    }
-
-    //创建图表
-    function createChartBox(){
-        var _chart = echarts.init(document.getElementById('leftQSChartBox'));
-        _chart.setOption(getParams());
-    }
-
-    //渲染导航模板
-    function renderNavHtml(){
-        $('#leftQSChartNav').html(template('tplJTQKNavHtml', {
-            dataList: _dataList,
-            index: _dataIndex
-        }));
-    }
-
-    function setTime(){
-        _handle = setInterval(function(){
-            _dataIndex = _dataIndex + 1 >= _dataList.length ? 0 : _dataIndex + 1;
-            renderNavHtml();
-            createChartBox();
-        }, 5000);
-    }
-
-    function addEvent(){
-        setTime();
-        //点击事件
-        $(document).off('click', '#leftQSChartNav li');
-        $(document).on('click', '#leftQSChartNav li', function(){
-            _dataIndex = $(this).index();
-            renderNavHtml();
-            createChartBox();
-        });
-
-        $('#leftTabContentBox').parent().hover(function(){
-            clearInterval(_handle);
-        }, function(){
-            setTime();
-        });
-        //end
-    }
+            {"id": 1, "title": "户籍人口", "value": 99.9, "icon": "images/sp_icon_17.png", "unit": "*万人"},
+            {"id": 2, "title": "实有人口", "value": 120.6, "icon": "images/sp_icon_17.png", "unit": "*万人"},
+            {"id": 3, "title": "参保人员", "value": 89.2, "icon": "images/sp_icon_17.png", "unit": "*万人"},
+            {"id": 4, "title": "重点人群", "value": 14.2, "icon": "images/sp_icon_17.png", "unit": "*万人"},
+            {"id": 5, "title": "特困人员", "value": 8.9, "icon": "images/sp_icon_17.png", "unit": "*万人"},
+            {"id": 6, "title": "低保低收入", "value": 2.4, "icon": "images/sp_icon_17.png", "unit": "*万人"},
+            {"id": 7, "title": "幼儿人数", "value": 46.2, "icon": "images/sp_icon_17.png", "unit": "*万人"},
+            {"id": 8, "title": "老年人数", "value": 20.3, "icon": "images/sp_icon_17.png", "unit": "*万人"},
+            {"id": 9, "title": "适龄中小学人数", "value": 30.4, "icon": "images/sp_icon_17.png", "unit": "*万人"},
+        ];
 
     $(function(){
         $.ListenTabChnage.listen(function(data){
             if(data['id']==1){
-                clearInterval(_handle);
-
                 data.render('tplTabRKContentHtml', {
-                    dataInfo: _dataInfo,
-                    dataList: _chartList
+                    dataList: _dataList
                 });
-
-                _dataIndex = 0;
-                setTimeout(function(){
-                    renderNavHtml();
-                    createChartBox();
-                    addEvent();
-                }, 200)
-            }else{
-                clearInterval(_handle);
             }
             //if end
         });
@@ -447,6 +235,7 @@
             clearInterval(_handle);
             return false;
         }
+        clearInterval(_handle);
         _handle = setInterval(function(){
             _dataIndex = _dataIndex + 1 >= _dataList.length ? 0 : _dataIndex + 1;
             _dataObj.render('tplTabZZContentHtml', {
@@ -479,278 +268,13 @@
 /* - - - - - - - - - - - - - - - - - - - - - - 回天印象 END - - - - - - - - - - - - - - - - - - - - - - */
 
 /**
- * 回天地区老年、幼儿人口增长趋势
- */
-(function($){
-    var _chart,
-        _dataList = [
-            {"name": "老年人口", "list": [
-                {"name": "2016", "value": 190},
-                {"name": "2017", "value": 188},
-                {"name": "2018", "value": 100},
-                {"name": "2019", "value": 60},
-                {"name": "2020", "value": 25},
-            ]},
-            {"name": "幼儿人口", 'list': [
-                {"name": "2016", "value": 20},
-                {"name": "2017", "value": 55},
-                {"name": "2018", "value": 160},
-                {"name": "2019", "value": 180},
-                {"name": "2020", "value": 190},
-            ]}
-        ];
-
-    function getParams(){
-        return {
-            color: [ '#4e71e5', '#c0b579'],
-            tooltip: {
-                trigger: 'axis',
-                axisPointer: {
-                    type: 'cross',
-                    label: {
-                        backgroundColor: '#283b56'
-                    }
-                }
-            },
-            grid: {
-                left: '15%',
-                top: '30%',
-                right: '5%',
-                bottom: '36px'
-            },
-            legend: {
-                right: 0,
-                top: 0,
-                textStyle: {
-                    color: '#FFFFFF'
-                },
-                icon: 'circle',
-                itemWidth: 5,
-                data: (function(){
-                    var _arrList = [];
-                    for(var i in _dataList){
-                        _arrList[i] = _dataList[i]['name'];
-                    }
-                    return _arrList;
-                })()
-            },
-            xAxis: {
-                type: 'category',
-                boundaryGap: true,
-                splitLine: {
-                    show: false
-                },
-                axisLabel:{
-                    color: '#FFFFFF',
-                    fontSize: 16,
-                },
-                data: [2016, 2017, 2018, 2019, 2020]
-            },
-            yAxis: {
-                type: 'value',
-                scale: true,
-                //name: '价格',
-                //boundaryGap: [0.2, 0.2],
-                splitNumber: 4,
-                splitLine: {
-                    lineStyle: {
-                        color: '#393b54'
-                    }
-                },
-                axisLabel:{
-                    color: '#FFFFFF',
-                    fontSize: 16,
-                }
-            },
-            series: [
-                {
-                    name: '老年人口',
-                    type: 'line',
-                    data: _dataList[0]['list']
-                },
-                {
-                    name: '幼儿人口',
-                    type: 'line',
-                    data: _dataList[1]['list']
-                }
-            ]
-        }
-    }
-
-    function renderChartBox(){
-        var _element = document.getElementById('MidMapChart1Box');
-        _chart = echarts.init(_element);
-        _chart.setOption(getParams());
-    }
-
-    $(function(){
-        setTimeout(function(){
-            renderChartBox();
-        }, 200);
-    });
-})(jQuery);
-
-/**
- * 回天地区IT类人员增长趋势
- */
-(function($){
-    var _dataList = [
-        {"name": "2016", "value": 190},
-        {"name": "2017", "value": 188},
-        {"name": "2018", "value": 100},
-        {"name": "2019", "value": 60},
-        {"name": "2020", "value": 125},
-    ];
-
-    function checkValByName(_arr, _list){
-        for(var i in _arr){
-            if(!(function(){
-                    for(var j in _list){
-                        if(_list[j]==_arr[i]['name']) return true;
-                    }
-                    return false;
-                })()){
-                _list[_list.length] = _arr[i]['name'];
-            }
-            //if end
-        }
-        //for end
-        return _list;
-    }
-
-    //获取标题
-    function getTitles(){
-        var _title = [];
-        return checkValByName(_dataList, _title);
-    }
-
-
-    function getParams(){
-        return {
-            tooltip : {
-                show: true,
-                backgroundColor: 'transparent',
-                trigger : 'item',
-                formatter: '{a}<br />{b}: {c}%',
-                position:'top',
-                padding: [1, 10],
-                textStyle:{
-                    fontSize:12
-                }
-            },
-            color: ['#e05f57'],
-            grid: {
-                left: '15%',
-                top: '8%',
-                bottom: '36px',
-                right: '5%'
-            },
-            xAxis: {
-                type: 'category',
-                boundaryGap: false,
-                data: (function(){
-                    var _list = [];
-                    for(var i in _dataList){
-                        _list[i] = _dataList[i]['name'];
-                    }
-                    return _list;
-                })(),
-                splitLine:{
-                    show: false,
-                    lineStyle:{
-                        color: ['#393b54'],
-                        width: 1,
-                        type: 'solid'
-                    }
-                },
-                axisLabel: {
-                    show: true,
-                    interval:0,
-                    //rotate: 25,
-                    textStyle: {
-                        color: '#fff',  //更改坐标轴文字颜色
-                        fontSize : 14      //更改坐标轴文字大小
-                    }
-                },
-                axisLine:{
-                    lineStyle:{
-                        color:'#0d244f' //更改坐标轴颜色
-                    }
-                }
-            },
-            yAxis: {
-                type: 'value',
-                axisLabel: {
-                    show: true,
-                    interval:0,
-                    //formatter: "{value}%",
-                    textStyle: {
-                        color: '#fff',  //更改坐标轴文字颜色
-                        fontSize : 14      //更改坐标轴文字大小
-                    }
-                },
-                axisLine:{
-                    lineStyle:{
-                        color:'#0d244f' //更改坐标轴颜色
-                    }
-                },
-                splitNumber: 4,
-                splitLine: {
-                    show: true,
-                    lineStyle:{
-                        color: ['#0f1f55'],
-                        width: 1,
-                        type: 'solid'
-                    }
-                }
-            },
-            series: [
-                {
-                    data: _dataList,
-                    type: 'line',
-                    name: "",
-                    areaStyle: {
-                        normal: {
-                            color: {
-                                type: 'linear',
-                                x: 0,
-                                y: 0,
-                                x2: 0,
-                                y2: 1,
-                                colorStops: [
-                                    { offset: 0, color: '#412035'  },
-                                    { offset:.3, color: '#311a32'  },
-                                    { offset: 1, color: 'transparent' }
-                                ],
-                                global: false // 缺省为 false
-                            }
-                        }
-                    },
-                    //smooth: true,
-                }
-            ]
-        }
-    }
-
-    //创建图表
-    function createChartBox(){
-        var _chart = echarts.init(document.getElementById('MidMapChart2Box'));
-        _chart.setOption(getParams());
-    }
-
-    $(function(){
-        setTimeout(function(){
-            createChartBox();
-        }, 200);
-    });
-})(jQuery);
-
-/**
  * 突发事件
  */
 (function($){
-    var _dataList = [
-            {"id": 1, "title": "[突发事件] 21点 天通苑北二区", "intro": "30栋住宅楼发生大面积停电", "color": "#eb4e40"},
+    var _firstInfo = {
+            "id": 1, "title": "[突发事件] 21点 天通苑北二区", "intro": "30栋住宅楼发生大面积停电", "color": "#eb4e40"
+        },
+        _dataList = [
             {"id": 2, "title": "[接诉即办] 回龙观街道", "intro": "供暖不足问题投诉量巨大", "color": "#f1d236"},
             {"id": 3, "title": "[未诉先办] 回龙观街道", "intro": "供暖不足问题投诉量巨大", "color": "#52d043"},
             {"id": 5, "title": "[接诉即办] 回龙观街道", "intro": "供暖不足问题投诉量巨大", "color": "#f1d236"},
@@ -766,13 +290,15 @@
     function renderHtml(){
         //突发事件
         $('#TFSJBox').html(template('tplTFListHtml', {
-            dataList: $.getArrayByIndex(_dataList, _dataIndex, 3),
+            firstInfo: _firstInfo,
+            dataList: $.getArrayByIndex(_dataList, _dataIndex, 2),
             index: _dataIndex
         }));
     }
 
     //突发事件 定时器
     function setTime(){
+        clearInterval(_handle);
         _handle = setInterval(function(){
             _dataIndex = _dataIndex + 1 >= _dataList.length?0:_dataIndex+1;
             renderHtml();
@@ -895,8 +421,21 @@
         //_SNXDJHList.find('.counter').countUp();
     }
 
+    function addEvent(){
+        //落图详细
+        $(document).on('click', '#SNJHBtnMore', function(){
+            $.ListenTabChnage.trigger({
+                id: 101,
+                name: "三年行动计划",
+                triggerType: 'click',
+                isDefault: false,
+            }, function(){});
+        });
+    }
+
     $(function(){
         renderHtml();
+        addEvent();
     });
 
 })(jQuery);
@@ -1124,6 +663,7 @@
     }
 
     function setTime(){
+        clearInterval(_handle);
         _handle = setInterval(function(){
             _dataIndex = _dataIndex + 1 >= _dataList.length ? 0 : _dataIndex + 1;
             renderNavHtml();
@@ -1509,6 +1049,7 @@
     }
 
     function setTime(){
+        clearInterval(_handle);
         _handle = setInterval(function(){
             _dataIndex2 = _dataIndex2 + 1 >=12 ? 0 : _dataIndex2 + 1;
             renderChartBox();

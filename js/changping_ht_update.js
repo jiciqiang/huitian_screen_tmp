@@ -2629,7 +2629,7 @@
 
     //添加中国地图
     function createChartMap(){
-        _mapChart = echarts.init(document.getElementById('mapChartBox'));
+        _mapChart = echarts.init(document.getElementById('mapChart1Box'));
         _mapChart.hideLoading();
         _mapChart.setOption(getMapParams());
 
@@ -2640,13 +2640,77 @@
     }
 
     $(function(){
-        setTimeout(function(){
-            createChartMap();
-        }, 500);
+        /*$.ListenTabChnage.listen(function(data){
+            if(!data['isDefault']&&data['triggerType']=='click'){
+                setTimeout(function(){
+                    createChartMap();
+                }, 500);
+            }
+            //if end
+        });*/
 
+        /*
         $.ListenMapDataChange.listen(function(_data){
             var _itemData = _data['data'];
             resetHigh(_itemData['name']);
+        });*/
+    });
+})(jQuery);
+
+(function($){
+    var _mapList = [
+        "images/map_01.jpg",
+        "images/map_02.jpg",
+        "images/map_03.jpg",
+    ], _mapIndex = 0, _handle;
+
+    //渲染静态图片
+    function renderMap(){
+        var _img = $("<img src='"+_mapList[_mapIndex]+"' class='map-img' style='display: none; width: 100%; height: calc(100% - .27rem); position: absolute; bottom: 0; left: 0; z-index: 1; ' />");
+        $('#mapChartBox').html(_img);
+        $('#mapTopInfo').find('li').removeClass('act').eq(_mapIndex).addClass('act');
+        _img.fadeIn();
+    }
+
+    function setTime(){
+        clearInterval(_handle);
+        _handle = setInterval(function(){
+            _mapIndex = _mapIndex + 1>=_mapList.length?0:_mapIndex+1;
+            renderMap();
+        }, 10000);
+    }
+
+    function renderMapInfo(){
+        renderMap();
+        setTime();
+        var _mapTopInfo = $('#mapTopInfo');
+        _mapTopInfo.on('mouseover', 'li', function(){
+            _mapIndex = $(this).index();
+            renderMap();
+        }).on('click', 'li', function(){
+            var _url = $(this).data('url');
+            if(_url){
+                window.location.href = _url;
+            }
+        });
+
+        _mapTopInfo.parent().hover(function(){
+            setTime();
+        }, function(){
+            clearInterval(_handle);
+        });
+    }
+
+    $(function(){
+        $.ListenTabChnage.listen(function(data){
+            if(data['isDefault']){
+                setTimeout(function(){
+                    renderMapInfo();
+                }, 200);
+            }else{
+                clearInterval(_handle);
+            }
+            //if end
         });
     });
 })(jQuery);
