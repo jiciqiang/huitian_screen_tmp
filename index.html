@@ -216,14 +216,18 @@
 	<!--突发事件和诉求热点-->
 	<script type="text/html" id="tplTFListHtml">
 		<div class="list-item active">
-			<h3 style="color: {{firstInfo.color}};">{{firstInfo.title}}</h3>
-			<p>{{firstInfo.intro}}</p>
+			<h3 class="icon icon-0" style="color: {{firstInfo.color}};">{{firstInfo.tag}}</h3>
+			<p class="title">{{firstInfo.title}}</p>
+			<div class="clearfix"></div>
+			<p class="intro">{{firstInfo.intro}}</p>
 			<a href="javascript:;" class="link"></a>
 		</div>
 		{{each dataList as item i}}
 		<div class="list-item">
-			<h3 style="color: {{item.color}};">{{item.title}}</h3>
-			<p>{{item.intro}}</p>
+			<h3 class="icon {{'接诉即办'==item.tag?'icon-1':'未诉先办'==item.tag?'icon-2':'icon-0'}}" style="color: {{item.color}};">{{item.tag}}</h3>
+			<p class="title">{{item.title}}</p>
+			<div class="clearfix"></div>
+			<p class="intro">{{item.intro}}</p>
 			<a href="javascript:;" class="link"></a>
 		</div>
 		{{/each}}
@@ -271,13 +275,21 @@
 	<!--三年行动计划-->
 	<script type="text/html" id="tplSNXDJHHtml">
 		<ul class="list">
-			<li>项目 <span class="clr clr_normal counter">{{dataInfo.programValue}}</span> 项</li>
+			<li>项目 <span class="clr clr_normal counter">117</span> 项</li>
 			<li>完工 <span class="clr clr_orange counter">62</span> 项</li>
 		</ul>
-		<div class="score-box">
-			<p>回天行动计划今年第三季度综合满意度 <span class="clr clr_normal counter">7.5</span> 分</p>
-			<p>较2018年提高 <span class="clr clr_orange counter">1.2</span> 分</p>
-		</div>
+		<ul class="list score-list">
+			<li>
+				<p class="half"> 教育<span class="clr clr_normal counter">17</span> 项 </p>
+				<p class="half"> 学位 <span class="clr clr_orange">+</span>
+					<span class="clr clr_orange counter">5660</span>个 </p>
+			</li>
+			<li>
+				<p class="half">交通 <span class="clr clr_normal counter">9</span> 项</p>
+				<p class="half"> 道路 <span class="clr clr_orange">+</span>
+					<span class="clr clr_orange counter">25.2</span> KM</p>
+			</li>
+		</ul>
 	</script>
 	<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * 中间顶部数据 模板 Start * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 	<!--中间顶部数据 默认-->
@@ -306,26 +318,52 @@
 	</div>
 	<!--/mid-map-box-->
 	</script>
+	<!--中间顶部数据 共用-->
+	<script type="text/html" id="tplMidTopListThree">
+		<div class="mid-bottom-cont" data-title="{{box_title}}">
+			<div class="mid-map-chart-box left" data-title="{{row_01_title}}">
+				<ul class="legend-list" id="MidLegendList1Box"></ul>
+				<div class="chart-box" id="MidMapChartRow1Box"></div>
+				<div class="bottom-desc" id="MidBottomDesc1Box"></div>
+			</div>
+			<div class="mid-map-chart-box mid" data-title="{{row_02_title}}">
+				<ul class="legend-list" id="MidLegendList2Box"></ul>
+				<div class="chart-box" id="MidMapChartRow2Box"></div>
+				<div class="bottom-desc" id="MidBottomDesc2Box"></div>
+			</div>
+			<div class="mid-map-chart-box right" data-title="{{row_03_title}}">
+				<ul class="legend-list" id="MidLegendList3Box"></ul>
+				<div class="chart-box" id="MidMapChartRow3Box"></div>
+				<div class="bottom-desc" id="MidBottomDesc3Box"></div>
+			</div>
+		</div>
+		<div class="mid-map-box update-mid-map">
+			<div class="map-chart-box" id="mapChart1Box"></div>
+		</div>
+	</script>
 	<!--中间顶部数据 人口-->
 	<script type="text/html" id="tplMidTopListRK">
 		<!--mid-bottom-cont-->
-	<!--<div class="mid-bottom-cont">-->
-	<!--<div class="mid-map-chart-box left" data-title="回天地区老年、幼儿人口增长趋势">-->
-	<!--<div class="chart-box" id="MidMapChart1Box"></div>-->
-	<!--</div>-->
-	<!--<div class="mid-map-chart-box right" data-title="回天地区IT类人员增长趋势">-->
-	<!--<div class="chart-box" id="MidMapChart2Box"></div>-->
-	<!--</div>-->
-	<!--</div>-->
+	<div class="mid-bottom-cont" data-title="人口">
+		<div class="mid-map-chart-box left" data-title="老年人口数">
+			<div class="chart-box" id="MidMapChart1Box"></div>
+		</div>
+		<div class="mid-map-chart-box mid" data-title="幼儿人口数">
+			<div class="chart-box" id="MidMapChart2Box"></div>
+		</div>
+		<div class="mid-map-chart-box right" data-title="IT类人员增长数">
+			<div class="chart-box" id="MidMapChart3Box"></div>
+		</div>
+	</div>
 	<!--/mid-bottom-cont-->
 	<!--mid-map-box-->
-	<!--<div class="mid-map-box update-mid-map">-->
-	<!--<div class="map-chart-box" id="mapChart1Box"></div>-->
-	<!--</div>-->
-	<!--/mid-map-box-->
-	<div class="mid-map-box" style="overflow: hidden; margin-top: 0; height: 100%;">
-		<img src="images/tmp_lart_01.png" alt="" style="width: 100%;">
+	<div class="mid-map-box update-mid-map">
+		<div class="map-chart-box" id="mapChart1Box"></div>
 	</div>
+	<!--/mid-map-box-->
+	<!--<div class="mid-map-box" style="overflow: hidden; margin-top: 0; height: 100%;">-->
+	<!--<img src="images/tmp_lart_01.png" alt="" style="width: 100%;">-->
+	<!--</div>-->
 	</script>
 	<!--中间顶部数据 地域-->
 	<script type="text/html" id="tplMidTopListDY">
