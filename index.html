@@ -335,54 +335,6 @@
 			<div class="map-chart-box" id="mapChart1Box"></div>
 		</div>
 	</script>
-	<!--中间顶部数据 人口-->
-	<script type="text/html" id="tplMidTopListRK">
-		<!--mid-bottom-cont-->
-	<div class="mid-bottom-cont" data-title="人口">
-		<div class="mid-map-chart-box left" data-title="老年人口数">
-			<div class="chart-box" id="MidMapChart1Box"></div>
-		</div>
-		<div class="mid-map-chart-box mid" data-title="幼儿人口数">
-			<div class="chart-box" id="MidMapChart2Box"></div>
-		</div>
-		<div class="mid-map-chart-box right" data-title="IT类人员增长数">
-			<div class="chart-box" id="MidMapChart3Box"></div>
-		</div>
-	</div>
-	<!--/mid-bottom-cont-->
-	<!--mid-map-box-->
-	<div class="mid-map-box update-mid-map">
-		<div class="map-chart-box" id="mapChart1Box"></div>
-	</div>
-	<!--/mid-map-box-->
-	<!--<div class="mid-map-box" style="overflow: hidden; margin-top: 0; height: 100%;">-->
-	<!--<img src="images/tmp_lart_01.png" alt="" style="width: 100%;">-->
-	<!--</div>-->
-	</script>
-	<!--中间顶部数据 地域-->
-	<script type="text/html" id="tplMidTopListDY">
-		<div class="mid-map-box" style="overflow: hidden; margin-top: 0; height: 100%;">
-			<img src="images/tmp_lart_02.png" alt="" style="width: 100%;">
-		</div>
-	</script>
-	<!--中间顶部数据 产业-->
-	<script type="text/html" id="tplMidTopListCY">
-		<div class="mid-map-box" style="overflow: hidden; margin-top: 0; height: 100%;">
-			<img src="images/tmp_lart_03.png" alt="" style="width: 100%;">
-		</div>
-	</script>
-	<!--中间顶部数据 事务-->
-	<script type="text/html" id="tplMidTopListSW">
-		<div class="mid-map-box" style="overflow: hidden; margin-top: 0; height: 100%;">
-			<img src="images/tmp_lart_04.png" alt="" style="width: 100%;">
-		</div>
-	</script>
-	<!--中间顶部数据 组织-->
-	<script type="text/html" id="tplMidTopListZZ">
-		<div class="mid-map-box" style="overflow: hidden; margin-top: 0; height: 100%;">
-			<img src="images/tmp_lart_05.png" alt="" style="width: 100%;">
-		</div>
-	</script>
 	<!--中间顶部数据 三年行动计划 全部-->
 	<script type="text/html" id="tplMidTopListSNJH">
 		<div class="mid-SNJH-nav-box">
@@ -392,74 +344,62 @@
 				{{/each}}
 			</ul>
 		</div>
-		<div class="mid-map-box" style="overflow: hidden; margin-top: 0; height: 100%;">
-			<img src="images/tmp_sjjh_01.png" alt="" style="width: 100%;">
+		<div class="mid-bottom-cont">
+			<div class="mid-map-chart-box all" data-title="{{row_data_title}}">
+				<!--list-item-box-->
+				{{each dataList as item}}
+				<dl class="list-item-box">
+					<dt>{{item.title}}</dt>
+					<dd>
+						<span class="name">{{item.name}}</span>
+						<span class="number clr01">{{item.number}}</span>
+						<span class="unit">{{item.unit}}</span>
+						<span class="percent">{{item.percent}}</span>
+					</dd>
+				</dl>
+				{{/each}}
+				<!--/list-item-box-->
+			</div>
+		</div>
+		<div class="mid-map-box update-mid-map">
+			<div class="map-chart-box" id="mapChart1Box"></div>
 		</div>
 	</script>
-	<!--中间顶部数据 三年行动计划 教育-->
-	<script type="text/html" id="tplMidTopListJY">
-		<div class="mid-SNJH-nav-box">
-			<ul class="list">
-				{{each navList as item i}}
-				<li data-id="{{item.value}}" {{if navIndex==i}}class="act" {{/if}}>{{item.name}}</li>
-				{{/each}}
-			</ul>
+	<!--中间顶部数据 三年行动计划 教育、交通、医疗、养老、公共设施-->
+	<script type="text/html" id="tplMidTopListSNXDJH">
+		<!--分析区域  animated bounceIn-->
+	<div class="mid-SNJH-top-filter" id="SNJHTopFilter">
+		<div class="mid-title">
+			<button type="button" class="btn-close" id="SNJHTopFilterClose"></button>
+			<h3>教育资源匹配分析</h3>
 		</div>
-		<div class="mid-map-box" style="overflow: hidden; margin-top: 0; height: 100%;">
-			<img src="images/tmp_sjjh_02.png" alt="" style="width: 100%;">
+		<div class="mid-content">
+			<img src="images/top_info.jpg" alt="">
 		</div>
-	</script>
-	<!--中间顶部数据 三年行动计划 交通-->
-	<script type="text/html" id="tplMidTopListJT">
-		<div class="mid-SNJH-nav-box">
-			<ul class="list">
-				{{each navList as item i}}
-				<li data-id="{{item.value}}" {{if navIndex==i}}class="act" {{/if}}>{{item.name}}</li>
-				{{/each}}
-			</ul>
+	</div>
+	<div class="mid-SNJH-nav-box">
+		<ul class="list">
+			{{each navList as item i}}
+			<li data-id="{{item.value}}" {{if navIndex==i}}class="act" {{/if}}>{{item.name}}</li>
+			{{/each}}
+		</ul>
+	</div>
+	<div class="mid-bottom-cont">
+		<div class="mid-map-chart-box all" data-title="{{row_data_title}}">
+			<button type="button" class="btn-filter" id="SNJHTopFilterShow">分析</button>
+			<!--list-item-box-->
+			{{each dataList as item}}
+			<dl class="list-item-box">
+				<dt>{{item.title}}</dt>
+				<dd>{{item.value}}</dd>
+			</dl>
+			{{/each}}
+			<!--/list-item-box-->
 		</div>
-		<div class="mid-map-box" style="overflow: hidden; margin-top: 0; height: 100%;">
-			<img src="images/tmp_sjjh_03.png" alt="" style="width: 100%;">
-		</div>
-	</script>
-	<!--中间顶部数据 三年行动计划 医疗-->
-	<script type="text/html" id="tplMidTopListYL">
-		<div class="mid-SNJH-nav-box">
-			<ul class="list">
-				{{each navList as item i}}
-				<li data-id="{{item.value}}" {{if navIndex==i}}class="act" {{/if}}>{{item.name}}</li>
-				{{/each}}
-			</ul>
-		</div>
-		<div class="mid-map-box" style="overflow: hidden; margin-top: 0; height: 100%;">
-			<img src="images/tmp_sjjh_04.png" alt="" style="width: 100%;">
-		</div>
-	</script>
-	<!--中间顶部数据 三年行动计划 养老-->
-	<script type="text/html" id="tplMidTopListYL2">
-		<div class="mid-SNJH-nav-box">
-			<ul class="list">
-				{{each navList as item i}}
-				<li data-id="{{item.value}}" {{if navIndex==i}}class="act" {{/if}}>{{item.name}}</li>
-				{{/each}}
-			</ul>
-		</div>
-		<div class="mid-map-box" style="overflow: hidden; margin-top: 0; height: 100%;">
-			<img src="images/tmp_sjjh_05.png" alt="" style="width: 100%;">
-		</div>
-	</script>
-	<!--中间顶部数据 三年行动计划 公共设施-->
-	<script type="text/html" id="tplMidTopListGGSS">
-		<div class="mid-SNJH-nav-box">
-			<ul class="list">
-				{{each navList as item i}}
-				<li data-id="{{item.value}}" {{if navIndex==i}}class="act" {{/if}}>{{item.name}}</li>
-				{{/each}}
-			</ul>
-		</div>
-		<div class="mid-map-box" style="overflow: hidden; margin-top: 0; height: 100%;">
-			<img src="images/tmp_sjjh_06.png" alt="" style="width: 100%;">
-		</div>
+	</div>
+	<div class="mid-map-box update-mid-map">
+		<div class="map-chart-box" id="mapChart1Box"></div>
+	</div>
 	</script>
 	<!--中间顶部数据 突发事件-->
 	<script type="text/html" id="tplTFSJHtml">
