@@ -131,14 +131,14 @@
 				<div class="list-row-box">
 					<div class="list-left" data-title="{{item.nowTitle}}">
 						{{each item.nowData as data}}
-						<div class="progress-item" data-type="{{data.type}}" data-image="{{data.image}}" data-max="{{data.maxValue}}" data-name="{{data.name}}" data-value="{{data.value}}"></div>
+						<div class="progress-item" role="progress" data-type="{{data.type}}" data-image="{{data.image}}" data-max="{{data.maxValue}}" data-name="{{data.name}}" data-value="{{data.value}}" data-color="{{data.color}}"></div>
 						{{/each}}
 					</div>
 					<div class="list-right" data-title="{{item.resultTitle}}">
 						{{if item.resultData}}
 						{{if item.resultData.average}}
 						<div class="lr-title">{{item.resultData.average.name}}</div>
-						<div class="progress-item" data-type="{{item.resultData.average.type}}" data-image="{{item.resultData.average.image}}" data-max="{{item.resultData.average.maxValue}}" data-value="{{item.resultData.average.value}}"></div>
+						<div class="progress-item" role="progress" data-type="{{item.resultData.average.type}}" data-image="{{item.resultData.average.image}}" data-max="{{item.resultData.average.maxValue}}" data-value="{{item.resultData.average.value}}" data-color="{{item.resultData.average.color}}"></div>
 						{{/if}}
 						{{if item.resultData.title}}
 						<div class="lr-title2">{{item.resultData.title}}</div>
