@@ -1,146 +1,9 @@
-<!--头部文件-->
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-	<meta charset="UTF-8">
-	<title>回天大脑 - 运营监测 实时交通</title>
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
-	<link rel="stylesheet" type="text/css" href="css/animate.min.css" />
-	<link rel="stylesheet" type="text/css" href="css/app.min.css" />
-	<script type="text/javascript" src="js/plugin/echarts.js"></script>
-	<script type="text/javascript" src="js/plugin/jquery-1.11.0.min.js"></script>
-	<script type="text/javascript" src="js/plugin/template.js"></script>
-	<script type="text/javascript" src="js/plugin/jquery.countup.min.js"></script>
-	<script type="text/javascript" src="js/plugin/jquery.waypoint.min.js"></script>
-	<script type="text/javascript" src="js/plugin/jquery.validate.min.js"></script>
-	<script type="text/javascript" src="js/app.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="css/mapbox-gl.css" />
-	<script type="text/javascript" src="js/plugin/mapbox-gl.js"></script>
-	<script type="text/javascript" src="js/yunyingjiance.js"></script>
-	<script type="text/javascript" src="js/changping_yy.js"></script>
-</head>
-
-<body>
-	<!--fixed-header-wrap-->
-	<div class="fixed-header-wrap">
-		<div class="left-content"></div>
-		<div class="mid-title"> 运营监测 </div>
-		<div class="right-content">
-			<ul class="nav-list">
-				<li><a href="index.html">数说回天</a></li>
-				<li><a href="shujuwenzheng2.html">数据问诊</a></li>
-				<li><a href="jiezhenhuaxiang.html">街镇画像</a></li>
-				<li><a href="zhibiaohuaxiang2.html">指标画像</a></li>
-				<li class="active"><a href="yunyingjiance.html">运营监测</a></li>
-			</ul>
-		</div>
-	</div>
-	<!--/fixed-header-wrap-->
-	<!--main-wrapper-->
-	<div class="main-wrapper">
-		<div class="container">
-			<!--mid-top-nav-box-->
-			<div class="yy-mid-top-nav-box">
-				<ul class="list">
-					<li class="act"><a href="yunyingjiance.html">实时交通</a></li>
-					<li><a href="shishirenliu.html">实时人流</a></li>
-					<li><a href="jiesujiban.html">接诉即办</a></li>
-				</ul>
-			</div>
-			<!--/mid-top-nav-box-->
-			<!--yy-container-->
-			<div class="yy-container">
-				<!--yy-left-content-->
-				<div class="yy-left-content">
-					<!--yy-box-ss-wrap-->
-					<div class="yy-box-ss-wrap yy-left-box1-wrap">
-						<div class="box-title">
-							<div class="h3">监控路段</div>
-						</div>
-						<div class="box-content">
-							<ul class="left-top-nav" id="leftTopNav"></ul>
-							<!--mrb-box-->
-							<div class="mrb-box">
-								<div class="mrb-tit">
-									<h3>路段列表</h3>
-								</div>
-								<div class="mrb-cont">
-									<div class="ld-list-box" id="LDListBox"></div>
-								</div>
-							</div>
-							<!--/mrb-box-->
-						</div>
-					</div>
-					<!--/yy-box-ss-wrap-->
-					<!--yy-box-ss-wrap-->
-					<div class="yy-box-ss-wrap yy-left-box2-wrap">
-						<div class="box-content">
-							<!--mrb-box-->
-							<div class="mrb-box">
-								<div class="mrb-tit">
-									<h3>常发拥堵排行Top5</h3>
-								</div>
-								<div class="mrb-cont">
-									<ul class="top-sort-list" id="topSortList"></ul>
-								</div>
-							</div>
-							<!--/mrb-box-->
-						</div>
-					</div>
-					<!--/yy-box-ss-wrap-->
-				</div>
-				<!--/yy-left-content-->
-				<!--yy-middle-content-->
-				<div class="yy-middle-content">
-					<!--mid-top-list-box-->
-					<div class="mid-top-list-box">
-						<ul class="list" id="midTopListBox"></ul>
-					</div>
-					<!--/mid-top-list-box-->
-					<!--mid-bottom-list-box-->
-					<div class="mid-bottom-list-box">
-						<ul class="list" id="midBottomListBox"></ul>
-					</div>
-					<!--/mid-bottom-list-box-->
-					<!--mid-map-box-->
-					<div class="mid-map-box">
-						<div class="chart-map-box" id="chartMapBox"></div>
-					</div>
-					<!--/mid-map-box-->
-				</div>
-				<!--/yy-middle-content-->
-				<!--yy-right-content-->
-				<div class="yy-right-content">
-					<!--yy-box-ss-wrap-->
-					<div class="yy-box-ss-wrap yy-left-box3-wrap">
-						<div class="box-title">
-							<div class="h3">交通预测分析</div>
-						</div>
-						<div class="box-content">
-							<div class="yc-list-box" id="ycListBox"></div>
-						</div>
-					</div>
-					<!--/yy-box-ss-wrap-->
-				</div>
-				<!--/yy-right-content-->
-			</div>
-			<!--/yy-container-->
-		</div>
-	</div>
-	<!--/main-wrapper-->
-	<!--监控路段信息-->
-	<script type="text/html" id="tplLeftTopNavHtml">
-	{{each dataList as item i}}
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>回天大脑 - 运营监测 实时交通</title><link rel="stylesheet" type="text/css" href="css/bootstrap.css"><link rel="stylesheet" type="text/css" href="css/animate.min.css"><link rel="stylesheet" type="text/css" href="css/app.min.css"><script type="text/javascript" src="js/plugin/echarts.js"></script><script type="text/javascript" src="js/plugin/jquery-1.11.0.min.js"></script><script type="text/javascript" src="js/plugin/template.js"></script><script type="text/javascript" src="js/plugin/jquery.countup.min.js"></script><script type="text/javascript" src="js/plugin/jquery.waypoint.min.js"></script><script type="text/javascript" src="js/plugin/jquery.validate.min.js"></script><script type="text/javascript" src="js/app.min.js"></script><link rel="stylesheet" type="text/css" href="css/mapbox-gl.css"><script type="text/javascript" src="js/plugin/mapbox-gl.js"></script><script type="text/javascript" src="js/yunyingjiance.js"></script><script type="text/javascript" src="js/changping_yy.js"></script></head><body><div class="fixed-header-wrap"><div class="left-content"></div><div class="mid-title">运营监测</div><div class="right-content"><ul class="nav-list"><li><a href="index.html">数说回天</a></li><li><a href="shujuwenzheng2.html">数据问诊</a></li><li><a href="jiezhenhuaxiang.html">街镇画像</a></li><li><a href="zhibiaohuaxiang2.html">指标画像</a></li><li class="active"><a href="yunyingjiance.html">运营监测</a></li></ul></div></div><div class="main-wrapper"><div class="container"><div class="yy-mid-top-nav-box"><ul class="list"><li class="act"><a href="yunyingjiance.html">实时交通</a></li><li><a href="shishirenliu.html">实时人流</a></li><li><a href="jiesujiban.html">接诉即办</a></li></ul></div><div class="yy-container"><div class="yy-left-content"><div class="yy-box-ss-wrap yy-left-box1-wrap"><div class="box-title"><div class="h3">监控路段</div></div><div class="box-content"><ul class="left-top-nav" id="leftTopNav"></ul><div class="mrb-box"><div class="mrb-tit"><h3>路段列表</h3></div><div class="mrb-cont"><div class="ld-list-box" id="LDListBox"></div></div></div></div></div><div class="yy-box-ss-wrap yy-left-box2-wrap"><div class="box-content"><div class="mrb-box"><div class="mrb-tit"><h3>常发拥堵排行Top5</h3></div><div class="mrb-cont"><ul class="top-sort-list" id="topSortList"></ul></div></div></div></div></div><div class="yy-middle-content"><div class="mid-top-list-box"><ul class="list" id="midTopListBox"></ul></div><div class="mid-bottom-list-box"><ul class="list" id="midBottomListBox"></ul></div><div class="mid-map-box"><div class="chart-map-box" id="chartMapBox"></div></div></div><div class="yy-right-content"><div class="yy-box-ss-wrap yy-left-box3-wrap"><div class="box-title"><div class="h3">交通预测分析</div></div><div class="box-content"><div class="yc-list-box" id="ycListBox"></div></div></div></div></div></div></div><script type="text/html" id="tplLeftTopNavHtml">{{each dataList as item i}}
 	<li>
 		<h3 class="counter">{{item.value}}</h3>
 		<p>{{item.name}}</p>
 	</li>
-	{{/each}}
-	</script>
-	<!--路段列表模板-->
-	<script type="text/html" id="tplLDListBoxHtml">
-	{{each dataList as item}}
+	{{/each}}</script><script type="text/html" id="tplLDListBoxHtml">{{each dataList as item}}
 	<div class="list-item">
 		<div class="percent-thumb">
 			<p class="value">
@@ -163,22 +26,14 @@
 			</p>
 		</div>
 	</div>
-	{{/each}}
-	</script>
-	<!--常发拥堵排行Top5-->
-	<script type="text/html" id="tplRightContent">
-	{{each dataList as item i}}
+	{{/each}}</script><script type="text/html" id="tplRightContent">{{each dataList as item i}}
 	<li {{if i==index}}class="active" {{/if}}>
 		<p class="num" style="background-color: {{item.color}};">{{item.id}}</p>
 		<p class="name">{{item.name}}</p>
 		<p class="value" style="color: {{item.color}};">{{item.value}}</p>
 		<p class="value2" style="color: {{item.color}};">{{item.value2}}</p>
 	</li>
-	{{/each}}
-	</script>
-	<!--交通预测分析-->
-	<script type="text/html" id="tplYCListHtml">
-		<li class="top">
+	{{/each}}</script><script type="text/html" id="tplYCListHtml"><li class="top">
 			<div class="flex-box">
 				<h3>预测分析数</h3>
 				<p class="val">{{dataInfo.number}}</p>
@@ -200,11 +55,7 @@
 			<p class="row-list"><span>状态：</span><span class="status">{{item.status}}</span></p>
 			<a href="javascript:;" class="link"><img src="images/yy_icon_camera.png" alt=""></a>
 		</li>
-		{{/each}}
-	</script>
-	<!--中间顶部数据-->
-	<script type="text/html" id="tplMidTopList">
-		<li>
+		{{/each}}</script><script type="text/html" id="tplMidTopList"><li>
 			<img src="images/yy_icon_01.png" alt="" class="icon">
 			<div class="inline-block">
 				<p>平均速度</p>
@@ -232,11 +83,7 @@
 					<span class="value clr03 counter">{{dataInfo.ycValue}}</span>
 				</p>
 			</div>
-		</li>
-	</script>
-	<!--中间底部数据-->
-	<script type="text/html" id="tplMidBottomList">
-		<li>
+		</li></script><script type="text/html" id="tplMidBottomList"><li>
 			<img src="images/yy_icon_04.png" alt="" class="icon">
 			<div class="inline-block">
 				<p>共享单车匹配度</p>
@@ -271,8 +118,4 @@
 					<span class="value clr06" style="color: #74d9ba;">40%</span>
 				</p>
 			</div>
-		</li>
-	</script>
-</body>
-
-</html>
+		</li></script></body></html>

@@ -1,132 +1,4 @@
-<!--头部文件-->
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-	<meta charset="UTF-8">
-	<title>回天大脑 - 运营监测 实时人流</title>
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
-	<link rel="stylesheet" type="text/css" href="css/animate.min.css" />
-	<link rel="stylesheet" type="text/css" href="css/app.min.css" />
-	<script type="text/javascript" src="js/plugin/echarts.js"></script>
-	<script type="text/javascript" src="js/plugin/jquery-1.11.0.min.js"></script>
-	<script type="text/javascript" src="js/plugin/template.js"></script>
-	<script type="text/javascript" src="js/plugin/jquery.countup.min.js"></script>
-	<script type="text/javascript" src="js/plugin/jquery.waypoint.min.js"></script>
-	<script type="text/javascript" src="js/plugin/jquery.validate.min.js"></script>
-	<script type="text/javascript" src="js/app.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="css/mapbox-gl.css" />
-	<script type="text/javascript" src="js/plugin/d3.min.js"></script>
-	<script type="text/javascript" src="js/plugin/mapbox-gl.js"></script>
-	<script type="text/javascript" src="js/shishirenliu.js"></script>
-</head>
-
-<body>
-	<!--fixed-header-wrap-->
-	<div class="fixed-header-wrap">
-		<div class="left-content"></div>
-		<div class="mid-title"> 运营监测 </div>
-		<div class="right-content">
-			<ul class="nav-list">
-				<li><a href="index.html">数说回天</a></li>
-				<li><a href="shujuwenzheng2.html">数据问诊</a></li>
-				<li><a href="jiezhenhuaxiang.html">街镇画像</a></li>
-				<li><a href="zhibiaohuaxiang2.html">指标画像</a></li>
-				<li class="active"><a href="yunyingjiance.html">运营监测</a></li>
-			</ul>
-		</div>
-	</div>
-	<!--/fixed-header-wrap-->
-	<!--main-wrapper-->
-	<div class="main-wrapper">
-		<div class="container">
-			<!--mid-top-nav-box-->
-			<div class="yy-mid-top-nav-box">
-				<ul class="list">
-					<li><a href="yunyingjiance.html">实时交通</a></li>
-					<li class="act"><a href="shishirenliu.html">实时人流</a></li>
-					<li><a href="jiesujiban.html">接诉即办</a></li>
-				</ul>
-			</div>
-			<!--/mid-top-nav-box-->
-			<!--yy-container-->
-			<div class="yy-container yy-ssrl-container">
-				<!--yy-left-content-->
-				<div class="yy-left-content">
-					<!--yy-box-ss-wrap-->
-					<div class="yy-box-ss-wrap yy-left-box1-wrap">
-						<div class="box-title">
-							<div class="h3">人口属性</div>
-						</div>
-						<div class="box-content">
-							<!--human-box-->
-							<div class="human-box" id="SMFYList"></div>
-							<!--/human-box-->
-						</div>
-					</div>
-					<!--/yy-box-ss-wrap-->
-					<!--yy-box-ss-wrap-->
-					<div class="yy-box-ss-wrap yy-left-box2-wrap">
-						<div class="box-content">
-							<!--mrb-box-->
-							<div class="mrb-box">
-								<div class="mrb-tit">
-									<h3>行业分布</h3>
-								</div>
-								<div class="mrb-cont">
-									<div class="chart-box" id="pieChartBox"></div>
-								</div>
-							</div>
-							<!--/mrb-box-->
-						</div>
-					</div>
-					<!--/yy-box-ss-wrap-->
-				</div>
-				<!--/yy-left-content-->
-				<!--yy-middle-content-->
-				<div class="yy-middle-content">
-					<!--mid-top-list-box-->
-					<div class="mid-top-list-box">
-						<ul class="list" id="midTopListBox"></ul>
-						<!--tab-list-box-->
-						<div class="tab-list-box">
-							<ul class="tab-list" id="midTopTabList"></ul>
-						</div>
-						<!--/tab-list-box-->
-					</div>
-					<!--/mid-top-list-box-->
-					<!--mid-bottom-list-box-->
-					<div class="mid-bottom-list-box" id="midBottomListBox"></div>
-					<!--/mid-bottom-list-box-->
-					<!--mid-map-box-->
-					<div class="mid-map-box">
-						<div class="chart-map-box" id="chartMapBox"></div>
-					</div>
-					<!--/mid-map-box-->
-				</div>
-				<!--/yy-middle-content-->
-				<!--yy-right-content-->
-				<div class="yy-right-content">
-					<!--yy-box-ss-wrap-->
-					<div class="yy-box-ss-wrap yy-left-box3-wrap">
-						<div class="box-title">
-							<div class="h3">聚集预测分析</div>
-						</div>
-						<div class="box-content">
-							<div class="yc-list-box" id="ycListBox"></div>
-						</div>
-					</div>
-					<!--/yy-box-ss-wrap-->
-				</div>
-				<!--/yy-right-content-->
-			</div>
-			<!--/yy-container-->
-		</div>
-	</div>
-	<!--/main-wrapper-->
-	<!--人口属性-->
-	<script type="text/html" id="tplLDListBoxHtml">
-		<!--section-box-->
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>回天大脑 - 运营监测 实时人流</title><link rel="stylesheet" type="text/css" href="css/bootstrap.css"><link rel="stylesheet" type="text/css" href="css/animate.min.css"><link rel="stylesheet" type="text/css" href="css/app.min.css"><script type="text/javascript" src="js/plugin/echarts.js"></script><script type="text/javascript" src="js/plugin/jquery-1.11.0.min.js"></script><script type="text/javascript" src="js/plugin/template.js"></script><script type="text/javascript" src="js/plugin/jquery.countup.min.js"></script><script type="text/javascript" src="js/plugin/jquery.waypoint.min.js"></script><script type="text/javascript" src="js/plugin/jquery.validate.min.js"></script><script type="text/javascript" src="js/app.min.js"></script><link rel="stylesheet" type="text/css" href="css/mapbox-gl.css"><script type="text/javascript" src="js/plugin/d3.min.js"></script><script type="text/javascript" src="js/plugin/mapbox-gl.js"></script><script type="text/javascript" src="js/shishirenliu.js"></script></head><body><div class="fixed-header-wrap"><div class="left-content"></div><div class="mid-title">运营监测</div><div class="right-content"><ul class="nav-list"><li><a href="index.html">数说回天</a></li><li><a href="shujuwenzheng2.html">数据问诊</a></li><li><a href="jiezhenhuaxiang.html">街镇画像</a></li><li><a href="zhibiaohuaxiang2.html">指标画像</a></li><li class="active"><a href="yunyingjiance.html">运营监测</a></li></ul></div></div><div class="main-wrapper"><div class="container"><div class="yy-mid-top-nav-box"><ul class="list"><li><a href="yunyingjiance.html">实时交通</a></li><li class="act"><a href="shishirenliu.html">实时人流</a></li><li><a href="jiesujiban.html">接诉即办</a></li></ul></div><div class="yy-container yy-ssrl-container"><div class="yy-left-content"><div class="yy-box-ss-wrap yy-left-box1-wrap"><div class="box-title"><div class="h3">人口属性</div></div><div class="box-content"><div class="human-box" id="SMFYList"></div></div></div><div class="yy-box-ss-wrap yy-left-box2-wrap"><div class="box-content"><div class="mrb-box"><div class="mrb-tit"><h3>行业分布</h3></div><div class="mrb-cont"><div class="chart-box" id="pieChartBox"></div></div></div></div></div></div><div class="yy-middle-content"><div class="mid-top-list-box"><ul class="list" id="midTopListBox"></ul><div class="tab-list-box"><ul class="tab-list" id="midTopTabList"></ul></div></div><div class="mid-bottom-list-box" id="midBottomListBox"></div><div class="mid-map-box"><div class="chart-map-box" id="chartMapBox"></div></div></div><div class="yy-right-content"><div class="yy-box-ss-wrap yy-left-box3-wrap"><div class="box-title"><div class="h3">聚集预测分析</div></div><div class="box-content"><div class="yc-list-box" id="ycListBox"></div></div></div></div></div></div></div><script type="text/html" id="tplLDListBoxHtml"><!--section-box-->
 	<div class="section-box">
 		<div class="jsjb-smfy-list" data-title="*男女比例及各人口数（人/万）">
 			{{each dataList as item i}}
@@ -182,11 +54,7 @@
 			{{/each}}
 		</div>
 	</div>
-	<!--/section-box-->
-	</script>
-	<!--聚集预测分析-->
-	<script type="text/html" id="tplYCListHtml">
-		<li class="top">
+	<!--/section-box--></script><script type="text/html" id="tplYCListHtml"><li class="top">
 			<div class="flex-box">
 				<h3>预测分析数</h3>
 				<p class="val">{{dataInfo.number}}</p>
@@ -206,11 +74,7 @@
 			<p class="row-list"><span>建议：</span><span class="adv">{{item.adv}}</span></p>
 			<a href="javascript:;" class="link"><img src="images/yy_icon_camera.png" alt=""></a>
 		</li>
-		{{/each}}
-	</script>
-	<!--中间顶部数据-->
-	<script type="text/html" id="tplMidTopList">
-	{{each dataList as item}}
+		{{/each}}</script><script type="text/html" id="tplMidTopList">{{each dataList as item}}
 	<li style="width: 33.33%;">
 		<img src="{{item.icon}}" alt="" class="icon">
 		<div class="inline-block">
@@ -220,17 +84,9 @@
 			<p>{{item.name}}</p>
 		</div>
 	</li>
-	{{/each}}
-	</script>
-	<!--中间顶部切换导航模板-->
-	<script type="text/html" id="tplMidTopTabList">
-	{{each dataList as item i}}
+	{{/each}}</script><script type="text/html" id="tplMidTopTabList">{{each dataList as item i}}
 	<li {{if i==index}}class="act" {{/if}}>{{item.name}}</li>
-	{{/each}}
-	</script>
-	<!--中间底部数据-->
-	<script type="text/html" id="tplMidBottomList">
-		<ul class="list list-tit1">
+	{{/each}}</script><script type="text/html" id="tplMidBottomList"><ul class="list list-tit1">
 			{{each dataListTop as item}}
 			<li style="width: 25%;">
 				<img src="{{item.icon}}" alt="" class="icon">
@@ -261,8 +117,4 @@
 				</div>
 			</li>
 			{{/each}}
-		</ul>
-	</script>
-</body>
-
-</html>
+		</ul></script></body></html>

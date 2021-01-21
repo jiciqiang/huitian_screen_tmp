@@ -1,177 +1,6 @@
-<!--头部文件-->
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-	<meta charset="UTF-8">
-	<title>回天大脑 - 街镇画像</title>
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
-	<link rel="stylesheet" type="text/css" href="css/animate.min.css" />
-	<link rel="stylesheet" type="text/css" href="css/app.min.css" />
-	<script type="text/javascript" src="js/plugin/echarts.js"></script>
-	<script type="text/javascript" src="js/plugin/jquery-1.11.0.min.js"></script>
-	<script type="text/javascript" src="js/plugin/template.js"></script>
-	<script type="text/javascript" src="js/plugin/jquery.countup.min.js"></script>
-	<script type="text/javascript" src="js/plugin/jquery.waypoint.min.js"></script>
-	<script type="text/javascript" src="js/plugin/jquery.validate.min.js"></script>
-	<script type="text/javascript" src="js/app.min.js"></script>
-	<script type="text/javascript" src="js/plugin/echarts-wordcloud.min.js"></script>
-	<script type="text/javascript" src="js/jiezhenhuaxiang.js"></script>
-</head>
-
-<body>
-	<!--fixed-header-wrap-->
-	<div class="fixed-header-wrap">
-		<div class="left-content"></div>
-		<div class="mid-title"> 街镇画像 </div>
-		<div class="right-content">
-			<ul class="nav-list">
-				<li><a href="index.html">数说回天</a></li>
-				<li><a href="shujuwenzheng2.html">数据问诊</a></li>
-				<li class="active"><a href="jiezhenhuaxiang.html">街镇画像</a></li>
-				<li><a href="zhibiaohuaxiang2.html">指标画像</a></li>
-				<li><a href="yunyingjiance.html">运营监测</a></li>
-			</ul>
-		</div>
-	</div>
-	<!--/fixed-header-wrap-->
-	<!--main-wrapper-->
-	<div class="main-wrapper">
-		<div class="container">
-			<!--box-common-wrap-->
-			<div class="box-common-wrap jz-box01-wrap">
-				<div class="box-title">
-					<div class="h3">
-						<div class="select-box">
-							<select id="jzSelectBoxWrap"></select>
-						</div>
-					</div>
-				</div>
-				<div class="box-content">
-					<!--left-content-box-->
-					<div class="left-content-box">
-						<!--mrb-box-->
-						<div class="mrb-box">
-							<div class="mrb-tit">
-								<h3>街镇信息</h3>
-							</div>
-							<div class="mrb-cont">
-								<div class="jdxx-list" id="jdxxListID"></div>
-							</div>
-						</div>
-						<!--/mrb-box-->
-					</div>
-					<!--/left-content-box-->
-					<!--middle-content-box-->
-					<div class="middle-content-box">
-						<!--mrb-box-->
-						<div class="mrb-box">
-							<div class="mrb-tit">
-								<h3>七有五性指标</h3>
-							</div>
-							<div class="mrb-cont">
-								<div class="top-text-box">
-									<div class="item left">高</div>
-									<div class="item right">低</div>
-								</div>
-								<div class="chart-box" id="radarBox"></div>
-							</div>
-						</div>
-						<!--/mrb-box-->
-					</div>
-					<!--/middle-content-box-->
-					<!--right-content-box-->
-					<div class="right-content-box">
-						<!--right-content-top-->
-						<div class="right-content-top">
-							<!--mrb-box-->
-							<div class="mrb-box">
-								<div class="mrb-tit">
-									<h3>七有指标变化</h3>
-								</div>
-								<div class="mrb-cont">
-									<div class="chart-box" id="qyzbBox"></div>
-								</div>
-							</div>
-							<!--/mrb-box-->
-						</div>
-						<!--/right-content-top-->
-						<!--right-content-bottom-->
-						<div class="right-content-bottom">
-							<!--mrb-box-->
-							<div class="mrb-box">
-								<div class="mrb-tit">
-									<h3>五性指标变化</h3>
-								</div>
-								<div class="mrb-cont">
-									<div class="chart-box" id="wxzbBox"></div>
-								</div>
-							</div>
-							<!--/mrb-box-->
-						</div>
-						<!--/right-content-bottom-->
-					</div>
-					<!--/right-content-box-->
-					<!--bottom-content-box-->
-					<div class="bottom-content-box">
-						<!--bottom-left-box-->
-						<div class="bottom-left-box">
-							<!--mrb-box-->
-							<div class="mrb-box">
-								<div class="mrb-tit">
-									<h3>街镇标签</h3>
-								</div>
-								<div class="mrb-cont">
-									<div class="chart-box" id="bottomCYBox"></div>
-								</div>
-							</div>
-							<!--/mrb-box-->
-						</div>
-						<!--/bottom-left-box-->
-						<!--bottom-right-box-->
-						<div class="bottom-right-box">
-							<img src="images/tmp_right_bttom.png" alt="" class="tmp-img" style="width: 100%; height: 100%;">
-							<!--program-box-->
-							<!--<div class="program-box">-->
-							<!--&lt;!&ndash;p-title&ndash;&gt;-->
-							<!--<div class="p-title">项目信息</div>-->
-							<!--&lt;!&ndash;/p-title&ndash;&gt;-->
-							<!--&lt;!&ndash;p-content&ndash;&gt;-->
-							<!--<div class="p-content">-->
-							<!--<ul class="top-nav-list" id="bottomTopNavList"></ul>-->
-							<!--&lt;!&ndash;bottom-table-list&ndash;&gt;-->
-							<!--<div class="bottom-table-list">-->
-							<!--<div class="table-row table-head">-->
-							<!--<div class="cell tit">项目名称</div>-->
-							<!--<div class="cell status">状态</div>-->
-							<!--<div class="cell oper">监控</div>-->
-							<!--</div>-->
-							<!--<div class="table-body" id="tableBodyBox"></div>-->
-							<!--</div>-->
-							<!--&lt;!&ndash;/bottom-table-list&ndash;&gt;-->
-							<!--</div>-->
-							<!--&lt;!&ndash;/p-content&ndash;&gt;-->
-							<!--</div>-->
-							<!--/program-box-->
-						</div>
-						<!--/bottom-right-box-->
-					</div>
-					<!--/bottom-content-box-->
-				</div>
-			</div>
-			<!--/box-common-wrap-->
-		</div>
-	</div>
-	<!--/main-wrapper-->
-	<!--整体区域 导航-->
-	<script type="text/html" id="tplSelectHtml">
-	{{each dataList as item i}}
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>回天大脑 - 街镇画像</title><link rel="stylesheet" type="text/css" href="css/bootstrap.css"><link rel="stylesheet" type="text/css" href="css/animate.min.css"><link rel="stylesheet" type="text/css" href="css/app.min.css"><script type="text/javascript" src="js/plugin/echarts.js"></script><script type="text/javascript" src="js/plugin/jquery-1.11.0.min.js"></script><script type="text/javascript" src="js/plugin/template.js"></script><script type="text/javascript" src="js/plugin/jquery.countup.min.js"></script><script type="text/javascript" src="js/plugin/jquery.waypoint.min.js"></script><script type="text/javascript" src="js/plugin/jquery.validate.min.js"></script><script type="text/javascript" src="js/app.min.js"></script><script type="text/javascript" src="js/plugin/echarts-wordcloud.min.js"></script><script type="text/javascript" src="js/jiezhenhuaxiang.js"></script></head><body><div class="fixed-header-wrap"><div class="left-content"></div><div class="mid-title">街镇画像</div><div class="right-content"><ul class="nav-list"><li><a href="index.html">数说回天</a></li><li><a href="shujuwenzheng2.html">数据问诊</a></li><li class="active"><a href="jiezhenhuaxiang.html">街镇画像</a></li><li><a href="zhibiaohuaxiang2.html">指标画像</a></li><li><a href="yunyingjiance.html">运营监测</a></li></ul></div></div><div class="main-wrapper"><div class="container"><div class="box-common-wrap jz-box01-wrap"><div class="box-title"><div class="h3"><div class="select-box"><select id="jzSelectBoxWrap"></select></div></div></div><div class="box-content"><div class="left-content-box"><div class="mrb-box"><div class="mrb-tit"><h3>街镇信息</h3></div><div class="mrb-cont"><div class="jdxx-list" id="jdxxListID"></div></div></div></div><div class="middle-content-box"><div class="mrb-box"><div class="mrb-tit"><h3>七有五性指标</h3></div><div class="mrb-cont"><div class="top-text-box"><div class="item left">高</div><div class="item right">低</div></div><div class="chart-box" id="radarBox"></div></div></div></div><div class="right-content-box"><div class="right-content-top"><div class="mrb-box"><div class="mrb-tit"><h3>七有指标变化</h3></div><div class="mrb-cont"><div class="chart-box" id="qyzbBox"></div></div></div></div><div class="right-content-bottom"><div class="mrb-box"><div class="mrb-tit"><h3>五性指标变化</h3></div><div class="mrb-cont"><div class="chart-box" id="wxzbBox"></div></div></div></div></div><div class="bottom-content-box"><div class="bottom-left-box"><div class="mrb-box"><div class="mrb-tit"><h3>街镇标签</h3></div><div class="mrb-cont"><div class="chart-box" id="bottomCYBox"></div></div></div></div><div class="bottom-right-box"><img src="images/tmp_right_bttom.png" alt="" class="tmp-img" style="width:100%;height:100%"></div></div></div></div></div></div><script type="text/html" id="tplSelectHtml">{{each dataList as item i}}
 	<option value="{{item.name}}" {{if i==index}}selected{{/if}}>{{item.name}}</option>
-	{{/each}}
-	</script>
-	<!--街镇信息模板-->
-	<script type="text/html" id="tplJDListHtml">
-	{{each dataList as item i}}
+	{{/each}}</script><script type="text/html" id="tplJDListHtml">{{each dataList as item i}}
 	<div class="list-item {{if i==index}}active{{/if}}">
 		<div class="cell icon"><img src="{{item.icon}}" alt=""></div>
 		<div class="cell name">
@@ -180,20 +9,12 @@
 		</div>
 		<div class="cell value" style="color: {{item.clr}}">{{item.value}}</div>
 	</div>
-	{{/each}}
-	</script>
-	<!--底部项目信息统计模板-->
-	<script type="text/html" id="tplBottomProgramTop">
-	{{each dataList as item i}}
+	{{/each}}</script><script type="text/html" id="tplBottomProgramTop">{{each dataList as item i}}
 	<li>
 		<p>{{item.name}}</p>
 		<h3 style="color: {{item.color}};">{{item.value}}</h3>
 	</li>
-	{{/each}}
-	</script>
-	<!--底部项目表格模板-->
-	<script type="text/html" id="tplBottomProgramTable">
-	{{each dataList as item i}}
+	{{/each}}</script><script type="text/html" id="tplBottomProgramTable">{{each dataList as item i}}
 	<div class="table-row">
 		<div class="cell tit">{{item.title}}</div>
 		<div class="cell status">{{item.status}}</div>
@@ -201,14 +22,6 @@
 			<a href="{{item.url}}">摄像头查看</a>
 		</div>
 	</div>
-	{{/each}}
-	</script>
-	<!--字符云-->
-	<script type="text/html" id="tplCouldHtml">
-	{{each dataList as item}}
+	{{/each}}</script><script type="text/html" id="tplCouldHtml">{{each dataList as item}}
 	<li style="color: {{item.color}};">{{item.name}}</li>
-	{{/each}}
-	</script>
-</body>
-
-</html>
+	{{/each}}</script></body></html>
