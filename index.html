@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>回天大脑 - 数说回天</title><link rel="stylesheet" type="text/css" href="css/bootstrap.css"><link rel="stylesheet" type="text/css" href="css/animate.min.css"><link rel="stylesheet" type="text/css" href="css/app.min.css"><script type="text/javascript" src="js/plugin/echarts.js"></script><script type="text/javascript" src="js/plugin/jquery-1.11.0.min.js"></script><script type="text/javascript" src="js/plugin/template.js"></script><script type="text/javascript" src="js/plugin/jquery.countup.min.js"></script><script type="text/javascript" src="js/plugin/jquery.waypoint.min.js"></script><script type="text/javascript" src="js/plugin/jquery.validate.min.js"></script><script type="text/javascript" src="js/app.min.js"></script><script type="text/javascript" src="js/plugin/echarts-wordcloud.min.js"></script><script type="text/javascript" src="js/changping_ht_update.js"></script><script type="text/javascript" src="js/index.js"></script><script type="text/javascript" src="js/index_update.js"></script></head><body><div class="fixed-header-wrap"><div class="left-content"></div><div class="mid-title">数说回天</div><div class="right-content"><ul class="nav-list"><li class="active"><a href="index.html">数说回天</a></li><li><a href="shujuwenzheng2.html">数据问诊</a></li><li><a href="jiezhenhuaxiang.html">街镇画像</a></li><li><a href="zhibiaohuaxiang2.html">指标画像</a></li><li><a href="yunyingjiance.html">运营监测</a></li></ul></div></div><div class="main-wrapper"><div class="container"><div class="ht-home-container" id="HTHomeContainer"><div class="ht-top-wrap"><div class="ht-left-content"><div class="yy-box-ss-wrap ht-inner-01-box"><div class="box-title"><div class="h3">回天印象</div></div><div class="box-content"><div class="htyx-top-box"><div class="nav-list-box"><ul class="list" id="leftTabChartNav"></ul></div></div><div class="htyx-bottom-box" id="HTYXBottomBox"></div></div></div></div><div class="ht-middle-content" id="HTMiddleContent"></div><div class="ht-right-content"><div class="camera-list-box update-camera-list-box"><div class="list-box clr01"><div class="list-content" id="TFSJBox"></div></div><div class="list-box clr02"><div class="list-content"><div class="chart-box" id="TFSJChartBox"></div></div></div></div><div class="ht-left-section-01"><div class="yy-box-ss-wrap ht-inner-06-box"><div class="box-title"><div class="h3">媒体聚焦</div></div><div class="box-content"><div class="zybd-top-nav"><div class="left">2016-2017</div><div class="right">2017-2020</div></div><div class="zybd-chart-list-wrap"><div class="left-chart" id="bottomLeftChartBox"></div><div class="right-chart" id="bottomRightChartBox"></div></div></div></div></div></div></div><div class="ht-bottom-wrap"><div class="ht-left-section-05"><div class="yy-box-ss-wrap ht-inner-02-box"><div class="box-title"><div class="h3"><a href="javascript:;" class="link" id="SNJHBtnMore">落图详细&gt;&gt;</a><h4>三年行动计划</h4></div></div><div class="box-content"><div class="snxdjh-list-box" id="SNXDJHList"></div></div></div></div><div class="ht-left-section-06"><div class="yy-box-ss-wrap ht-inner-04-box"><div class="box-title"><div class="h3"><a href="javascript:;" class="link">详细&gt;&gt;</a><h4>基层治理</h4></div></div><div class="box-content"><div class="jczl-left"><ul class="list" id="JCZLNavInfo"></ul></div><div class="jczl-right"><div class="chart-box" id="JCZLChartBox"></div></div></div></div></div><div class="ht-left-section-07"><div class="yy-box-ss-wrap ht-inner-05-box"><div class="box-title"><div class="h3"><a href="javascript:;" class="link">详细&gt;&gt;</a><h4>社区管理</h4></div></div><div class="box-content"><div class="ht-inner-05-left"><ul class="list" id="HT05RightList"></ul></div><div class="ht-inner-05-right"><div class="chart-box" id="HT05RightChart"></div></div></div></div></div><div class="ht-left-section-08"><div class="yy-box-ss-wrap ht-inner-03-box"><div class="box-title"><div class="h3"><a href="javascript:;" class="link">详细&gt;&gt;</a><h4>交通情况</h4></div></div><div class="box-content"><div class="top-nav-list" id="JTQKTopNavBox"><ul class="list" id="JTQKNavList"></ul></div><div class="chart-box" id="JTQKChartBox"></div></div></div></div></div></div></div></div><script type="text/html" id="tplTFListHtml"><div class="list-item active">
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>回天大脑 - 数说回天</title><link rel="stylesheet" type="text/css" href="css/bootstrap.css"><link rel="stylesheet" type="text/css" href="css/animate.min.css"><link rel="stylesheet" type="text/css" href="css/app.min.css"><script type="text/javascript" src="js/plugin/echarts.js"></script><script type="text/javascript" src="js/plugin/jquery-1.11.0.min.js"></script><script type="text/javascript" src="js/plugin/template.js"></script><script type="text/javascript" src="js/plugin/jquery.countup.min.js"></script><script type="text/javascript" src="js/plugin/jquery.waypoint.min.js"></script><script type="text/javascript" src="js/plugin/jquery.validate.min.js"></script><script type="text/javascript" src="js/app.min.js"></script><script type="text/javascript" src="js/plugin/echarts-wordcloud.min.js"></script><script type="text/javascript" src="js/changping_ht_update.js"></script><script type="text/javascript" src="js/index.js"></script><script type="text/javascript" src="js/index_update.js"></script><script type="text/javascript" src="js/index_tab_event.js"></script></head><body><div class="fixed-header-wrap"><div class="left-content"></div><div class="mid-title">数说回天</div><div class="right-content"><ul class="nav-list"><li class="active"><a href="index.html">数说回天</a></li><li><a href="shujuwenzheng2.html">数据问诊</a></li><li><a href="jiezhenhuaxiang.html">街镇画像</a></li><li><a href="zhibiaohuaxiang2.html">指标画像</a></li><li><a href="yunyingjiance.html">运营监测</a></li></ul></div></div><div class="main-wrapper"><div class="container"><div class="ht-home-container" id="HTHomeContainer"><div class="ht-top-wrap"><div class="ht-left-content"><div class="yy-box-ss-wrap ht-inner-01-box"><div class="box-title"><div class="h3">回天印象</div></div><div class="box-content"><div class="htyx-top-box"><div class="nav-list-box"><ul class="list" id="leftTabChartNav"></ul></div></div><div class="htyx-bottom-box" id="HTYXBottomBox"></div></div></div></div><div class="ht-middle-content" id="HTMiddleContent"></div><div class="ht-right-content"><div class="camera-list-box update-camera-list-box"><div class="list-box clr01"><div class="list-content" id="TFSJBox"></div></div><div class="list-box clr02"><div class="list-content"><div class="chart-box" id="TFSJChartBox"></div></div></div></div><div class="ht-left-section-01"><div class="yy-box-ss-wrap ht-inner-06-box"><div class="box-title"><div class="h3">媒体聚焦</div></div><div class="box-content"><div class="zybd-top-nav"><div class="left">2016-2017</div><div class="right">2017-2020</div></div><div class="zybd-chart-list-wrap"><div class="left-chart" id="bottomLeftChartBox"></div><div class="right-chart" id="bottomRightChartBox"></div></div></div></div></div></div></div><div class="ht-bottom-wrap"><div class="ht-left-section-05"><div class="yy-box-ss-wrap ht-inner-02-box"><div class="box-title"><div class="h3"><a href="javascript:;" class="link" id="SNJHBtnMore">落图详细&gt;&gt;</a><h4>三年行动计划</h4></div></div><div class="box-content"><div class="snxdjh-list-box" id="SNXDJHList"></div></div></div></div><div class="ht-left-section-06"><div class="yy-box-ss-wrap ht-inner-04-box"><div class="box-title"><div class="h3"><a href="javascript:;" class="link">详细&gt;&gt;</a><h4>基层治理</h4></div></div><div class="box-content"><div class="jczl-left"><ul class="list" id="JCZLNavInfo"></ul></div><div class="jczl-right"><div class="chart-box" id="JCZLChartBox"></div></div></div></div></div><div class="ht-left-section-07"><div class="yy-box-ss-wrap ht-inner-05-box"><div class="box-title"><div class="h3"><a href="javascript:;" class="link">详细&gt;&gt;</a><h4>社区管理</h4></div></div><div class="box-content"><div class="ht-inner-05-left"><ul class="list" id="HT05RightList"></ul></div><div class="ht-inner-05-right"><div class="chart-box" id="HT05RightChart"></div></div></div></div></div><div class="ht-left-section-08"><div class="yy-box-ss-wrap ht-inner-03-box"><div class="box-title"><div class="h3"><a href="javascript:;" class="link">详细&gt;&gt;</a><h4>交通情况</h4></div></div><div class="box-content"><div class="top-nav-list" id="JTQKTopNavBox"><ul class="list" id="JTQKNavList"></ul></div><div class="chart-box" id="JTQKChartBox"></div></div></div></div></div></div></div></div><script type="text/html" id="tplTFListHtml"><div class="list-item active">
 			<h3 class="icon icon-0" style="color: {{firstInfo.color}};">{{firstInfo.tag}}</h3>
 			<p class="title">{{firstInfo.title}}</p>
 			<div class="clearfix"></div>
@@ -40,7 +40,7 @@
 				<h3>{{dataInfo.mylValue}}</h3>
 			</div>
 		</li></script><script type="text/html" id="tplJTQKNavHtml">{{each dataList as item i}}
-	<li {{if index==i}}class="act" {{/if}}>{{item.name}}</li>
+	<li {{if index==i}}class="act" {{/if}} data-id="{{item.id}}">{{item.name}}</li>
 	{{/each}}</script><script type="text/html" id="tplSNXDJHHtml"><ul class="list">
 			<li>项目 <span class="clr clr_normal counter">117</span> 项</li>
 			<li>完工 <span class="clr clr_orange counter">62</span> 项</li>
@@ -56,7 +56,46 @@
 				<p class="half"> 道路 <span class="clr clr_orange">+</span>
 					<span class="clr clr_orange counter">25.2</span> KM</p>
 			</li>
-		</ul></script><script type="text/html" id="tplMidTopListDefault"><!--mid-top-info-->
+		</ul></script><script type="text/html" id="tplAnalysisHtml"><div class="mid-SNJH-top-filter animated bounceIn {{analysisId?'SNJHTopAnalysisAllBox':''}}" id="{{analysisId?analysisId:'SNJHTopAnalysis'}}">
+			<div class="mid-title">
+				<button type="button" class="btn-close {{analysisId?'SNJHTopAnalysisAllBtnClose':''}}" {{if !analysisId}}id="SNJHTopAnalysisClose" {{/if}} data-id="#{{analysisId?analysisId:''}}"></button>
+				<h3>{{analysisTitle}}</h3>
+			</div>
+			<div class="mid-content">
+				<!--index-progress-list-box-->
+				<div class="index-progress-list-box">
+					<!--list-row-box-->
+					{{each analysisDataList as item}}
+					<div class="list-row-box">
+						<div class="list-left" data-title="{{item.nowTitle}}">
+							{{each item.nowData as data}}
+							<div class="progress-item" role="progress" data-type="{{data.type}}" data-image="{{data.image}}" data-max="{{data.maxValue}}" data-name="{{data.name}}" data-value="{{data.value}}" data-color="{{data.color}}"></div>
+							{{/each}}
+						</div>
+						<div class="list-right" data-title="{{item.resultTitle}}">
+							{{if item.resultData}}
+							{{if item.resultData.average}}
+							<div class="lr-title">{{item.resultData.average.name}}</div>
+							<div class="progress-item" role="progress" data-type="{{item.resultData.average.type}}" data-image="{{item.resultData.average.image}}" data-max="{{item.resultData.average.maxValue}}" data-value="{{item.resultData.average.value}}" data-color="{{item.resultData.average.color}}"></div>
+							{{/if}}
+							{{if item.resultData.title}}
+							<div class="lr-title2">{{item.resultData.title}}</div>
+							{{/if}}
+							{{if item.resultData.standard}}
+							<div class="val-box">
+								<span class="name">{{item.resultData.standard.name}}</span>
+								<span class="value">{{item.resultData.standard.value}}</span>
+							</div>
+							{{/if}}
+							{{/if}}
+						</div>
+					</div>
+					{{/each}}
+					<!--/list-row-box-->
+				</div>
+				<!--/index-progress-list-box-->
+			</div>
+		</div></script><script type="text/html" id="tplMidTopListDefault"><!--mid-top-info-->
 	<ul class="mid-top-info" id="mapTopInfo">
 		{{each dataList as item i}}
 		<li class="act" data-url="{{item.url}}">
@@ -78,20 +117,26 @@
 	<div class="mid-map-box">
 		<div class="map-chart-box" id="mapChartBox"></div>
 	</div>
-	<!--/mid-map-box--></script><script type="text/html" id="tplMidTopListThree"><div class="mid-bottom-cont" data-title="{{box_title}}">
-			<div class="mid-map-chart-box left" data-title="{{row_01_title}}">
-				<div class="chart-box" id="MidMapChartRow1Box"></div>
-			</div>
-			<div class="mid-map-chart-box mid" data-title="{{row_02_title}}">
-				<div class="chart-box" id="MidMapChartRow2Box"></div>
-			</div>
-			<div class="mid-map-chart-box right" data-title="{{row_03_title}}">
-				<div class="chart-box" id="MidMapChartRow3Box"></div>
-			</div>
+	<!--/mid-map-box--></script><script type="text/html" id="tplMidTopListThree">{{each analysisTabList as item}}
+	{{include 'tplAnalysisHtml' item}}
+	{{/each}}
+	<div class="mid-bottom-cont" data-title="{{box_title}}">
+		<div class="mid-map-chart-box left" data-title="{{row_01_title}}">
+			<button type="button" data-id="#analysisTabListItem01" class="btn-filter AnalysisShowButton">分析</button>
+			<div class="chart-box" id="MidMapChartRow1Box"></div>
 		</div>
-		<div class="mid-map-box update-mid-map">
-			<div class="map-chart-box" id="mapChart1Box"></div>
-		</div></script><script type="text/html" id="tplMidTopListSNJH"><div class="mid-SNJH-nav-box">
+		<div class="mid-map-chart-box mid" data-title="{{row_02_title}}">
+			<button type="button" data-id="#analysisTabListItem02" class="btn-filter AnalysisShowButton">分析</button>
+			<div class="chart-box" id="MidMapChartRow2Box"></div>
+		</div>
+		<div class="mid-map-chart-box right" data-title="{{row_03_title}}">
+			<button type="button" data-id="#analysisTabListItem03" class="btn-filter AnalysisShowButton">分析</button>
+			<div class="chart-box" id="MidMapChartRow3Box"></div>
+		</div>
+	</div>
+	<div class="mid-map-box update-mid-map">
+		<div class="map-chart-box" id="mapChart1Box"></div>
+	</div></script><script type="text/html" id="tplMidTopListSNJH"><div class="mid-SNJH-nav-box">
 			<ul class="list">
 				{{each navList as item i}}
 				<li data-id="{{item.value}}" {{if navIndex==i}}class="act" {{/if}}>{{item.name}}</li>
@@ -117,47 +162,7 @@
 		</div>
 		<div class="mid-map-box update-mid-map">
 			<div class="map-chart-box" id="mapChart1Box"></div>
-		</div></script><script type="text/html" id="tplMidTopListSNXDJH"><!--分析区域 -->
-	<div class="mid-SNJH-top-filter animated bounceIn" id="SNJHTopAnalysis">
-		<div class="mid-title">
-			<button type="button" class="btn-close" id="SNJHTopAnalysisClose"></button>
-			<h3>教育资源匹配分析</h3>
-		</div>
-		<div class="mid-content">
-			<!--index-progress-list-box-->
-			<div class="index-progress-list-box">
-				<!--list-row-box-->
-				{{each analysisDataList as item}}
-				<div class="list-row-box">
-					<div class="list-left" data-title="{{item.nowTitle}}">
-						{{each item.nowData as data}}
-						<div class="progress-item" role="progress" data-type="{{data.type}}" data-image="{{data.image}}" data-max="{{data.maxValue}}" data-name="{{data.name}}" data-value="{{data.value}}" data-color="{{data.color}}"></div>
-						{{/each}}
-					</div>
-					<div class="list-right" data-title="{{item.resultTitle}}">
-						{{if item.resultData}}
-						{{if item.resultData.average}}
-						<div class="lr-title">{{item.resultData.average.name}}</div>
-						<div class="progress-item" role="progress" data-type="{{item.resultData.average.type}}" data-image="{{item.resultData.average.image}}" data-max="{{item.resultData.average.maxValue}}" data-value="{{item.resultData.average.value}}" data-color="{{item.resultData.average.color}}"></div>
-						{{/if}}
-						{{if item.resultData.title}}
-						<div class="lr-title2">{{item.resultData.title}}</div>
-						{{/if}}
-						{{if item.resultData.standard}}
-						<div class="val-box">
-							<span class="name">{{item.resultData.standard.name}}</span>
-							<span class="value">{{item.resultData.standard.value}}</span>
-						</div>
-						{{/if}}
-						{{/if}}
-					</div>
-				</div>
-				{{/each}}
-				<!--/list-row-box-->
-			</div>
-			<!--/index-progress-list-box-->
-		</div>
-	</div>
+		</div></script><script type="text/html" id="tplMidTopListSNXDJH">{{include 'tplAnalysisHtml'}}
 	<div class="mid-SNJH-nav-box">
 		<ul class="list">
 			{{each navList as item i}}
@@ -185,7 +190,7 @@
 		</div></script><script type="text/html" id="tplTabRKContentHtml"><div class="chart-content-box update-chart-box RK-first-box">
 			{{each dataList as item i}}
 			<!--htyx-list-item  {{index==i?'active':''}}-->
-			<div class="htyx-list-item  {{index==i?'active':''}}">
+			<div class="htyx-list-item  {{index==i?'active':''}}" data-id="{{item.id}}">
 				<div class="top-side"></div>
 				<div class="middle-content">
 					<div class="title">
@@ -204,7 +209,7 @@
 		</div></script><script type="text/html" id="tplTabDYContentHtml"><div class="chart-content-box update-chart-box">
 			{{each dataList as item i}}
 			<!--htyx-list-item  {{index==i?'active':''}}-->
-			<div class="htyx-list-item  {{index==i?'active':''}}">
+			<div class="htyx-list-item  {{index==i?'active':''}}" data-id="{{item.id}}">
 				<div class="top-side"></div>
 				<div class="middle-content">
 					<div class="title">
@@ -223,7 +228,7 @@
 		</div></script><script type="text/html" id="tplTabCYContentHtml"><div class="chart-content-box update-chart-box">
 			{{each dataList as item i}}
 			<!--htyx-list-item  {{index==i?'active':''}}-->
-			<div class="htyx-list-item style-02 {{index==i?'active':''}}">
+			<div class="htyx-list-item style-02 {{index==i?'active':''}}" data-id="{{item.id}}">
 				<div class="top-side"></div>
 				<div class="middle-content">
 					<div class="title">
@@ -242,7 +247,7 @@
 		</div></script><script type="text/html" id="tplTabSWContentHtml"><div class="chart-content-box update-chart-box">
 			{{each dataList as item i}}
 			<!--htyx-list-item  {{index==i?'active':''}}-->
-			<div class="htyx-list-item style-02 {{index==i?'active':''}}">
+			<div class="htyx-list-item style-02 {{index==i?'active':''}}" data-id="{{item.id}}">
 				<div class="top-side"></div>
 				<div class="middle-content">
 					<div class="title">
@@ -261,7 +266,7 @@
 		</div></script><script type="text/html" id="tplTabZZContentHtml"><div class="chart-content-box update-chart-box">
 			{{each dataList as item i}}
 			<!--htyx-list-item  {{index==i?'active':''}}-->
-			<div class="htyx-list-item style-03 {{index==i?'active':''}}">
+			<div class="htyx-list-item style-03 {{index==i?'active':''}}" data-id="{{item.id}}">
 				<div class="top-side"></div>
 				<div class="middle-content">
 					<div class="title">
