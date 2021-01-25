@@ -1,4 +1,50 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>回天大脑 - 指标画像</title><link rel="stylesheet" type="text/css" href="css/bootstrap.css"><link rel="stylesheet" type="text/css" href="css/animate.min.css"><link rel="stylesheet" type="text/css" href="css/app.min.css"><script type="text/javascript" src="js/plugin/echarts.js"></script><script type="text/javascript" src="js/plugin/jquery-1.11.0.min.js"></script><script type="text/javascript" src="js/plugin/template.js"></script><script type="text/javascript" src="js/plugin/jquery.countup.min.js"></script><script type="text/javascript" src="js/plugin/jquery.waypoint.min.js"></script><script type="text/javascript" src="js/plugin/jquery.validate.min.js"></script><script type="text/javascript" src="js/app.min.js"></script><script type="text/javascript" src="js/zhibiaohuaxiang2.js"></script><script type="text/javascript" src="js/changping_zb.js"></script></head><body><div class="fixed-header-wrap"><div class="left-content"></div><div class="mid-title">指标画像</div><div class="right-content"><ul class="nav-list"><li><a href="index.html">数说回天</a></li><li><a href="shujuwenzheng2.html">数据问诊</a></li><li><a href="jiezhenhuaxiang.html">街镇画像</a></li><li class="active"><a href="zhibiaohuaxiang2.html">指标画像</a></li><li><a href="yunyingjiance.html">运营监测</a></li></ul></div></div><div class="main-wrapper"><div class="container"><div class="box-common-wrap zb-box01-wrap zb-box02-edit-wrap"><div class="box-title"><div class="h3"><div class="select-box"><select id="jzSelectBoxWrap"></select></div></div></div><div class="box-content"><div class="left-content-box" id="LeftContentBox"><div class="mrb-box"><div class="mrb-tit"><h3>指标完成情况</h3></div><div class="mrb-cont"><ul class="icon-list" id="topLeftNavList"></ul></div></div></div><div class="middle-content-box" id="MiddleContentBox"><div class="bg-clr-box"></div><div class="top-nav-list-box" id="topNavListBox"></div><div class="middle-map-box"><div class="chart-box" id="mapChart"></div></div><div class="bottom-rect-box"><ul class="list-rect"><li class="clr1"></li><li class="clr2"></li><li class="clr3"></li></ul><p class="name">街镇排行高——低</p></div></div><div class="right-content-box" id="RightContentBox"><div class="mrb-box" id="rightSortContBox"></div></div></div></div><div class="zb-bottom-wrap"><div class="box-common-wrap zb-box02-wrap"><div class="box-title"><div class="h3">幼有所育详细指标</div></div><div class="box-content"><div class="detail-zb-box" id="detailZBBox"></div></div></div><div class="box-common-wrap zb-box03-wrap"><div class="box-title"><div class="h3">东小口镇项目信息</div></div><div class="box-content"><div class="xmxx-list" id="xmxxListBox"></div></div></div></div></div></div><script type="text/html" id="tplSelectHtml">{{each dataList as item i}}
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>回天大脑 - 指标画像</title><link rel="stylesheet" type="text/css" href="css/bootstrap.css"><link rel="stylesheet" type="text/css" href="css/animate.min.css"><link rel="stylesheet" type="text/css" href="css/app.min.css"><script type="text/javascript" src="js/plugin/echarts.js"></script><script type="text/javascript" src="js/plugin/jquery-1.11.0.min.js"></script><script type="text/javascript" src="js/plugin/template.js"></script><script type="text/javascript" src="js/plugin/jquery.countup.min.js"></script><script type="text/javascript" src="js/plugin/jquery.waypoint.min.js"></script><script type="text/javascript" src="js/plugin/jquery.validate.min.js"></script><script type="text/javascript" src="js/app.min.js"></script><script type="text/javascript" src="js/zhibiaohuaxiang2.js"></script><script type="text/javascript" src="js/changping_zb.js"></script></head><body><div class="fixed-header-wrap"><div class="left-content"></div><div class="mid-title">指标画像</div><div class="right-content"><ul class="nav-list"><li><a href="index.html">数说回天</a></li><li><a href="shujuwenzheng2.html">数据问诊</a></li><li><a href="jiezhenhuaxiang.html">街镇画像</a></li><li class="active"><a href="zhibiaohuaxiang2.html">指标画像</a></li><li><a href="yunyingjiance.html">运营监测</a></li></ul></div></div><div class="main-wrapper"><div class="container"><div class="box-common-wrap zb-box01-wrap zb-box02-edit-wrap"><div class="box-title"><div class="h3"><div class="select-box"><select id="jzSelectBoxWrap"></select></div></div></div><div class="box-content"><div class="left-content-box" id="LeftContentBox"><div class="mrb-box"><div class="mrb-tit"><h3>指标完成情况</h3></div><div class="mrb-cont"><ul class="icon-list" id="topLeftNavList"></ul></div></div></div><div class="middle-content-box" id="MiddleContentBox"><div class="bg-clr-box"></div><div class="top-nav-list-box" id="topNavListBox"></div><div class="middle-map-box"><div class="chart-box" id="mapChart"></div></div><div class="bottom-rect-box"><ul class="list-rect"><li class="clr1"></li><li class="clr2"></li><li class="clr3"></li></ul><p class="name">街镇排行高——低</p></div></div><div class="right-content-box" id="RightContentBox"><div class="mrb-box zbhx-icon-box" id="rightSortContBox"></div></div></div></div><div class="zb-bottom-wrap"><div class="box-common-wrap zb-box02-wrap"><div class="box-title"><div class="h3">幼有所育详细指标</div></div><div class="box-content"><div class="detail-zb-box" id="detailZBBox"></div></div></div><div class="box-common-wrap zb-box03-wrap"><div class="box-title"><div class="h3">回天地区三年变化</div></div><div class="box-content"><div class="xmxx-list" id="xmxxListBox"></div></div></div></div></div></div><script type="text/html" id="tplDialogMapHtml"><div class="dialog-ZBHX-map-wrap pos">
+			<div class="list">
+				<div class="item normal">
+					<div class="h3">{{title}}</div>
+				</div>
+				{{each dataList as item}}
+				<div class="item {{item.isHalf?'half':''}}">
+					<div class="tit">{{item.name}} :</div>
+					{{if item.icon}}
+					<div class="progress-image">
+						{{if item.progress_max}}
+						<div class="bg-list">
+							{{each item.progress_max}}
+							<img src="{{item.icon}}" alt="">
+							{{/each}}
+						</div>
+						{{/if}}
+						{{if item.progress_percent}}
+						<div class="progress-line" style="width: {{item.progress_percent*100}}%;">
+							{{each item.progress_max}}
+							<img src="{{item.icon}}" alt="">
+							{{/each}}
+						</div>
+						{{/if}}
+					</div>
+					{{/if}}
+					{{if item.info}}
+					<div class="info" style="{{if item.color}}color: {{item.color}};{{/if}}">{{item.info}}</div>
+					{{/if}}
+					{{if item.value}}
+					<div class="val" style="{{if item.color}}color: {{item.color}};{{/if}}">{{item.value}}</div>
+					{{/if}}
+					{{if item.unit}}
+					<div class="unit">{{item.unit}}</div>
+					{{/if}}
+					{{if item.checked}}
+					<div class="check {{item.checked?'checked':''}}"></div>
+					{{/if}}
+					{{if item.highValue}}
+					<div class="tit">高于全市</div>
+					<div class="val">{{item.highValue}}</div>
+					<div class="unit">{{item.highUnit}}</div>
+					{{/if}}
+				</div>
+				{{/each}}
+			</div>
+		</div></script><script type="text/html" id="tplSelectHtml">{{each dataList as item i}}
 	<option value="{{item.name}}" {{if i==index}}selected{{/if}}>{{item.name}}</option>
 	{{/each}}</script><script type="text/html" id="tplRightContent">{{each dataList as item i}}
 	<li {{if i==index}}class="active" {{/if}}>
@@ -22,7 +68,7 @@
 			<h3>{{name}}</h3>
 		</div>
 		<div class="mrb-cont">
-			<ul class="icon-list">
+			<ul class="icon-list ">
 				{{each list as item}}
 				<li>
 					<h3>
@@ -77,4 +123,29 @@
 			<a href="{{item.url}}"><img src="images/video.png" alt=""></a>
 		</div>
 	</div>
-	{{/each}}</script></body></html>
+	{{/each}}</script><script type="text/html" id="tplSNBHHtml"><ul class="sz-icon-list ">
+			{{each dataList as item}}
+			{{if item.type==1}}
+			<li class="{{!item.value?'all':''}}">
+				{{if item.value}}
+				<h3>
+					<span class="tit" style="color: {{item.color}};">{{item.value}}</span>
+					<span class="unit">{{item.unit}}</span>
+				</h3>
+				{{/if}}
+				<p class="intro">{{item.name}}</p>
+			</li>
+			{{else if item.type==2}}
+				<li class="no-list">
+					<p class="intro">{{item.name}}</p>
+					<h3>
+						<span class="tit" style="color: {{item.color}};">{{item.value}}</span>
+					</h3>
+					<p class="intro">{{item.name1}}</p>
+					<h3>
+						<span class="tit" style="color: {{item.color}};">{{item.value1}}</span>
+					</h3>
+				</li>
+				{{/if}}
+				{{/each}}
+		</ul></script></body></html>
