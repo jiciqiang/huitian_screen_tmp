@@ -71,17 +71,17 @@
 				<span class="name">{{item.name}}</span>
 				<span class="tag">{{item.tag}}</span>
 			</p>
-			<p class="row-list"><span>建议：</span><span class="adv">{{item.adv}}</span></p>
+			<p class="row-list"><span style="color: #4FFAA0;">建议：</span><span class="adv">{{item.adv}}</span></p>
 			<a href="javascript:;" class="link"><img src="images/yy_icon_camera.png" alt=""></a>
 		</li>
 		{{/each}}</script><script type="text/html" id="tplMidTopList">{{each dataList as item}}
 	<li style="width: 33.33%;">
 		<img src="{{item.icon}}" alt="" class="icon">
 		<div class="inline-block">
+			<p>{{item.name}}</p>
 			<p>
 				<span class="value counter" style="color: {{item.color}};">{{item.value}}</span>
 			</p>
-			<p>{{item.name}}</p>
 		</div>
 	</li>
 	{{/each}}</script><script type="text/html" id="tplMidTopTabList">{{each dataList as item i}}
