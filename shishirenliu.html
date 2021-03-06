@@ -57,12 +57,14 @@
 	<!--/section-box--></script><script type="text/html" id="tplYCListHtml"><li class="top">
 			<div class="flex-box">
 				<h3>预测分析数</h3>
-				<p class="val">{{dataInfo.number}}</p>
-				{{if dataInfo.isUp}}
-				<img src="images/icon_up.png" alt="" />
-				{{else}}
-					<img src="images/icon_down.png" alt="" />
-					{{/if}}
+				<div class="flex-bottom-box">
+					<p class="val">{{dataInfo.number}}</p>
+					{{if dataInfo.isUp}}
+					<img src="images/icon_up2.png" alt="" class="icon_up" />
+					{{else}}
+						<img src="images/icon_down.png" alt="" class="icon_down" />
+						{{/if}}
+				</div>
 			</div>
 		</li>
 		{{each dataList as item}}

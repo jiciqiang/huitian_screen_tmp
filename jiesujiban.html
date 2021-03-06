@@ -5,7 +5,7 @@
 	</div>
 	{{/each}}</script><script type="text/html" id="tplRightContent">{{each dataList as item i}}
 	<li {{if i==index}}class="active" {{/if}}>
-		<p class="num" style="background-color: {{item.color}};">{{item.id}}</p>
+		<p class="num" style="background-color: {{item.color}}; color: #080828;">{{item.id}}</p>
 		<p class="name">{{item.name}}</p>
 		<p class="value" style="color: {{item.color}};">
 			<span>{{item.value}}</span>
@@ -23,12 +23,14 @@
 	{{/each}}</script><script type="text/html" id="tplYCListHtml"><li class="top">
 			<div class="flex-box">
 				<h3>预测分析数</h3>
-				<p class="val">{{dataInfo.number}}</p>
-				{{if dataInfo.isUp}}
-				<img src="images/icon_up.png" alt="" />
-				{{else}}
-					<img src="images/icon_down.png" alt="" />
-					{{/if}}
+				<div class="flex-bottom-box">
+					<p class="val">{{dataInfo.number}}</p>
+					{{if dataInfo.isUp}}
+					<img src="images/icon_up2.png" alt="" class="icon_up" />
+					{{else}}
+						<img src="images/icon_down.png" alt="" class="icon_down" />
+						{{/if}}
+				</div>
 			</div>
 		</li>
 		{{each dataList as item}}
@@ -48,7 +50,7 @@
 			<div class="inline-block">
 				<p>当日市民反应量</p>
 				<p>
-					<span class="value clr01 counter">{{dataInfo.FYLValue}}</span>
+					<span class="value clr01 counter" style="color:#E54C3F;">{{dataInfo.FYLValue}}</span>
 					<span class="unit">个</span>
 				</p>
 			</div>
