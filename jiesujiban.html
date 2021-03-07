@@ -35,12 +35,16 @@
 		</li>
 		{{each dataList as item}}
 		<li>
-			<p class="row-list">
+			<!--<p class="row-list">
+            <span class="tag" style="color: #F8C11E;">[{{item.tag}}]</span>
+            <span class="date">{{item.date}}</span>
+            <span class="name">{{item.name}}</span>
+        </p>
+        <p class="row-list">{{item.intro}}</p>-->
+			<p class="row-list news">
 				<span class="tag" style="color: #F8C11E;">[{{item.tag}}]</span>
-				<span class="date">{{item.date}}</span>
-				<span class="name">{{item.name}}</span>
+				<span class="intro2">{{item.intro}}</span>
 			</p>
-			<p class="row-list">{{item.intro}}</p>
 			<p class="row-list"><span style="color: #60BDD8;">预测：</span><span class="status">{{item.status}}</span></p>
 			<p class="row-list"><span style="color: #4FF79F;">建议：</span><span class="adv">{{item.adv}}</span></p>
 			<a href="javascript:;" class="link"><img src="images/yy_icon_camera.png" alt=""></a>
@@ -65,39 +69,39 @@
 				</div>
 				{{/each}}
 			</div>
-		</li></script><script type="text/html" id="tplMidBottomList"><li>
-			<img src="images/jsjb_icon_02.png" alt="" class="icon">
-			<div class="inline-block">
-				<p>综合得分</p>
-				<p>
-					<span class="value clr04" style="color: #6AD3EC;"><span class="counter">{{dataInfo.ZHDFValue}}</span></span>
-				</p>
-			</div>
-		</li>
-		<li>
-			<img src="images/jsjb_icon_03.png" alt="" class="icon">
-			<div class="inline-block">
-				<p>响应率</p>
-				<p>
-					<span class="value clr05" style="color: #6AD3EC;"><span class="counter">{{dataInfo.XYLValue}}</span>%</span>
-				</p>
-			</div>
-		</li>
-		<li>
-			<img src="images/jsjb_icon_05.png" alt="" class="icon">
-			<div class="inline-block">
-				<p>解决率</p>
-				<p>
-					<span class="value clr06" style="color: #7084FF;"><span class="counter">{{dataInfo.JJLValue}}</span>%</span>
-				</p>
-			</div>
-		</li>
-		<li>
-			<img src="images/jsjb_icon_06.png" alt="" class="icon">
-			<div class="inline-block">
-				<p>满意率</p>
-				<p>
-					<span class="value clr06" style="color: #7084FF;"><span class="counter">{{dataInfo.MYLValue}}</span>%</span>
-				</p>
-			</div>
-		</li></script></body></html>
+		</li></script><script type="text/html" id="tplMidBottomList"><!--<li>-->
+	<!--<img src="images/jsjb_icon_02.png" alt="" class="icon">-->
+	<!--<div class="inline-block">-->
+	<!--<p>综合得分</p>-->
+	<!--<p>-->
+	<!--<span class="value clr04" style="color: #6AD3EC;"><span class="counter">{{dataInfo.ZHDFValue}}</span></span>-->
+	<!--</p>-->
+	<!--</div>-->
+	<!--</li>-->
+	<li>
+		<img src="images/jsjb_icon_03.png" alt="" class="icon">
+		<div class="inline-block">
+			<p>响应率</p>
+			<p>
+				<span class="value clr05" style="color: #34D1EC;"><span class="counter">{{dataInfo.XYLValue}}</span>%</span>
+			</p>
+		</div>
+	</li>
+	<li>
+		<img src="images/jsjb_icon_05.png" alt="" class="icon">
+		<div class="inline-block">
+			<p>解决率</p>
+			<p>
+				<span class="value clr06" style="color: #6274E7;"><span class="counter">{{dataInfo.JJLValue}}</span>%</span>
+			</p>
+		</div>
+	</li>
+	<li>
+		<img src="images/jsjb_icon_06.png" alt="" class="icon">
+		<div class="inline-block">
+			<p>满意率</p>
+			<p>
+				<span class="value clr06" style="color: #AC2CDF;"><span class="counter">{{dataInfo.MYLValue}}</span>%</span>
+			</p>
+		</div>
+	</li></script></body></html>
