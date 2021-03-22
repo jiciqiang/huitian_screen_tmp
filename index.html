@@ -39,6 +39,73 @@
 				</div>
 				{{/each}}
 			</div>
+		</div></script><script type="text/html" id="tplDialogIndexMap2"><div class="dialog-index-map-wrap pos">
+			<div class="list before-title" data-title="流行病就诊分析">
+				<div class="item normal">
+					<div class="h3">{{title}}</div>
+				</div>
+				{{each dataList as item}}
+				<div class="item">
+					<div class="tit">{{item.name}} :</div>
+					{{if item.icon}}
+					<div class="progress-image">
+						{{if item.progress_max}}
+						<div class="bg-list">
+							{{each item.progress_max}}
+							<img src="{{item.icon}}" alt="">
+							{{/each}}
+						</div>
+						{{/if}}
+						{{if item.progress_percent}}
+						<div class="progress-line" style="width: {{item.progress_percent*100}}%;">
+							{{each item.progress_max}}
+							<img src="{{item.icon}}" alt="">
+							{{/each}}
+						</div>
+						{{/if}}
+					</div>
+					{{/if}}
+					{{if item.info}}
+					<div class="info" style="{{if item.color}}color: {{item.color}};{{/if}}">{{item.info}}</div>
+					{{/if}}
+					<div class="val" style="{{if item.color}}color: {{item.color}};{{/if}}">{{item.value}}</div>
+					{{if item.unit}}
+					<div class="unit">{{item.unit}}</div>
+					{{/if}}
+					{{if item.highValue}}
+					<div class="tit">高于全市</div>
+					<div class="val">{{item.highValue}}</div>
+					<div class="unit">{{item.highUnit}}</div>
+					{{/if}}
+				</div>
+				{{/each}}
+			</div>
+		</div></script><script type="text/html" id="tplDialogIndexMap3"><div class="dialog-index-map-wrap pos">
+			<div class="inner-list-box">
+				<div class="title">
+					<a href="javascript:;" class="btn-close" id="dialogIndexMap3CloseBtn">关闭</a>
+					<div class="h3">{{title}}</div>
+				</div>
+				<!--content-->
+				<div class="content">
+					<div class="first-box">
+						<span>今日就诊人数相比昨日</span>
+						<span class="clr">+8700</span>
+						<span>人</span>
+					</div>
+					<di class="chart-list-box">
+						<div class="left-chart">
+							<!--<div class="t-tit">TOP3高发人群对比</div>-->
+							<div class="chart-box" id="top3chart"></div>
+						</div>
+						<div class="right-chart">
+							<!--<div class="t-tit">7日就诊趋势</div>-->
+							<div class="chart-box" id="qushi7Day"></div>
+						</div>
+					</di>
+				</div>
+				<!--/content-->
+			</div>
 		</div></script><script type="text/html" id="tplMiddleDefault"><!--mid-bottom-cont-->
 	<div class="mid-bottom-cont" id="midDefaultBottomContent">
 		{{each dataList as item i}}
@@ -152,7 +219,7 @@
 	<!--/htyx-list-item-->
 	{{/each}}</script><script type="text/html" id="tplCSTJChartHtml">{{each dataList as item}}
 	<!--htyx-list-item  {{index==i?'active':''}}-->
-	<div class="htyx-list-item  {{index==i?'active':''}}" data-id="{{item.id}}">
+	<div class="htyx-list-item huitian-defen {{index==i?'active':''}}" data-id="{{item.id}}">
 		<div class="top-side"></div>
 		<div class="middle-content">
 			<div class="title">
@@ -205,12 +272,12 @@
 		</ul>
 		<ul class="list score-list">
 			<li>
-				<p class="half"> 教育<span class="clr clr_normal counter">17</span> 项 </p>
+				<p class="half"> 教育完工<span class="clr clr_normal counter">17</span> 项 </p>
 				<p class="half"> 学位 <span class="clr clr_green" style="padding-right: 0;">+</span>
 					<span class="clr clr_green counter" style="padding-left: 0;">5660</span>个 </p>
 			</li>
 			<li>
-				<p class="half">交通 <span class="clr clr_normal counter">9</span> 项</p>
+				<p class="half">交通完工 <span class="clr clr_normal counter">9</span> 项</p>
 				<p class="half"> 道路 <span class="clr clr_green" style="padding-right: 0;">+</span>
 					<span class="clr clr_green counter" style="padding-left: 0;">25.2</span> KM</p>
 			</li>
@@ -320,7 +387,7 @@
 	<!--</div>-->
 	<div class="mid-map-box update-mid-map">
 		<!--<div class="map-chart-box" id="mapChart1Box"></div>-->
-		<iframe src="http://pro.urbanxyz.com/htbrain/family/Peacock/preview-screen.html?share=52b241f9b6e141688406541494287a33" class="frame" frameborder="0"></iframe>
+		<iframe src="http://pro.urbanxyz.com/htbrain/family/Peacock/preview-screen.html?share=d15b20aedfcb46aebbf1f3c6a1b85766" class="frame" frameborder="0"></iframe>
 	</div></script><script type="text/html" id="tplMidTopListSNXDJH">{{include 'tplAnalysisHtml'}}
 	<div class="mid-SNJH-nav-box">
 		<ul class="list">

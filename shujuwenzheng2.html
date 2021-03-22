@@ -18,7 +18,7 @@
 	{{/each}}</script><script type="text/html" id="tplBottomListBox">{{each dataList as item}}
 	<div class="list-item">
 		<div class="title">
-			<h3>{{item.name}} <button type="button" class="analysis AnalysisShowButton" data-id="#{{item.targetId}}">分析</button> </h3>
+			<h3>{{item.name}} {{if item.isShow}}<button type="button" class="analysis AnalysisShowButton" data-id="#{{item.targetId}}">分析</button>{{/if}} </h3>
 		</div>
 		<ul class="list">
 			{{each item.list as sub}}
