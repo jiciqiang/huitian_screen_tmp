@@ -119,6 +119,7 @@
 					</ul>
 					<span class="unit">*个</span>
 					<span class="link" id="YQFKMore" style="cursor: pointer;">落图详细&gt;&gt;</span>
+					<span class="btn-link" onclick="toggleMapChartBox();">隐藏</span>
 				</div>
 				<h3>{{item.name}}</h3>
 			</div>
@@ -154,7 +155,7 @@
 		{{/if}}
 		{{/each}}
 	</div>
-	<!--/mid-bottom-cont--></script><script type="text/html" id="tplTFListHtml"><div class="list-item active">
+	<!--/mid-bottom-cont--></script><script type="text/javascript">function toggleMapChartBox(){var t=$("#midDefaultBottomContent"),n="hide-box";t.hasClass(n)?(t.removeClass(n),t.find(".btn-link").text("隐藏")):(t.addClass(n),t.find(".btn-link").text("显示"))}</script><script type="text/html" id="tplTFListHtml"><div class="list-item active">
 			<h3 class="icon icon-0" style="color: {{firstInfo.color}};">{{firstInfo.tag}}</h3>
 			<p class="title">{{firstInfo.title}}</p>
 			<div class="clearfix"></div>
